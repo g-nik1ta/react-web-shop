@@ -1,0 +1,13 @@
+.nav__wrapper {
+    width: 100vw;
+    min-height: 44px;
+    background-color: #fff;
+    display: flex;
+}
+
+.nav__item {
+    font-size: 13px;
+    padding-right: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}

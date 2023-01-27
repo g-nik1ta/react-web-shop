@@ -1,0 +1,24 @@
+.search__container {
+    width: 375px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.search {
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: #333;
+}
+
+.search::placeholder {
+    font-size: 15px;
+    color: rgba(128, 128, 128, 0.4);
+}
+
+.search::-webkit-search-cancel-button { display: none; }
