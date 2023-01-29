@@ -1,15 +1,18 @@
-.slider-item {
+.simple-slider button.slick-arrow {
+  display: none !important;
+}
+.simple-slider .slider-item {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100% 100%;
   height: 450px;
 }
-.slider-item .slider-item__bcg {
+.simple-slider .slider-item .slider-item__bcg {
   background-color: rgba(0, 0, 0, 0.25);
   height: 100%;
   position: relative;
 }
-.slider-item .slider-item__bcg .slider-info {
+.simple-slider .slider-item .slider-item__bcg .slider-info {
   display: flex;
   flex-direction: column;
   width: 418px;
@@ -18,36 +21,33 @@
   transform: translateY(-50%);
   left: 100px;
 }
-.slider-item .slider-item__bcg .slider-info .head-title {
+.simple-slider .slider-item .slider-item__bcg .slider-info .head-title {
   color: #fff;
   text-transform: uppercase;
   font-size: 40px;
   margin-bottom: 24px;
 }
-.slider-item .slider-item__bcg .slider-info .title {
+.simple-slider .slider-item .slider-item__bcg .slider-info .title {
   color: #fff;
   line-height: 25px;
 }
-
-#slide-1 {
+.simple-slider #slide-1 {
   background-image: url("../assets/slider/slider-01.jpg");
 }
-
-#slide-2 {
+.simple-slider #slide-2 {
   background-image: url("../assets/slider/slider-02.jpg");
 }
-
-.slick-dots {
+.simple-slider .slick-dots {
   bottom: 30px !important;
 }
-.slick-dots li {
+.simple-slider .slick-dots li {
   margin: 0 3px;
 }
-.slick-dots li.slick-active button:before {
+.simple-slider .slick-dots li.slick-active button:before {
   background-color: #fff;
   opacity: 1 !important;
 }
-.slick-dots li button:before {
+.simple-slider .slick-dots li button:before {
   width: 10px !important;
   height: 10px !important;
   color: transparent !important;
@@ -55,8 +55,77 @@
   border-radius: 50%;
   opacity: 0.5 !important;
 }
-.slick-dots li button:hover:before {
+.simple-slider .slick-dots li button:hover:before {
   opacity: 1 !important;
+}
+
+.category {
+  width: 1200px;
+  align-self: center;
+  margin-top: 50px;
+}
+.category .title {
+  font-size: 30px;
+  text-align: center;
+  margin: 30px 0;
+}
+.category .slick-slider .slick-arrow {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.5s ease-out;
+  background-color: #fff;
+}
+.category .slick-slider .slick-arrow::before {
+  content: "";
+  display: block;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("../assets/category_slider/slider_btn.svg");
+}
+.category .slick-slider .slick-arrow:hover {
+  background-color: #cccccc;
+}
+.category .slick-slider .slick-prev {
+  left: 25px;
+}
+.category .slick-slider .slick-prev::before {
+  transform: rotate(180deg);
+}
+.category .slick-slider .slick-next {
+  right: 22px;
+}
+.category .slick-slider .slick-slide > div {
+  margin: 0 20px;
+}
+.category .slick-slider .card {
+  height: 350px;
+  background-color: #fff;
+  position: relative;
+}
+.category .slick-slider .card .card-title {
+  padding: 25px 55px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 16px;
+  transition: all 1s ease;
+}
+.category .slick-slider .card .card-img {
+  position: absolute;
+  width: 100%;
+  background-size: 100%;
+  margin-top: 50px;
+  transition: all 0.85s ease;
+}
+.category .slick-slider .card:hover > .card-title {
+  opacity: 0;
+}
+.category .slick-slider .card:hover > .card-img {
+  margin-top: -30px;
 }
 
 * {
@@ -65,9 +134,28 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #5f6d92;
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+  box-shadow: 0px 0px 3px #ffffff inset;
+}
+
 #root {
   background-color: #f5f5f5;
   font-family: Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: #333333;
 }
 
 .row {
@@ -75,9 +163,4 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-}
-
-.widgets {
-  display: flex;
-  flex-direction: column;
 }/*# sourceMappingURL=App.css.map */

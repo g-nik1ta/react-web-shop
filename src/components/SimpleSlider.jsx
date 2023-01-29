@@ -18,7 +18,7 @@ const SimpleSlider = () => {
     }
 
     return (
-        <Slider {...settings}>
+        <Slider {...settings} className="simple-slider">
             <section id='slide-1' className='slider-item'>
                 <div className='slider-item__bcg'>
                     <div className="slider-info">
