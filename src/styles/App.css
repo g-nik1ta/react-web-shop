@@ -62,7 +62,7 @@
 .category {
   width: 1200px;
   align-self: center;
-  margin-top: 50px;
+  margin: 50px 0;
 }
 .category .title {
   font-size: 30px;
@@ -126,6 +126,30 @@
 }
 .category .slick-slider .card:hover > .card-img {
   margin-top: -30px;
+}
+
+.discounts {
+  height: 430px;
+  margin: 30px 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url("../assets/discounts/accessories.jpg");
+}
+.discounts .discounts__bcg {
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.discounts .discounts__bcg .discounts-info {
+  text-align: center;
+}
+.discounts .discounts__bcg .discounts-info .title {
+  color: #fff;
+  font-size: 45px;
+  text-transform: uppercase;
 }
 
 * {

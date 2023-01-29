@@ -5,6 +5,7 @@ import MyNavbar from './components/UI/navbar/MyNavbar';
 import MyHeader from './components/UI/header/MyHeader';
 import SimpleSlider from './components/SimpleSlider';
 import Category from './components/Category';
+import Discounts from './components/Discounts';
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
             <MyNavbar/>
 			<SimpleSlider/>
 			<Category/>
+			<Discounts/>
 		</BrowserRouter>
 	)
 }
