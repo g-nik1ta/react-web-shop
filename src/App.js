@@ -6,6 +6,7 @@ import MyHeader from './components/UI/header/MyHeader';
 import SimpleSlider from './components/SimpleSlider';
 import Category from './components/Category';
 import Discounts from './components/Discounts';
+import Catalog from './components/catalog/Catalog';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 			<SimpleSlider/>
 			<Category/>
 			<Discounts/>
+			<Catalog/>
 		</BrowserRouter>
 	)
 }

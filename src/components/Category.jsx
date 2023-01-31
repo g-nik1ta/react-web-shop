@@ -19,7 +19,7 @@ const Category = () => {
                 <div className='card'>
                     <h2 className='card-title'>Новинки</h2>
                     <img
-                        alt='img'
+                        alt='novelties'
                         className='card-img'
                         src={require('../assets/category_slider/category-img/slider-04.jpg')}
                     />
@@ -27,7 +27,7 @@ const Category = () => {
                 <div className='card'>
                     <h2 className='card-title'>iPhone</h2>
                     <img
-                        alt='img'
+                        alt='iPhone'
                         className='card-img'
                         src={require('../assets/category_slider/category-img/slider-01.jpg')}
                     />
@@ -35,15 +35,15 @@ const Category = () => {
                 <div className='card'>
                     <h2 className='card-title'>iWatch</h2>
                     <img
-                        alt='img'
+                        alt='iWatch'
                         className='card-img'
                         src={require('../assets/category_slider/category-img/slider-02.jpg')}
                     />
                 </div>
                 <div className='card'>
-                    <h2 className='card-title'>Аксессуры</h2>
+                    <h2 className='card-title'>Аксессуары</h2>
                     <img
-                        alt='img'
+                        alt='Accessories'
                         className='card-img'
                         src={require('../assets/category_slider/category-img/slider-03.jpg')}
                     />
