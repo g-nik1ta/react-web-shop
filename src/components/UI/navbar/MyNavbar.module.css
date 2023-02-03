@@ -5,6 +5,11 @@
     display: flex;
 }
 
+.nav__content {
+    align-items: center;
+    margin: 0 auto;
+}
+
 .nav__item {
     font-size: 13px;
     padding-right: 10px;

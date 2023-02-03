@@ -6,6 +6,11 @@
     padding: 15px 0;
 }
 
+.header__content {
+    align-items: center;
+    margin: 0 auto;
+}
+
 .header__content > * {
     padding-right: 10px;
 }

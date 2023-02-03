@@ -6,6 +6,7 @@ import SimpleSlider from './components/SimpleSlider';
 import Category from './components/Category';
 import Discounts from './components/Discounts';
 import Catalog from './components/catalog/Catalog';
+import Blog from './components/Blog';
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 			<Category/>
 			<Discounts/>
 			<Catalog/>
+			<Blog/>
 		</div>
 	)
 }

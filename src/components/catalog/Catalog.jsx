@@ -11,7 +11,7 @@ const Catalog = () => {
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 4,
-        speed: 700,
+        speed: 700, 
         autoplay: true,
         autoplaySpeed: 12000,
         pauseOnHover: true
@@ -19,7 +19,7 @@ const Catalog = () => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
     
     return (
-        <section className='catalog'>
+        <section className='catalog row'>
             <h1 className='title'>Каталог товаров</h1>
             <Slider {...settings}>
                 {

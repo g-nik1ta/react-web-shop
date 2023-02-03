@@ -2,6 +2,7 @@
 @import 'category';
 @import 'discounts';
 @import 'catalog';
+@import 'blog';
 
 * {
     margin: 0;
@@ -13,14 +14,12 @@
     width: 8px;
     height: 8px;
 }
-
 ::-webkit-scrollbar-thumb {
     background-position: center;
     background-repeat: no-repeat;
     background-color: #5f6d92;
     width: 15px;
 }
-
 ::-webkit-scrollbar-track {
     background-color: #e5e5e5;
     box-shadow: 0px 0px 3px #ffffff inset;
@@ -40,6 +39,4 @@
 .row {
     width: 1200px;
     display: flex;
-    align-items: center;
-    margin: 0 auto;
 }

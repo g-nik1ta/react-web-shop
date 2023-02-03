@@ -13,7 +13,7 @@ const Category = () => {
     }
 
     return (
-        <section className='category'>
+        <section className='category row'>
             <h1 className='title'>Категории магазина</h1>
             <Slider {...settings}>
                 <div className='card'>
