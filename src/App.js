@@ -7,6 +7,7 @@ import Category from './components/Category';
 import Discounts from './components/Discounts';
 import Catalog from './components/catalog/Catalog';
 import Blog from './components/Blog';
+import MyFooter from './components/UI/footer/MyFooter';
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 			<Discounts/>
 			<Catalog/>
 			<Blog/>
+			<MyFooter/>
 		</div>
 	)
 }

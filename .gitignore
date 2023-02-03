@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /plan on future.txt
+svg_txt
 
 # testing
 /coverage
