@@ -227,6 +227,10 @@
   width: 85%;
   transition: 0.25s opacity ease-in;
 }
+.catalog .slick-slider .card .visible-block .card-img.only:hover {
+  cursor: pointer;
+  transform: scale(1.025);
+}
 .catalog .slick-slider .card .visible-block .card-img.main-img {
   opacity: 1;
 }

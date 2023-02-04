@@ -6,7 +6,7 @@ const VisibleBlock = ({product, ...props}) => {
             <img
                 src={require(`../../assets/catalog/${product.productUrl_1}.jpg`)}
                 alt='img'
-                className={product.productUrl_2 ? 'card-img main-img' : 'card-img'}
+                className={product.productUrl_2 ? 'card-img main-img' : 'card-img only'}
             />
             {
                 product.productUrl_2 && <img

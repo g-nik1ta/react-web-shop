@@ -86,6 +86,11 @@
                     width: 85%;
                     transition: .25s opacity ease-in;
 
+                    &.only:hover {
+                        cursor: pointer;
+                        transform: scale(1.025);
+                    }
+
                     &.main-img {
                         opacity: 1;
                     }
