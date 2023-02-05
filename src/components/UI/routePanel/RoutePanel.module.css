@@ -1,0 +1,36 @@
+.panel__wrapper {
+    width: 100%;
+    padding: 5px 0;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #fff;
+    display: flex;
+}
+
+.panel__content {
+    align-items: center;
+    margin: 0 auto;
+}
+
+.panel__content > a {
+    text-decoration: none;
+    font-size: 13px;
+    transition: 1s all ease;
+}
+
+.separator {
+    padding: 0 7px;
+    cursor: default;
+}
+
+.route {
+    color: #5f6d92;
+}
+
+.route:hover {
+    color: #333;
+    cursor: pointer;
+}
+
+.route:last-child {
+    color: #333 !important;
+}
