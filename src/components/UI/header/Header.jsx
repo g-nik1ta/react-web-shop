@@ -1,8 +1,8 @@
 import React from 'react';
-import MySearch from '../search/MySearch';
-import cls from './MyHeader.module.css';
+import Search from '../search/Search';
+import cls from './Header.module.css';
 
-const MyHeader = () => {
+const Header = () => {
     return (
         <header className={cls.header__wrapepr}>
             <div className={`${cls.header__content} row`}>
@@ -10,10 +10,10 @@ const MyHeader = () => {
                     <strong>Tech </strong>
                     world
                 </a>
-                <MySearch/>
+                <Search/>
             </div>
         </header>
     )
 }
 
-export default MyHeader;
+export default Header;

@@ -1,0 +1,17 @@
+.shop_container {
+    .products-block {
+        width: 76%;
+        margin: 0 12px;
+
+        .products-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+
+            .title {
+                font-size: 35px;
+            }
+        }
+    }
+}

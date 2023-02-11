@@ -1,7 +1,7 @@
 import React from 'react';
-import cls from './MyFooter.module.css';
+import cls from './Footer.module.css';
 
-const MyFooter = () => {
+const Footer = () => {
     return (
         <footer className={cls.footer__wrapper}>
             <div className={`${cls.footer__content} row`}>
@@ -50,4 +50,4 @@ const MyFooter = () => {
     )
 }
 
-export default MyFooter;
+export default Footer;

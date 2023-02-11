@@ -1,7 +1,7 @@
 import React from 'react';
-import cls from './MySearch.module.css';
+import cls from './Search.module.css';
 
-const MySearch = () => {
+const Search = () => {
     return (
         <div className={cls.search__container}>
             <input type="search" placeholder='Поиск' className={cls.search} />
@@ -10,4 +10,4 @@ const MySearch = () => {
     )
 }
 
-export default MySearch;
+export default Search;

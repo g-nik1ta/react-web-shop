@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import cls from './MyNavbar.module.css';
+import cls from './Navbar.module.css';
 
-const MyNavbar = () => {    
+const Navbar = () => {    
     return (
         <nav className={cls.nav__wrapper}>
             <div className={`${cls.nav__content} row`}>
@@ -15,4 +15,4 @@ const MyNavbar = () => {
     )
 }
 
-export default MyNavbar;
+export default Navbar;
