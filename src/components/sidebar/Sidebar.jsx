@@ -4,8 +4,7 @@ import FilterManufacturer from './FilterManufacturer';
 import FilterPrice from './FilterPrice';
 
 const Sidebar = () => {
-    const visibleBlockRef = useRef();
-    const hiddenFields = (e) => {
+    const hiddenFields = (e, visibleBlockRef) => {
         e.target.classList.toggle("up");
         e.target.classList.toggle("down");
         visibleBlockRef.current.classList.toggle("hidden");
@@ -21,14 +20,8 @@ const Sidebar = () => {
             </div>
             <div className="filter-block">
                 <h3 className='title'>Фильтры</h3>
-                <FilterPrice
-                    hiddenFields={hiddenFields}
-                    visibleBlockRef={visibleBlockRef}
-                />
-                <FilterManufacturer
-                    hiddenFields={hiddenFields}
-                    visibleBlockRef={visibleBlockRef}
-                />
+                <FilterPrice hiddenFields={hiddenFields} />
+                <FilterManufacturer hiddenFields={hiddenFields} />
             </div>
         </aside>
     )

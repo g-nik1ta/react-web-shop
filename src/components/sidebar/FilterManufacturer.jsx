@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const FilterManufacturer = (props) => {
+    const visibleBlockRef = useRef();
     const [itemList, setItemList] = useState([
         { manufacturer: "apple", title: 'Apple', count: '15' },
         { manufacturer: "samsung", title: 'Samsung', count: '18' },
@@ -22,20 +23,20 @@ const FilterManufacturer = (props) => {
     }, [selectedValues]);
 
     useEffect(() => {
-        const height = props.visibleBlockRef.current.getBoundingClientRect().height;
-        props.visibleBlockRef.current.style.height = height + 'px'
-    }, [props.visibleBlockRef]);
+        const height = visibleBlockRef.current.getBoundingClientRect().height;
+        visibleBlockRef.current.style.height = height + 'px'
+    }, [visibleBlockRef]);
 
     return (
         <div className="filter-section">
             <h4
-                onClick={props.hiddenFields}
+                onClick={(e) => props.hiddenFields(e, visibleBlockRef)}
                 className='filter-title up'
             >
                 Производитель
                 <span className='arrow'></span>
             </h4>
-            <div className="filter-modification-fields" ref={props.visibleBlockRef}>
+            <div className="filter-modification-fields" ref={visibleBlockRef}>
                 {itemList.map(item =>
                     <div className="item-container" key={item.title}>
                         <label className='item' data-manufacturer={item.manufacturer}>

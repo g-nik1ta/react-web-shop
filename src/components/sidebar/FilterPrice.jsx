@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import MultiRangeSlider from 'multi-range-slider-react';
 
 const FilterPrice = (props) => {
+    const visibleBlockRef = useRef();
     const [minValue, setMinValue] = useState(1092);
     const [maxValue, setMaxValue] = useState(40572);
 
@@ -11,20 +12,20 @@ const FilterPrice = (props) => {
     }
 
     useEffect(() => {
-        const height = props.visibleBlockRef.current.getBoundingClientRect().height;
-        props.visibleBlockRef.current.style.height = height + 'px'
-    }, [props.visibleBlockRef]);
+        const height = visibleBlockRef.current.getBoundingClientRect().height;
+        visibleBlockRef.current.style.height = height + 'px'
+    }, [visibleBlockRef]);
 
     return (
         <div className="filter-section">
             <h4
-                onClick={props.hiddenFields}
+                onClick={(e) => props.hiddenFields(e, visibleBlockRef)}
                 className='filter-title up'
             >
                 Цена
                 <span className='arrow'></span>
             </h4>
-            <div className="filter-modification-fields" ref={props.visibleBlockRef}>
+            <div className="filter-modification-fields" ref={visibleBlockRef}>
                 <input
                     onChange={e => setMinValue(e.target.value)}
                     type="number"
