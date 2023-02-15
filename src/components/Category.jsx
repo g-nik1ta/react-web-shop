@@ -11,43 +11,43 @@ const Category = () => {
         slidesToScroll: 3,
         speed: 700,
     }
+    const categoryItems = [
+        {
+            title: 'Новинки',
+            imgAlt: 'novelties',
+            imgUrl: 'slider-01',
+        },
+        {
+            title: 'iPhone',
+            imgAlt: 'iPhone',
+            imgUrl: 'slider-02',
+        },
+        {
+            title: 'iWatch',
+            imgAlt: 'iWatch',
+            imgUrl: 'slider-03',
+        },
+        {
+            title: 'Аксессуары',
+            imgAlt: 'Accessories',
+            imgUrl: 'slider-04',
+        },
+    ]
 
     return (
         <section className='category row'>
             <h1 className='title'>Категории магазина</h1>
             <Slider {...settings}>
-                <div className='card'>
-                    <h2 className='card-title'>Новинки</h2>
-                    <img
-                        alt='novelties'
-                        className='card-img'
-                        src={require('../assets/category_slider/category-img/slider-04.jpg')}
-                    />
-                </div>
-                <div className='card'>
-                    <h2 className='card-title'>iPhone</h2>
-                    <img
-                        alt='iPhone'
-                        className='card-img'
-                        src={require('../assets/category_slider/category-img/slider-01.jpg')}
-                    />
-                </div>
-                <div className='card'>
-                    <h2 className='card-title'>iWatch</h2>
-                    <img
-                        alt='iWatch'
-                        className='card-img'
-                        src={require('../assets/category_slider/category-img/slider-02.jpg')}
-                    />
-                </div>
-                <div className='card'>
-                    <h2 className='card-title'>Аксессуары</h2>
-                    <img
-                        alt='Accessories'
-                        className='card-img'
-                        src={require('../assets/category_slider/category-img/slider-03.jpg')}
-                    />
-                </div>
+                {categoryItems.map(item =>
+                    <div className='card' key={item.imgUrl}>
+                        <h2 className='card-title'>{item.title}</h2>
+                        <img
+                            alt={item.imgAlt}
+                            className='card-img'
+                            src={require(`../assets/category_slider/category-img/${item.imgUrl}.jpg`)}
+                        />
+                    </div>
+                )}
             </Slider>
         </section>
     )

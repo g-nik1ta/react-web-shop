@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { changePriceCreator, changeUrlCreator } from '../../store/catalogReducer';
 import MyButton from '../UI/button/MyButton';
@@ -6,6 +6,12 @@ import { toggleClass } from '../../utils/toggleClass';
 
 const HiddenBlock = ({ product, ...props }) => {
     const dispatch = useDispatch();
+    const HiddenBlockRef = useRef();
+    useEffect(() => {
+        if (!HiddenBlockRef.current.firstChild.firstChild.firstChild) {
+            HiddenBlockRef.current.parentElement.classList.add('shortBefore')
+        }
+    }, [])
 
     function toggleProductMdf_01(e, mdf, name, id) {
         toggleClass(e);
@@ -49,14 +55,14 @@ const HiddenBlock = ({ product, ...props }) => {
                 break;
         }
     }
-    
+
     function toggleProductMdf_02(e, price, id) {
         toggleClass(e);
         dispatch(changePriceCreator({ price, id }));
     }
 
     return (
-        <div className="hidden-block" {...props}>
+        <div className="hidden-block" {...props} ref={HiddenBlockRef}>
             <div className="product-modifications">
                 <div className="modifications-choose-line" data-product-name={product.productName}>
                     {product.productModifications_01.map(productMdf =>

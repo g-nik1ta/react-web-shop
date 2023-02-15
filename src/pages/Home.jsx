@@ -14,7 +14,7 @@ const Home = () => {
         dispatch(changeArrCreator([
             {routeItem: 'Главная', path: '/home'}
         ]))
-    })
+    }, [])
 
     return (
         <>

@@ -13,5 +13,189 @@
                 font-size: 35px;
             }
         }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+
+            .card {
+                width: 31.03%;
+                margin: 0 10px 30px;
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    display: none;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    background-color: #fff;
+                    box-shadow: 0 0 10px 0 rgb(0 0 0 / 25%);
+                    border-radius: 5px;
+                }
+
+                &.shortBefore:hover {
+                    &::before {
+                        height: 120%;
+                    }
+                }
+    
+                &:hover {
+                    z-index: 999;
+
+                    &::before {
+                        display: block;
+                        width: 112%;
+                        height: 144%;
+                        top: -10px;
+                    }
+
+                    .visible-block {
+                        .card-img {
+                            &.only {
+                                transform: scale(1.025);
+                            }
+                        }
+                    }
+    
+                    .hidden-block {
+                        visibility: visible;
+                        padding: 0 10px;
+                    }
+    
+                    .main-img {
+                        opacity: 0 !important;
+                    }
+    
+                    .additional-img {
+                        opacity: 1 !important;
+                    }
+                }
+    
+                .visible-block {
+                    height: 100%;
+                    background-color: #fff;
+                    display: flex !important;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+    
+                    .card-img {
+                        cursor: pointer;
+                        width: 82%;
+                        transition: .25s opacity ease-in;
+    
+                        &.main-img {
+                            opacity: 1;
+                        }
+    
+                        &.additional-img {
+                            opacity: 0;
+                            position: absolute;
+                        }
+                    }
+    
+                    .card-title {
+                        padding: 15px 0;
+                        font-size: 15px;
+                    }
+    
+                    .card-price {
+                        padding: 15px 0;
+                        font-weight: bold;
+                    }
+                }
+    
+                .hidden-block {
+                    position: absolute;
+                    top: 392px;
+                    visibility: hidden;
+                    padding-bottom: 4px !important;
+                    width: 100%;
+    
+                    .modifications-choose-line {
+                        display: flex;
+                        flex-wrap: wrap;
+    
+                        .product-mdf-img__wrapper {
+                            width: 50px;
+                            height: 50px;
+    
+                            .product-mdf-img {
+                                height: 100%;
+                                background-size: contain;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                padding: 2px;
+                            }
+                        }
+    
+                        .product-mdf-txt {
+                            height: 30px;
+                            min-width: 50px;
+                            font-size: 11px;
+                            text-overflow: ellipsis;
+                            padding: 7px;
+                        }
+    
+                        .product-mdf-item {
+                            position: relative;
+                            cursor: pointer;
+                            margin-right: 10px;
+                            margin-bottom: 5px;
+                            border: 1px solid #666;
+                            border-radius: 3px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            overflow: unset;
+    
+                            &::after {
+                                content: '';
+                                display: none;
+                                width: 18px;
+                                height: 18px;
+                                background-size: 8px;
+                                right: -8px;
+                                top: -8px;
+                                background-color: #5f6d92;
+                                background-image: url('../assets/catalog/check-marks.svg');
+                                background-repeat: no-repeat;
+                                background-position: center center;
+                                border-radius: 50%;
+                                position: absolute;
+                                border: 1px solid #fff;
+                            }
+    
+                            &:hover,
+                            &.product-mdf-item-current {
+                                border-color: transparent;
+                                outline: 2px solid #5f6d92;
+                                border-radius: 0;
+                            }
+                        }
+    
+                        .product-mdf-item.product-mdf-item-current {
+                            &::after {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+    
+                .product-buy-block {
+                    button {
+                        margin: 6px 0 !important;
+                        width: 100%;
+                        background-color: #5f6d92;
+                        color: #fff;
+                        transition: 0s !important;
+                    }
+                }
+            }
+        }
     }
 }

@@ -16,39 +16,44 @@ const SimpleSlider = () => {
         cssEase: 'linear',
         pauseOnHover: true
     }
+    const sliderItems = [
+        {
+            imgUrl: 'slider-01',
+            headTitle: 'iPhone 11 pro',
+            title: 'Революционная система трёх камер — гораздо больше возможностей и неизменная простота в использовании.',
+        },
+        {
+            imgUrl: 'slider-02',
+            headTitle: 'iPhone 11 pro',
+            title: 'Революционная система трёх камер — гораздо больше возможностей и неизменная простота в использовании.',
+        },
+    ]
 
     return (
         <Slider {...settings} className="simple-slider">
-            <section id='slide-1' className='slider-item'>
-                <div className='slider-item__bcg'>
-                    <div className="slider-info">
-                        <h1 className='head-title'>
-                            iPhone 11 pro
-                        </h1>
-                        <p className='title'>
-                            Революционная система трёх камер — гораздо больше возможностей и неизменная простота в использовании.
-                        </p>
-                        <MyButton>
-                            В каталог
-                        </MyButton>
-                    </div>
+            {sliderItems.map(item =>
+                <div key={item.imgUrl}>
+                    <section
+                        style={{backgroundImage: 'url(slider/' + item.imgUrl + '.jpg)' }}
+                        className='slider-item'
+                    >
+                        <div className='slider-item__bcg'>
+                            <div className="slider-info">
+                                <h1 className='head-title'>
+                                    {item.headTitle}
+                                </h1>
+                                <p className='title'>
+                                    {item.title}
+                                </p>
+                                <MyButton>
+                                    В каталог
+                                </MyButton>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-            </section>
-            <section id='slide-2' className='slider-item'>
-                <div className='slider-item__bcg'>
-                    <div className="slider-info">
-                        <h1 className='head-title'>
-                            iPhone 11 pro
-                        </h1>
-                        <p className='title'>
-                            Революционная система трёх камер — гораздо больше возможностей и неизменная простота в использовании.
-                        </p>
-                        <MyButton>
-                            В каталог
-                        </MyButton>
-                    </div>
-                </div>
-            </section>
+
+            )}
         </Slider>
     )
 }

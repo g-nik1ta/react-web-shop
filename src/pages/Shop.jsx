@@ -12,7 +12,7 @@ const Shop = () => {
         dispatch(changeArrCreator([
             { routeItem: 'Магазин', path: '/shop' }
         ]))
-    })
+    }, [])
 
     return (
         <>

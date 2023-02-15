@@ -85,6 +85,7 @@ const defaultState = {
 
 export const CHANGE_URL = 'CHANGE_URL';
 export const CHANGE_PRICE = 'CHANGE_PRICE';
+export const RESET_DEFAULT = 'RESET_DEFAULT';
 
 export default function catalogReducer(state = defaultState, action) {
     switch (action.type) {
@@ -125,6 +126,23 @@ export default function catalogReducer(state = defaultState, action) {
                         }
                 )
             }
+        case RESET_DEFAULT:
+            return {
+                ...state,
+                catalog: state.catalog.map(
+                    product => product.id === action.payload.id ?
+                        {
+                            ...product,
+                            productUrl_1: action.payload.resetUrl_1,
+                            productUrl_2: action.payload.resetUrl_2,
+                            price: action.payload.resetPrice,
+                        }
+                        :
+                        {
+                            ...product
+                        }
+                )
+            }
         default:
             return state;
     }
@@ -132,3 +150,4 @@ export default function catalogReducer(state = defaultState, action) {
 
 export const changeUrlCreator = (payload) => ({ type: CHANGE_URL, payload });
 export const changePriceCreator = (payload) => ({ type: CHANGE_PRICE, payload });
+export const resetDefault = (payload) => ({ type: RESET_DEFAULT, payload });

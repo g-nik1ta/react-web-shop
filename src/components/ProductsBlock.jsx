@@ -1,6 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import CatalogCard from './catalog/CatalogCard';
 
 const ProductsBlock = () => {
+    const catalog = useSelector(state => state.catalogReducer.catalog);
+
     return (
         <section className='products-block'>
             <div className="products-block-header">
@@ -10,7 +14,11 @@ const ProductsBlock = () => {
                 </div>
             </div>
             <div className="products">
-            
+                {
+                    catalog.map(product =>
+                        <CatalogCard key={product.id} product={product} />
+                    )
+                }
             </div>
         </section>
     )
