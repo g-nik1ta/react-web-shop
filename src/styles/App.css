@@ -670,6 +670,11 @@
 .shop_container .products-block .products .card .hidden-block .modifications-choose-line {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+.shop_container .products-block .products .card .hidden-block .modifications-choose-line .product-mdf-color__block {
+  width: 30px;
+  height: 30px;
 }
 .shop_container .products-block .products .card .hidden-block .modifications-choose-line .product-mdf-img__wrapper {
   width: 50px;

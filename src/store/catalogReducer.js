@@ -49,8 +49,8 @@ const defaultState = {
                 { id: 1, mdf: 'white', mdfUrl: 'Apple Watch Series 6 Nike/mini/iwatch-s6-nike__white', mdfCurrent: false },
             ],
             productModifications_02: [
-                { id: 0, mdf: '40', mdfPrice: '15360', mdfCurrent: true },
-                { id: 1, mdf: '44', mdfPrice: '17660', mdfCurrent: false },
+                { id: 0, mdf: '40 мм', mdfPrice: '15360', mdfCurrent: true },
+                { id: 1, mdf: '44 мм', mdfPrice: '17660', mdfCurrent: false },
             ],
         },
         {
@@ -66,8 +66,8 @@ const defaultState = {
                 { id: 2, mdf: 'red', mdfUrl: 'Apple Watch Series 6/mini/iwatch-s6__red', mdfCurrent: true },
             ],
             productModifications_02: [
-                { id: 0, mdf: '40', mdfPrice: '14860', mdfCurrent: true },
-                { id: 1, mdf: '44', mdfPrice: '16399', mdfCurrent: false },
+                { id: 0, mdf: '40 мм', mdfPrice: '14860', mdfCurrent: true },
+                { id: 1, mdf: '44 мм', mdfPrice: '16399', mdfCurrent: false },
             ],
         },
         {
@@ -79,6 +79,98 @@ const defaultState = {
             price: '6972',
             productModifications_01: [],
             productModifications_02: [],
+        },
+        {
+            id: 5,
+            productName: 'braidedMonobracelet',
+            productUrl_1: 'Braided Monobracelet/normal/mband__rose__01',
+            productUrl_2: 'Braided Monobracelet/normal/mband__rose__02',
+            title: 'Плетёный монобраслет',
+            price: '2772',
+            productModifications_01: [
+                { id: 0, mdf: 'blue', mdfUrl: 'Braided Monobracelet/mini/mband__blue', mdfCurrent: false },
+                { id: 1, mdf: 'rose', mdfUrl: 'Braided Monobracelet/mini/mband__rose', mdfCurrent: true },
+                { id: 2, mdf: 'red', mdfUrl: 'Braided Monobracelet/mini/mband__red', mdfCurrent: false },
+            ],
+            productModifications_02: [
+                { id: 0, mdf: '40 мм', mdfPrice: '2772', mdfCurrent: true },
+                { id: 1, mdf: '44 мм', mdfPrice: '2980', mdfCurrent: false },
+            ],
+        },
+        {
+            id: 6,
+            productName: 'airPods',
+            productUrl_1: 'AirPods/normal/AirPods__white__01',
+            productUrl_2: 'AirPods/normal/AirPods__white__02',
+            title: 'Наушники AirPods с беспроводным зарядным футляром',
+            price: '4172',
+            productModifications_01: [],
+            productModifications_02: [],
+        },
+        {
+            id: 7,
+            productName: 'Monobracelet',
+            productUrl_1: 'Monobracelet/normal/band__blue__01',
+            productUrl_2: 'Monobracelet/normal/band__blue__02',
+            title: 'Монобраслет',
+            price: '38416',
+            productModifications_01: [
+                { id: 0, mdf: 'blue', mdfUrl: null, mdfCurrent: true },
+                { id: 1, mdf: 'black', mdfUrl: null, mdfCurrent: false },
+                { id: 2, mdf: 'red', mdfUrl: null, mdfCurrent: false },
+            ],
+            productModifications_02: [
+                { id: 0, mdf: '40 мм', mdfPrice: '38416', mdfCurrent: true },
+                { id: 1, mdf: '44 мм', mdfPrice: '49348', mdfCurrent: false },
+            ],
+        },
+        {
+            id: 8,
+            productName: 'SmartBatteryCaseForiPhone',
+            productUrl_1: 'Smart Battery Case for iPhone/normal/casebattery__black__01',
+            productUrl_2: 'Smart Battery Case for iPhone/normal/casebattery__black__02',
+            title: 'Чехол Smart Battery Case для iPhone',
+            price: '3612',
+            productModifications_01: [
+                { id: 0, mdf: 'black', mdfUrl: 'Smart Battery Case for iPhone/mini/casebattery__black', mdfCurrent: true },
+                { id: 1, mdf: 'pink', mdfUrl: 'Smart Battery Case for iPhone/mini/casebattery__pink', mdfCurrent: false },
+            ],
+            productModifications_02: [
+                { id: 0, mdf: 'iPhone 11', mdfPrice: '3612', mdfCurrent: true },
+                { id: 1, mdf: 'iPhone xr', mdfPrice: '3254', mdfCurrent: false },
+                { id: 2, mdf: 'iPhone 11 Pro Max', mdfPrice: '4618', mdfCurrent: false },
+            ],
+        },
+        {
+            id: 9,
+            productName: 'SiliconeCase',
+            productUrl_1: 'Silicone Case/normal/case-11pro__blue__01',
+            productUrl_2: 'Silicone Case/normal/case-11pro__blue__02',
+            title: 'Силиконовый чехол для iPhone',
+            price: '1092',
+            productModifications_01: [
+                { id: 0, mdf: 'blue', mdfUrl: 'Silicone Case/mini/case-11pro__blue', mdfCurrent: true },
+                { id: 1, mdf: 'black', mdfUrl: 'Silicone Case/mini/case-11pro__black', mdfCurrent: false },
+                { id: 2, mdf: 'pink', mdfUrl: 'Silicone Case/mini/case-11pro__pink', mdfCurrent: false },
+            ],
+            productModifications_02: [
+                { id: 0, mdf: 'iPhone 11', mdfPrice: '746', mdfCurrent: false },
+                { id: 2, mdf: 'iPhone 11 Pro Max', mdfPrice: '1092', mdfCurrent: true },
+            ],
+        },
+        {
+            id: 10,
+            productName: 'iWatchS3',
+            productUrl_1: 'Apple Watch Series 3/normal/iwatch-s3__white__01',
+            productUrl_2: 'Apple Watch Series 3/normal/iwatch-s3__white__02',
+            title: 'Apple Watch Series 3',
+            price: '5572',
+            productModifications_01: [
+                { id: 0, mdf: 'white', mdfUrl: 'Apple Watch Series 3/mini/iwatch-s3__white', mdfCurrent: true },
+            ],
+            productModifications_02: [
+                { id: 0, mdf: '38 мм', mdfPrice: '5572', mdfCurrent: true },
+            ],
         },
     ]
 }
@@ -94,16 +186,16 @@ export default function catalogReducer(state = defaultState, action) {
                 ...state,
                 catalog: state.catalog.map(
                     product => product.id === action.payload.id ?
-                        action.payload.url_2 ?
+                        product.productUrl_2 ?
                             {
                                 ...product,
-                                productUrl_1: action.payload.url_1,
-                                productUrl_2: action.payload.url_2,
+                                productUrl_1: product.productUrl_1.replace(/__(.*?)__/g, `__${action.payload.mdf}__`),
+                                productUrl_2: product.productUrl_2.replace(/__(.*?)__/g, `__${action.payload.mdf}__`),
                             }
                             :
                             {
                                 ...product,
-                                productUrl_1: action.payload.url_1
+                                productUrl_1: product.productUrl_1.replace(/__(.*?)__/g, `__${action.payload.mdf}__`),
                             }
                         :
                         {

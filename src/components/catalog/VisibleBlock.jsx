@@ -19,7 +19,7 @@ const VisibleBlock = ({product, ...props}) => {
                 {product.title}
             </h3>
             <p className='card-price'>
-                {(Number(product.price)).toLocaleString('ru')}₴
+                {(Number(product.price)).toLocaleString('ru')} ₴
             </p>
         </div>
     )

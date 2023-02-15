@@ -13,47 +13,9 @@ const HiddenBlock = ({ product, ...props }) => {
         }
     }, [])
 
-    function toggleProductMdf_01(e, mdf, name, id) {
+    function toggleProductMdf_01(e, mdf, id) {
         toggleClass(e);
-
-        switch (name) {
-            case 'iPhone11':
-                dispatch(changeUrlCreator({
-                    url_1: `iPhone 11/normal/iphone11__${mdf}__01`,
-                    id,
-                }));
-                break;
-            case 'iPhone11Pro':
-                dispatch(changeUrlCreator({
-                    url_1: `iPhone 11 Pro Max/normal/iphone-11pro__${mdf}__01`,
-                    id,
-                }));
-                break;
-            case 'iWatchS6Nike':
-                dispatch(changeUrlCreator({
-                    url_1: `Apple Watch Series 6 Nike/normal/iwatch-s6-nike__${mdf}__01`,
-                    url_2: `Apple Watch Series 6 Nike/normal/iwatch-s6-nike__${mdf}__02`,
-                    id,
-                }));
-                break;
-            case 'iWatchS6':
-                dispatch(changeUrlCreator({
-                    url_1: `Apple Watch Series 6/normal/iwatch-s6__${mdf}__01`,
-                    url_2: `Apple Watch Series 6/normal/iwatch-s6__${mdf}__02`,
-                    id,
-                }));
-                break;
-            case 'airPodsPro':
-                dispatch(changeUrlCreator({
-                    url_1: `AirPods Pro/normal/AirPods-Pro__${mdf}__01`,
-                    url_2: `AirPods Pro/normal/AirPods-Pro__${mdf}__02`,
-                    id,
-                }));
-                break;
-            default:
-                console.log('default case!');
-                break;
-        }
+        dispatch(changeUrlCreator({ id, mdf }));
     }
 
     function toggleProductMdf_02(e, price, id) {
@@ -68,20 +30,29 @@ const HiddenBlock = ({ product, ...props }) => {
                     {product.productModifications_01.map(productMdf =>
                         <div
                             key={productMdf.id}
-                            className={productMdf.mdfCurrent
-                                ? 'product-mdf-img__wrapper product-mdf-item product-mdf-item-current'
-                                : 'product-mdf-img__wrapper product-mdf-item'
+                            className={productMdf.mdfUrl
+                                ? productMdf.mdfCurrent
+                                    ? 'product-mdf-img__wrapper product-mdf-item product-mdf-item-current'
+                                    : 'product-mdf-img__wrapper product-mdf-item'
+                                : productMdf.mdfCurrent
+                                    ? 'product-mdf-color__block product-mdf-item product-mdf-item-current'
+                                    : 'product-mdf-color__block product-mdf-item'
                             }
-                            onClick={(e) => toggleProductMdf_01(e, productMdf.mdf, product.productName, product.id)}
+                            style={!productMdf.mdfUrl ? { backgroundColor: productMdf.mdf } : {}}
+                            onClick={e => productMdf.mdfUrl
+                                ?
+                                toggleProductMdf_01(e, productMdf.mdf, product.id)
+                                :
+                                toggleClass(e)
+                            }
                         >
-                            <img
+                            {productMdf.mdfUrl && <img
                                 src={require(`../../assets/catalog/${productMdf.mdfUrl}.jpg`)}
                                 alt={productMdf.mdf}
                                 className='product-mdf-img'
-                            />
+                            />}
                         </div>
                     )}
-
                 </div>
                 <div className="modifications-choose-line">
                     {product.productModifications_02.map(productMdf =>
