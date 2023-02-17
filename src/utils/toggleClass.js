@@ -10,3 +10,9 @@ export function toggleClass(e) {
     } else
         e.target.classList.toggle("product-mdf-item-current");
 }
+
+export const hiddenFields = (e, visibleBlockRef) => {
+    e.target.classList.toggle("up");
+    e.target.classList.toggle("down");
+    visibleBlockRef.current.classList.toggle("hidden");
+}

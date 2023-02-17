@@ -466,6 +466,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  cursor: pointer;
 }
 .shop_container .sidebar .filter-block .filter-section .filter-modification-fields .item-container .item:hover .title-box .checkbox {
   background-color: #ccc;
@@ -576,14 +577,80 @@
   width: 76%;
   margin: 0 12px;
 }
-.shop_container .products-block .products-block-header {
+.shop_container .products-block .header {
+  display: flex;
+  flex-direction: column;
+}
+.shop_container .products-block .header .header-block {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
 }
-.shop_container .products-block .products-block-header .title {
+.shop_container .products-block .header .header-block .title {
   font-size: 35px;
+}
+.shop_container .products-block .header .selected-filter {
+  width: 100%;
+  margin: 0 10px 15px;
+}
+.shop_container .products-block .header .selected-filter .reset-filter {
+  padding: 5px 10px !important;
+}
+.shop_container .products-block .header .selected-filter .reset-filter:hover {
+  background-color: #ccc !important;
+}
+.shop_container .products-block .header .selected-filter .filter {
+  cursor: pointer;
+  display: inline-block;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  font-size: 15px;
+  margin: 4px 8px 4px 0;
+  padding: 5px 28px 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  transition: 0.15s all ease-in;
+}
+.shop_container .products-block .header .selected-filter .filter i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 17px;
+  height: 17px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid transparent;
+  transition: 0.15s all ease-in;
+}
+.shop_container .products-block .header .selected-filter .filter i::before, .shop_container .products-block .header .selected-filter .filter i::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #000;
+  width: 1px;
+  height: 11px;
+  top: 2px;
+  left: 7px;
+}
+.shop_container .products-block .header .selected-filter .filter i::before {
+  transform: rotate(45deg);
+}
+.shop_container .products-block .header .selected-filter .filter i::after {
+  transform: rotate(-45deg);
+}
+.shop_container .products-block .header .selected-filter .filter:hover {
+  background-color: #ebebeb;
+}
+.shop_container .products-block .header .selected-filter .filter:hover i {
+  background-color: #ccc;
 }
 .shop_container .products-block .products {
   display: flex;

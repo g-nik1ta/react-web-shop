@@ -1,13 +1,15 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect,  useRef, useState } from 'react';
 import MultiRangeSlider from 'multi-range-slider-react';
+import { hiddenFields } from '../../utils/toggleClass';
 
-const FilterPrice = ({ filterPrice, setFilterPrice, priceBorder, ...props }) => {
+const FilterPrice = (props) => {
     const visibleBlockRef = useRef();
-    const [minValue, setMinValue] = useState(filterPrice.minValue);
-    const [maxValue, setMaxValue] = useState(filterPrice.maxValue);
+    const [minValue, setMinValue] = useState(props.filterPrice.minValue);
+    const [maxValue, setMaxValue] = useState(props.filterPrice.maxValue);
 
-    const getSort = () => {
-        setFilterPrice({ minValue, maxValue })
+    const changeFilterPrice = () => {
+        props.setFilterPrice({ minValue, maxValue });
+        props.setSelectedPriceFilter(true);
     }
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const FilterPrice = ({ filterPrice, setFilterPrice, priceBorder, ...props }) => 
     return (
         <div className="filter-section">
             <h4
-                onClick={(e) => props.hiddenFields(e, visibleBlockRef)}
+                onClick={(e) => hiddenFields(e, visibleBlockRef)}
                 className='filter-title up'
             >
                 Цена
@@ -45,14 +47,14 @@ const FilterPrice = ({ filterPrice, setFilterPrice, priceBorder, ...props }) => 
                     value={maxValue}
                 />
                 <input
-                    onClick={getSort}
+                    onClick={changeFilterPrice}
                     type="submit"
                     className='submit'
                     value="OK"
                 />
                 <MultiRangeSlider
-                    min={priceBorder.minPrice}
-                    max={priceBorder.maxPrice}
+                    min={props.priceBorder.minPrice}
+                    max={props.priceBorder.maxPrice}
                     minValue={minValue}
                     maxValue={maxValue}
                     onInput={(e) => {

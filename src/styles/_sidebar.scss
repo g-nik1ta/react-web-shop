@@ -109,6 +109,7 @@
                         .item {
                             display: flex;
                             user-select: none;
+                            cursor: pointer;
 
                             &:hover {
                                 .title-box .checkbox {

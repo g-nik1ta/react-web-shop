@@ -9,11 +9,16 @@ import { getPriceBorder } from '../utils/filter';
 const Shop = () => {
     const dispatch = useDispatch();
     const catalog = useSelector(state => state.catalogReducer.catalog);
+
     const [sort, setSort] = useState('');
+    const [selectedPriceFilter, setSelectedPriceFilter] = useState(false)
+
     const priceBorder = getPriceBorder(catalog)
     const [filterPrice, setFilterPrice] = useState({
         minValue: priceBorder.minPrice, maxValue: priceBorder.maxPrice
     });
+    const [filterManufacturer, setFilterManufacturer] = useState([])
+    const manufacturerList = catalog.map(product => product.manufacturer);
 
     useEffect(() => {
         dispatch(changeArrCreator([
@@ -29,8 +34,23 @@ const Shop = () => {
                     filterPrice={filterPrice}
                     setFilterPrice={setFilterPrice}
                     priceBorder={priceBorder}
+
+                    filterManufacturer={filterManufacturer}
+                    setFilterManufacturer={setFilterManufacturer}
+
+                    manufacturerList={manufacturerList}
+
+                    setSelectedPriceFilter={setSelectedPriceFilter}
                 />
-                <ProductsBlock filterPrice={filterPrice} sort={sort} />
+                <ProductsBlock 
+                    filterPrice={filterPrice} 
+                    filterManufacturer={filterManufacturer}
+                    setFilterManufacturer={setFilterManufacturer}
+                    sort={sort}
+
+                    selectedPriceFilter={selectedPriceFilter}
+                    setSelectedPriceFilter={setSelectedPriceFilter}
+                />
             </div>
         </>
     )

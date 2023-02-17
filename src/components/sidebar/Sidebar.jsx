@@ -1,15 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import FilterManufacturer from './FilterManufacturer';
 import FilterPrice from './FilterPrice';
 
 const Sidebar = (props) => {
-    const hiddenFields = (e, visibleBlockRef) => {
-        e.target.classList.toggle("up");
-        e.target.classList.toggle("down");
-        visibleBlockRef.current.classList.toggle("hidden");
-    }
-
     return (
         <aside className='sidebar'>
             <div className="category-block">
@@ -21,12 +15,17 @@ const Sidebar = (props) => {
             <div className="filter-block">
                 <h3 className='title'>Фильтры</h3>
                 <FilterPrice 
-                    hiddenFields={hiddenFields} 
                     filterPrice={props.filterPrice} 
                     setFilterPrice={props.setFilterPrice}
                     priceBorder={props.priceBorder}
+
+                    setSelectedPriceFilter={props.setSelectedPriceFilter}
                 />
-                <FilterManufacturer hiddenFields={hiddenFields} />
+                <FilterManufacturer 
+                    filterManufacturer={props.filterManufacturer}
+                    setFilterManufacturer={props.setFilterManufacturer}
+                    manufacturerList={props.manufacturerList}
+                />
             </div>
         </aside>
     )
