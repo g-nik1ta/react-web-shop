@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useProducts } from '../hooks/useProducts';
 import CatalogCard from './catalog/CatalogCard';
 
-const ProductsBlock = () => {
+const ProductsBlock = ({filterPrice, sort, ...props}) => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
+    const sortedAndFiltredProducts = useProducts(catalog, sort, filterPrice);
 
     return (
         <section className='products-block'>
@@ -15,7 +17,7 @@ const ProductsBlock = () => {
             </div>
             <div className="products">
                 {
-                    catalog.map(product =>
+                    sortedAndFiltredProducts.map(product =>
                         <CatalogCard key={product.id} product={product} />
                     )
                 }

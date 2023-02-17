@@ -1,20 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import MultiRangeSlider from 'multi-range-slider-react';
 
-const FilterPrice = (props) => {
+const FilterPrice = ({ filterPrice, setFilterPrice, priceBorder, ...props }) => {
     const visibleBlockRef = useRef();
-    const [minValue, setMinValue] = useState(1092);
-    const [maxValue, setMaxValue] = useState(40572);
+    const [minValue, setMinValue] = useState(filterPrice.minValue);
+    const [maxValue, setMaxValue] = useState(filterPrice.maxValue);
 
     const getSort = () => {
-        console.log('Min value:', minValue);
-        console.log('Max value:', maxValue);
+        setFilterPrice({ minValue, maxValue })
     }
 
     useEffect(() => {
         const height = visibleBlockRef.current.getBoundingClientRect().height;
         visibleBlockRef.current.style.height = height + 'px'
     }, [visibleBlockRef]);
+
+    const changeValue = (e, value, setFn, number, condition) => {
+        if (condition) {
+            setFn(value + number)
+        } else setFn(e.target.value)
+    }
 
     return (
         <div className="filter-section">
@@ -27,14 +32,14 @@ const FilterPrice = (props) => {
             </h4>
             <div className="filter-modification-fields" ref={visibleBlockRef}>
                 <input
-                    onChange={e => setMinValue(e.target.value)}
+                    onChange={e => changeValue(e, maxValue, setMinValue, -5, e.target.value >= maxValue)}
                     type="number"
                     className='entry-field'
                     value={minValue}
                 />
                 <span>-</span>
                 <input
-                    onChange={e => setMaxValue(e.target.value)}
+                    onChange={e => changeValue(e, minValue, setMaxValue, 5, e.target.value <= minValue)}
                     type="number"
                     className='entry-field'
                     value={maxValue}
@@ -46,8 +51,8 @@ const FilterPrice = (props) => {
                     value="OK"
                 />
                 <MultiRangeSlider
-                    min={1092}
-                    max={40572}
+                    min={priceBorder.minPrice}
+                    max={priceBorder.maxPrice}
                     minValue={minValue}
                     maxValue={maxValue}
                     onInput={(e) => {

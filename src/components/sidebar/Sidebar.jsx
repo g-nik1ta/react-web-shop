@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import FilterManufacturer from './FilterManufacturer';
 import FilterPrice from './FilterPrice';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
     const hiddenFields = (e, visibleBlockRef) => {
         e.target.classList.toggle("up");
         e.target.classList.toggle("down");
@@ -20,7 +20,12 @@ const Sidebar = () => {
             </div>
             <div className="filter-block">
                 <h3 className='title'>Фильтры</h3>
-                <FilterPrice hiddenFields={hiddenFields} />
+                <FilterPrice 
+                    hiddenFields={hiddenFields} 
+                    filterPrice={props.filterPrice} 
+                    setFilterPrice={props.setFilterPrice}
+                    priceBorder={props.priceBorder}
+                />
                 <FilterManufacturer hiddenFields={hiddenFields} />
             </div>
         </aside>
