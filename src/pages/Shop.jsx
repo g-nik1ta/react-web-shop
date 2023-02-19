@@ -10,7 +10,7 @@ const Shop = () => {
     const dispatch = useDispatch();
     const catalog = useSelector(state => state.catalogReducer.catalog);
 
-    const [sort, setSort] = useState('');
+    const [sort, setSort] = useState('popular');
     const [selectedPriceFilter, setSelectedPriceFilter] = useState(false)
 
     const priceBorder = getPriceBorder(catalog)
@@ -25,7 +25,6 @@ const Shop = () => {
             { routeItem: 'Магазин', path: '/shop' }
         ]))
     }, [])
-
     return (
         <>
             <RoutePanel />
@@ -44,12 +43,16 @@ const Shop = () => {
                 />
                 <ProductsBlock 
                     filterPrice={filterPrice} 
+                    setFilterPrice={setFilterPrice}
                     filterManufacturer={filterManufacturer}
                     setFilterManufacturer={setFilterManufacturer}
+                    
                     sort={sort}
+                    setSort={setSort}
 
                     selectedPriceFilter={selectedPriceFilter}
                     setSelectedPriceFilter={setSelectedPriceFilter}
+                    priceBorder={priceBorder}
                 />
             </div>
         </>

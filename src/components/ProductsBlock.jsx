@@ -3,10 +3,19 @@ import { useSelector } from 'react-redux';
 import { useProducts } from '../hooks/useProducts';
 import { getChangeFilter, resetAllFilter } from '../utils/filter';
 import CatalogCard from './catalog/CatalogCard';
+import MySelect from './UI/select/MySelect';
 
 const ProductsBlock = (props) => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort);
+
+    const sortOptions = [
+        { value: 'cheapToExpansive', name: 'От дешевых к дорогим' },
+        { value: 'expansiveToCheap', name: 'От дорогих к дешевым' },
+        { value: 'novelties', name: 'Новинки' },
+        { value: 'popular', name: 'Популярное' },
+        { value: 'promotional', name: 'Акционные' },
+    ]
 
     return (
         <section className='products-block'>
@@ -15,6 +24,11 @@ const ProductsBlock = (props) => {
                     <h1 className='title'>Магазин</h1>
                     <div className="sort-filter">
                         <span>Сортировка</span>
+                        <MySelect
+                            value={(sortOptions.find(e => e.value === props.sort)).name}
+                            onChange={selectedSort => props.setSort(selectedSort)}
+                            options={sortOptions    }
+                        />
                     </div>
                 </div>
                 {
@@ -40,7 +54,7 @@ const ProductsBlock = (props) => {
 
                         <span
                             className='filter reset-filter'
-                            onClick={() => resetAllFilter(props.setSelectedPriceFilter, props.setFilterManufacturer)}
+                            onClick={() => resetAllFilter(props.setSelectedPriceFilter, props.setFilterManufacturer, props.priceBorder, props.setFilterPrice)}
                         >
                             Очистить фильтр
                         </span>
@@ -52,10 +66,10 @@ const ProductsBlock = (props) => {
                     sortedAndFiltredProducts.length
                         ?
                         sortedAndFiltredProducts.map(product =>
-                            <CatalogCard key={product.id} product={product} />
+                            <CatalogCard key={product.id} product={product} sort={props.sort} />
                         )
                         :
-                        <h1 style={{ fontSize: '25px' }} >По выбранным критериям продуктов не найдено.</h1>
+                        <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>
                 }
             </div>
         </section>

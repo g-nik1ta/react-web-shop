@@ -590,6 +590,13 @@
 .shop_container .products-block .header .header-block .title {
   font-size: 35px;
 }
+.shop_container .products-block .header .header-block .sort-filter {
+  display: flex;
+}
+.shop_container .products-block .header .header-block .sort-filter > span {
+  padding: 5px 10px;
+  font-size: 15px;
+}
 .shop_container .products-block .header .selected-filter {
   width: 100%;
   margin: 0 10px 15px;
@@ -720,7 +727,8 @@
   position: absolute;
 }
 .shop_container .products-block .products .card .visible-block .card-title {
-  padding: 15px 0;
+  text-align: center;
+  padding: 15px 7px;
   font-size: 15px;
 }
 .shop_container .products-block .products .card .visible-block .card-price {

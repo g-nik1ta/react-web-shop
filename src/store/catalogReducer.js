@@ -7,7 +7,10 @@ const defaultState = {
             productUrl_2: null,
             title: 'iPhone 11',
             price: '22449',
-            manufacturer: 'xiaomi',
+            promotionalPrice: '21749',
+            date: '16.01.2023',
+            popular: '14',
+            manufacturer: 'apple',
             productModifications_01: [
                 { id: 0, mdf: 'black', mdfUrl: 'iPhone 11/mini/iphone11__black', mdfCurrent: false },
                 { id: 1, mdf: 'red', mdfUrl: 'iPhone 11/mini/iphone11__red', mdfCurrent: true },
@@ -19,6 +22,11 @@ const defaultState = {
                 { id: 1, mdf: '128 gb', mdfPrice: '25499', mdfCurrent: false },
                 { id: 2, mdf: '256 gb', mdfPrice: '26700', mdfCurrent: false },
             ],
+            promotionalMdfPrice: [
+                { id: 0, mdf: '64 gb', mdfPrice: '21749', mdfCurrent: true },
+                { id: 1, mdf: '128 gb', mdfPrice: '24699', mdfCurrent: false },
+                { id: 2, mdf: '256 gb', mdfPrice: '25600', mdfCurrent: false },
+            ],
         },
         {
             id: 1,
@@ -27,6 +35,9 @@ const defaultState = {
             productUrl_2: null,
             title: 'iPhone 11 Pro Max',
             price: '29300',
+            promotionalPrice: null,
+            date: '24.12.2022',
+            popular: '11',
             manufacturer: 'Apple',
             productModifications_01: [
                 { id: 0, mdf: 'black', mdfUrl: 'iPhone 11 Pro Max/mini/iphone-11pro__black', mdfCurrent: false },
@@ -38,6 +49,7 @@ const defaultState = {
                 { id: 1, mdf: '256 gb', mdfPrice: '34990', mdfCurrent: false },
                 { id: 2, mdf: '512 gb', mdfPrice: '42559', mdfCurrent: false },
             ],
+            promotionalMdfPrice: [],
         },
         {
             id: 2,
@@ -46,6 +58,9 @@ const defaultState = {
             productUrl_2: 'Apple Watch Series 6 Nike/normal/iwatch-s6-nike__black__02',
             title: 'Apple Watch Series 6 Nike',
             price: '15360',
+            promotionalPrice: null,
+            date: '07.02.2023',
+            popular: '8',
             manufacturer: 'Apple',
             productModifications_01: [
                 { id: 0, mdf: 'black', mdfUrl: 'Apple Watch Series 6 Nike/mini/iwatch-s6-nike__black', mdfCurrent: true },
@@ -55,6 +70,7 @@ const defaultState = {
                 { id: 0, mdf: '40 мм', mdfPrice: '15360', mdfCurrent: true },
                 { id: 1, mdf: '44 мм', mdfPrice: '17660', mdfCurrent: false },
             ],
+            promotionalMdfPrice: [],
         },
         {
             id: 3,
@@ -63,7 +79,10 @@ const defaultState = {
             productUrl_2: 'Apple Watch Series 6/normal/iwatch-s6__red__02',
             title: 'Apple Watch Series 6',
             price: '14860',
-            manufacturer: 'xiaomi',
+            promotionalPrice: null,
+            date: '18.01.2023',
+            popular: '13',
+            manufacturer: 'apple',
             productModifications_01: [
                 { id: 0, mdf: 'black', mdfUrl: 'Apple Watch Series 6/mini/iwatch-s6__black', mdfCurrent: false },
                 { id: 1, mdf: 'white', mdfUrl: 'Apple Watch Series 6/mini/iwatch-s6__white', mdfCurrent: false },
@@ -73,6 +92,7 @@ const defaultState = {
                 { id: 0, mdf: '40 мм', mdfPrice: '14860', mdfCurrent: true },
                 { id: 1, mdf: '44 мм', mdfPrice: '16399', mdfCurrent: false },
             ],
+            promotionalMdfPrice: [],
         },
         {
             id: 4,
@@ -81,9 +101,13 @@ const defaultState = {
             productUrl_2: 'AirPods Pro/normal/AirPods-Pro__white__02',
             title: 'AirPods Pro',
             price: '6972',
+            promotionalPrice: null,
+            date: '02.01.2023',
+            popular: '8',
             manufacturer: 'Apple',
             productModifications_01: [],
             productModifications_02: [],
+            promotionalMdfPrice: [],
         },
         {
             id: 5,
@@ -92,7 +116,10 @@ const defaultState = {
             productUrl_2: 'Braided Monobracelet/normal/mband__rose__02',
             title: 'Плетёный монобраслет',
             price: '2772',
-            manufacturer: 'xiaomi',
+            promotionalPrice: '2448',
+            date: '28.12.2022',
+            popular: '5',
+            manufacturer: 'apple',
             productModifications_01: [
                 { id: 0, mdf: 'blue', mdfUrl: 'Braided Monobracelet/mini/mband__blue', mdfCurrent: false },
                 { id: 1, mdf: 'rose', mdfUrl: 'Braided Monobracelet/mini/mband__rose', mdfCurrent: true },
@@ -102,6 +129,10 @@ const defaultState = {
                 { id: 0, mdf: '40 мм', mdfPrice: '2772', mdfCurrent: true },
                 { id: 1, mdf: '44 мм', mdfPrice: '2980', mdfCurrent: false },
             ],
+            promotionalMdfPrice: [
+                { id: 0, mdf: '40 мм', mdfPrice: '2448', mdfCurrent: true },
+                { id: 1, mdf: '44 мм', mdfPrice: '2520', mdfCurrent: false },
+            ],
         },
         {
             id: 6,
@@ -110,9 +141,13 @@ const defaultState = {
             productUrl_2: 'AirPods/normal/AirPods__white__02',
             title: 'Наушники AirPods с беспроводным зарядным футляром',
             price: '4172',
+            promotionalPrice: null,
+            date: '31.01.2022',
+            popular: '13',
             manufacturer: 'Apple',
             productModifications_01: [],
             productModifications_02: [],
+            promotionalMdfPrice: [],
         },
         {
             id: 7,
@@ -121,6 +156,9 @@ const defaultState = {
             productUrl_2: 'Monobracelet/normal/band__blue__02',
             title: 'Монобраслет',
             price: '38416',
+            promotionalPrice: null,
+            date: '11.02.2023',
+            popular: '9',
             manufacturer: 'Apple',
             productModifications_01: [
                 { id: 0, mdf: 'blue', mdfUrl: null, mdfCurrent: true },
@@ -131,6 +169,7 @@ const defaultState = {
                 { id: 0, mdf: '40 мм', mdfPrice: '38416', mdfCurrent: true },
                 { id: 1, mdf: '44 мм', mdfPrice: '49348', mdfCurrent: false },
             ],
+            promotionalMdfPrice: [],
         },
         {
             id: 8,
@@ -139,6 +178,9 @@ const defaultState = {
             productUrl_2: 'Smart Battery Case for iPhone/normal/casebattery__black__02',
             title: 'Чехол Smart Battery Case для iPhone',
             price: '3612',
+            promotionalPrice: null,
+            date: '15.01.2023',
+            popular: '4',
             manufacturer: 'Apple',
             productModifications_01: [
                 { id: 0, mdf: 'black', mdfUrl: 'Smart Battery Case for iPhone/mini/casebattery__black', mdfCurrent: true },
@@ -149,6 +191,7 @@ const defaultState = {
                 { id: 1, mdf: 'iPhone xr', mdfPrice: '3254', mdfCurrent: false },
                 { id: 2, mdf: 'iPhone 11 Pro Max', mdfPrice: '4618', mdfCurrent: false },
             ],
+            promotionalMdfPrice: [],
         },
         {
             id: 9,
@@ -157,7 +200,10 @@ const defaultState = {
             productUrl_2: 'Silicone Case/normal/case-11pro__blue__02',
             title: 'Силиконовый чехол для iPhone',
             price: '1092',
-            manufacturer: 'samsung',
+            promotionalPrice: null,
+            date: '11.02.2023',
+            popular: '6',
+            manufacturer: 'apple',
             productModifications_01: [
                 { id: 0, mdf: 'blue', mdfUrl: 'Silicone Case/mini/case-11pro__blue', mdfCurrent: true },
                 { id: 1, mdf: 'black', mdfUrl: 'Silicone Case/mini/case-11pro__black', mdfCurrent: false },
@@ -167,6 +213,7 @@ const defaultState = {
                 { id: 0, mdf: 'iPhone 11', mdfPrice: '746', mdfCurrent: false },
                 { id: 2, mdf: 'iPhone 11 Pro Max', mdfPrice: '1092', mdfCurrent: true },
             ],
+            promotionalMdfPrice: [],
         },
         {
             id: 10,
@@ -175,13 +222,17 @@ const defaultState = {
             productUrl_2: 'Apple Watch Series 3/normal/iwatch-s3__white__02',
             title: 'Apple Watch Series 3',
             price: '5572',
-            manufacturer: 'samsung',
+            promotionalPrice: null,
+            date: '07.02.2023',
+            popular: '8',
+            manufacturer: 'apple',
             productModifications_01: [
                 { id: 0, mdf: 'white', mdfUrl: 'Apple Watch Series 3/mini/iwatch-s3__white', mdfCurrent: true },
             ],
             productModifications_02: [
                 { id: 0, mdf: '38 мм', mdfPrice: '5572', mdfCurrent: true },
             ],
+            promotionalMdfPrice: [],
         },
     ]
 }

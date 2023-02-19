@@ -1,4 +1,4 @@
-import React, { useEffect,  useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import MultiRangeSlider from 'multi-range-slider-react';
 import { hiddenFields } from '../../utils/toggleClass';
 
@@ -11,6 +11,11 @@ const FilterPrice = (props) => {
         props.setFilterPrice({ minValue, maxValue });
         props.setSelectedPriceFilter(true);
     }
+
+    useEffect(() => {
+        setMinValue(props.filterPrice.minValue);
+        setMaxValue(props.filterPrice.maxValue);
+    }, [props.filterPrice]);
 
     useEffect(() => {
         const height = visibleBlockRef.current.getBoundingClientRect().height;

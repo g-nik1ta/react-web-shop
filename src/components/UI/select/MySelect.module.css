@@ -1,0 +1,43 @@
+.select {
+    position: relative;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 1.5px 2.6px 7px rgb(0 0 0 / 2%);
+    background-color: #fff;
+}
+
+.select .selectedSort {
+    color: #333;
+    font-size: 15px;
+}
+
+.select.visibleMenu .dropdownMenu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.select .dropdownMenu {
+    opacity: 0;
+    transform: translateY(-20px) scale(.93);
+    visibility: hidden;
+    top: 28px;
+    right: 0;
+    width: max-content;
+    z-index: 1;
+    position: absolute;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 10%);
+    transition: .2s all ease-in;
+}
+
+.select .dropdownMenu span {
+    padding: 10px 15px;
+    transition: .1s all ease-in;
+    font-size: 16px;
+    display: block;
+    background-color: #fff;
+}
+
+.select .dropdownMenu span:hover {
+    background-color: #ebebeb;
+}

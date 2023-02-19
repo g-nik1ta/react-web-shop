@@ -2,8 +2,33 @@ import { useMemo } from "react";
 
 export const useSortedProducts = (products, sort) => {
     const sortedProducts = useMemo(() => {
-        if (sort) {
-            return [...products].sort((a, b) => a[sort].localeCompare(b[sort]))
+        switch (sort) {
+            case 'cheapToExpansive':
+                return [...products].sort((a, b) => {
+                    if (a.productModifications_02 != 0 && b.productModifications_02 != 0) {
+                        return (a.productModifications_02.find(e => e.mdfCurrent)).mdfPrice - 
+                        (b.productModifications_02.find(e => e.mdfCurrent)).mdfPrice
+                    } 
+                    return a.price - b.price
+                })
+            case 'expansiveToCheap':
+                return [...products].sort((a, b) => {
+                    if (b.productModifications_02 != 0 && a.productModifications_02 != 0) {
+                        return (b.productModifications_02.find(e => e.mdfCurrent)).mdfPrice - 
+                        (a.productModifications_02.find(e => e.mdfCurrent)).mdfPrice
+                    } 
+                    return b.price - a.price
+                })
+            case 'novelties':
+                return [...products].sort((a, b) => {
+                    const dateA = new Date(a.date.split('.').reverse().join("-"));
+                    const dateB = new Date(b.date.split('.').reverse().join("-"));
+                    return dateB - dateA;
+                })
+            case 'popular':
+                return [...products].sort((a, b) => b.popular - a.popular)
+            case 'promotional':
+                return [...products].filter(product => product.promotionalPrice !== null)
         }
         return products;
     }, [sort, products])

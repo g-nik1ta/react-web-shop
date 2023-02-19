@@ -16,6 +16,15 @@
                 .title {
                     font-size: 35px;
                 }
+
+                .sort-filter {
+                    display: flex;
+
+                    & > span {
+                        padding: 5px 10px;
+                        font-size: 15px;
+                    }
+                }
             }
 
             .selected-filter {
@@ -176,7 +185,8 @@
                     }
 
                     .card-title {
-                        padding: 15px 0;
+                        text-align: center;
+                        padding: 15px 7px;
                         font-size: 15px;
                     }
 

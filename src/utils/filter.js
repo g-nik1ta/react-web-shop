@@ -19,8 +19,9 @@ export const getChangeFilter = (e, selectedValues, filter = false) => {
     }
 }
 
-export const resetAllFilter = (setSelectedPriceFilter, setFilterManufacturer) => {
+export const resetAllFilter = (setSelectedPriceFilter, setFilterManufacturer, priceBorder, setFilterPrice) => {
     setSelectedPriceFilter(false);
+    setFilterPrice({ minValue: priceBorder.minPrice, maxValue: priceBorder.maxPrice });
     setFilterManufacturer([]);
     const inputs = document.querySelectorAll('input[data-manufacturer]');
         inputs.forEach(input => {
@@ -30,7 +31,7 @@ export const resetAllFilter = (setSelectedPriceFilter, setFilterManufacturer) =>
 
 export const getCountsManufacturerList = (manufacturerList) => {
     const countsManufacturer = manufacturerList.reduce((count, manufacturer) => {
-        count[manufacturer] = (count[manufacturer] || 0) + 1;
+        count[manufacturer.toLowerCase()] = (count[manufacturer.toLowerCase()] || 0) + 1;
         return count;
     }, {})
 
