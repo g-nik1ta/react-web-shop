@@ -1,8 +1,13 @@
 export const getPriceBorder = (catalog) => {
     const prices = [
-        ...catalog.flatMap((product) => product.productModifications_02.map((mdf) => mdf.mdfPrice))
+        ...catalog.flatMap((product) => {
+            if (product.productModifications_02.length) {
+                return product.productModifications_02.map((mdf) => mdf.mdfPrice)
+            } else return product.promotionalPrice
+        })
     ]
-    return { minPrice: Math.min(...prices), maxPrice: Math.max(...prices) };
+    const newPrices = prices.filter(element => element !== null);
+    return { minPrice: Math.min(...newPrices), maxPrice: Math.max(...newPrices) };
 }
 
 export const getChangeFilter = (e, selectedValues, filter = false) => {

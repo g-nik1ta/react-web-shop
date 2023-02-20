@@ -21,14 +21,20 @@ const ProductsBlock = (props) => {
     ]
 
     const [page, setPage] = useState(1);
-	const limit = 9;
-	const totalPages= getPageCount(sortedAndFiltredProducts.length, limit);
+    const limit = 9;
+    const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
 
     return (
         <section className='products-block'>
             <div className="header">
                 <div className="header-block">
-                    <h1 className='title'>Магазин</h1>
+                    {
+                        page === 1
+                            ?
+                            <h1 className='title'>Магазин</h1>
+                            :
+                            <h1 className='title'>Магазин - страница {page}</h1>
+                    }
                     <div className="sort-filter">
                         <span>Сортировка</span>
                         <MySelect
