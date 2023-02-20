@@ -735,6 +735,18 @@
   padding: 15px 0;
   font-weight: bold;
 }
+.shop_container .products-block .products .card .visible-block .card-promotional-price {
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.shop_container .products-block .products .card .visible-block .card-promotional-price span {
+  color: #ACACAC;
+  text-decoration: line-through;
+  font-size: 14px;
+  font-weight: 100;
+  margin-right: 12px;
+}
 .shop_container .products-block .products .card .hidden-block {
   position: absolute;
   top: 392px;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const VisibleBlock = ({product, ...props}) => {
+const VisibleBlock = ({ product, ...props }) => {
     return (
         <div className="visible-block" {...props}>
             <img
@@ -18,9 +18,20 @@ const VisibleBlock = ({product, ...props}) => {
             <h3 className='card-title'>
                 {product.title}
             </h3>
-            <p className='card-price'>
-                {(Number(product.price)).toLocaleString('ru')} ₴
-            </p>
+            {
+                product.promotionalPrice === null
+                    ?
+                    <p className='card-price'>
+                        {(Number(product.price)).toLocaleString('ru')} ₴
+                    </p>
+                    :
+                    <p className='card-promotional-price'>
+                        <span>
+                            {(Number(product.price)).toLocaleString('ru') } ₴
+                        </span>
+                        {(Number(product.promotionalPrice)).toLocaleString('ru')} ₴
+                    </p>
+            }
         </div>
     )
 }

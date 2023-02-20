@@ -18,9 +18,9 @@ const HiddenBlock = ({ product, ...props }) => {
         dispatch(changeUrlCreator({ id, mdf }));
     }
 
-    function toggleProductMdf_02(e, price, id) {
+    function toggleProductMdf_02(e, price, id, promotionalPrice = null, promotional = false) {
         toggleClass(e);
-        dispatch(changePriceCreator({ price, id }));
+        dispatch(changePriceCreator({ price, id, promotionalPrice, promotional }));
     }
 
     return (
@@ -55,18 +55,27 @@ const HiddenBlock = ({ product, ...props }) => {
                     )}
                 </div>
                 <div className="modifications-choose-line">
-                    {product.productModifications_02.map(productMdf =>
-                        <div
-                            key={productMdf.id}
-                            className={productMdf.mdfCurrent
-                                ? 'product-mdf-txt product-mdf-item product-mdf-item-current'
-                                : 'product-mdf-txt product-mdf-item'
-                            }
-                            onClick={(e) => toggleProductMdf_02(e, productMdf.mdfPrice, product.id)}
-                        >
-                            {productMdf.mdf}
-                        </div>
-                    )}
+                    {
+                        product.productModifications_02.map(productMdf =>
+                            <div
+                                key={productMdf.id}
+                                className={productMdf.mdfCurrent
+                                    ? 'product-mdf-txt product-mdf-item product-mdf-item-current'
+                                    : 'product-mdf-txt product-mdf-item'
+                                }
+                                onClick={(e) => {
+                                    product.promotionalPrice === null
+                                        ?
+                                        toggleProductMdf_02(e, productMdf.mdfPrice, product.id)
+                                        :
+                                        toggleProductMdf_02(e, productMdf.mdfPrice, product.id, productMdf.promotionalMdfPrice, true)
+                                }}
+                            >
+                                {productMdf.mdf}
+                            </div>
+                        )
+                    }
+
                 </div>
             </div>
             <div className="product-buy-block">

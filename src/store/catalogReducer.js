@@ -18,14 +18,9 @@ const defaultState = {
                 { id: 3, mdf: 'purple', mdfUrl: 'iPhone 11/mini/iphone11__purple', mdfCurrent: false },
             ],
             productModifications_02: [
-                { id: 0, mdf: '64 gb', mdfPrice: '22449', mdfCurrent: true },
-                { id: 1, mdf: '128 gb', mdfPrice: '25499', mdfCurrent: false },
-                { id: 2, mdf: '256 gb', mdfPrice: '26700', mdfCurrent: false },
-            ],
-            promotionalMdfPrice: [
-                { id: 0, mdf: '64 gb', mdfPrice: '21749', mdfCurrent: true },
-                { id: 1, mdf: '128 gb', mdfPrice: '24699', mdfCurrent: false },
-                { id: 2, mdf: '256 gb', mdfPrice: '25600', mdfCurrent: false },
+                { id: 0, mdf: '64 gb', mdfPrice: '22449', promotionalMdfPrice: '21749', mdfCurrent: true },
+                { id: 1, mdf: '128 gb', mdfPrice: '25499', promotionalMdfPrice: '24699', mdfCurrent: false },
+                { id: 2, mdf: '256 gb', mdfPrice: '26700', promotionalMdfPrice: '25600', mdfCurrent: false },
             ],
         },
         {
@@ -49,7 +44,6 @@ const defaultState = {
                 { id: 1, mdf: '256 gb', mdfPrice: '34990', mdfCurrent: false },
                 { id: 2, mdf: '512 gb', mdfPrice: '42559', mdfCurrent: false },
             ],
-            promotionalMdfPrice: [],
         },
         {
             id: 2,
@@ -70,7 +64,6 @@ const defaultState = {
                 { id: 0, mdf: '40 мм', mdfPrice: '15360', mdfCurrent: true },
                 { id: 1, mdf: '44 мм', mdfPrice: '17660', mdfCurrent: false },
             ],
-            promotionalMdfPrice: [],
         },
         {
             id: 3,
@@ -92,7 +85,6 @@ const defaultState = {
                 { id: 0, mdf: '40 мм', mdfPrice: '14860', mdfCurrent: true },
                 { id: 1, mdf: '44 мм', mdfPrice: '16399', mdfCurrent: false },
             ],
-            promotionalMdfPrice: [],
         },
         {
             id: 4,
@@ -107,7 +99,6 @@ const defaultState = {
             manufacturer: 'Apple',
             productModifications_01: [],
             productModifications_02: [],
-            promotionalMdfPrice: [],
         },
         {
             id: 5,
@@ -126,12 +117,8 @@ const defaultState = {
                 { id: 2, mdf: 'red', mdfUrl: 'Braided Monobracelet/mini/mband__red', mdfCurrent: false },
             ],
             productModifications_02: [
-                { id: 0, mdf: '40 мм', mdfPrice: '2772', mdfCurrent: true },
-                { id: 1, mdf: '44 мм', mdfPrice: '2980', mdfCurrent: false },
-            ],
-            promotionalMdfPrice: [
-                { id: 0, mdf: '40 мм', mdfPrice: '2448', mdfCurrent: true },
-                { id: 1, mdf: '44 мм', mdfPrice: '2520', mdfCurrent: false },
+                { id: 0, mdf: '40 мм', mdfPrice: '2772', promotionalMdfPrice: '2448', mdfCurrent: true },
+                { id: 1, mdf: '44 мм', mdfPrice: '2980', promotionalMdfPrice: '2520', mdfCurrent: false },
             ],
         },
         {
@@ -147,7 +134,6 @@ const defaultState = {
             manufacturer: 'Apple',
             productModifications_01: [],
             productModifications_02: [],
-            promotionalMdfPrice: [],
         },
         {
             id: 7,
@@ -169,7 +155,6 @@ const defaultState = {
                 { id: 0, mdf: '40 мм', mdfPrice: '38416', mdfCurrent: true },
                 { id: 1, mdf: '44 мм', mdfPrice: '49348', mdfCurrent: false },
             ],
-            promotionalMdfPrice: [],
         },
         {
             id: 8,
@@ -191,7 +176,6 @@ const defaultState = {
                 { id: 1, mdf: 'iPhone xr', mdfPrice: '3254', mdfCurrent: false },
                 { id: 2, mdf: 'iPhone 11 Pro Max', mdfPrice: '4618', mdfCurrent: false },
             ],
-            promotionalMdfPrice: [],
         },
         {
             id: 9,
@@ -213,7 +197,6 @@ const defaultState = {
                 { id: 0, mdf: 'iPhone 11', mdfPrice: '746', mdfCurrent: false },
                 { id: 2, mdf: 'iPhone 11 Pro Max', mdfPrice: '1092', mdfCurrent: true },
             ],
-            promotionalMdfPrice: [],
         },
         {
             id: 10,
@@ -232,7 +215,6 @@ const defaultState = {
             productModifications_02: [
                 { id: 0, mdf: '38 мм', mdfPrice: '5572', mdfCurrent: true },
             ],
-            promotionalMdfPrice: [],
         },
     ]
 }
@@ -270,10 +252,18 @@ export default function catalogReducer(state = defaultState, action) {
                 ...state,
                 catalog: state.catalog.map(
                     product => product.id === action.payload.id ?
-                        {
-                            ...product,
-                            price: action.payload.price
-                        }
+                        action.payload.promotional
+                            ?
+                            {
+                                ...product,
+                                price: action.payload.price,
+                                promotionalPrice: action.payload.promotionalPrice
+                            }
+                            :
+                            {
+                                ...product,
+                                price: action.payload.price
+                            }
                         :
                         {
                             ...product

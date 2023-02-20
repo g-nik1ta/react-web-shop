@@ -194,6 +194,20 @@
                         padding: 15px 0;
                         font-weight: bold;
                     }
+
+                    .card-promotional-price {
+                        padding: 15px 0;
+                        font-size: 16px;
+                        font-weight: bold;
+
+                        span {
+                            color: #ACACAC;
+                            text-decoration: line-through;
+                            font-size: 14px;
+                            font-weight: 100;
+                            margin-right: 12px;
+                        }
+                    }
                 }
 
                 .hidden-block {

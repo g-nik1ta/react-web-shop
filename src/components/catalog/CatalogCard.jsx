@@ -25,7 +25,8 @@ const CatalogCard = ({ style, product, ...props }) => {
                     productUrl_1: product.productUrl_1,
                     productUrl_2: product.productUrl_2,
                     title: product.title,
-                    price: product.price
+                    price: product.price,
+                    promotionalPrice: product.promotionalPrice,
                 }
             } />
             <HiddenBlock product={
@@ -34,6 +35,8 @@ const CatalogCard = ({ style, product, ...props }) => {
                     id: product.id,
                     productModifications_01: [...product.productModifications_01],
                     productModifications_02: [...product.productModifications_02],
+                    promotionalPrice: product.promotionalPrice,
+                    promotionalMdfPrice: product.promotionalMdfPrice
                 }
             } />
         </div>

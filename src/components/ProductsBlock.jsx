@@ -27,7 +27,7 @@ const ProductsBlock = (props) => {
                         <MySelect
                             value={(sortOptions.find(e => e.value === props.sort)).name}
                             onChange={selectedSort => props.setSort(selectedSort)}
-                            options={sortOptions    }
+                            options={sortOptions}
                         />
                     </div>
                 </div>
