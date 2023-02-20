@@ -1,8 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useProducts } from '../hooks/useProducts';
 import { getChangeFilter, resetAllFilter } from '../utils/filter';
+import { getPageCount, getProductsPage } from '../utils/pages';
 import CatalogCard from './catalog/CatalogCard';
+import Pagination from './UI/pagination/Pagination';
 import MySelect from './UI/select/MySelect';
 
 const ProductsBlock = (props) => {
@@ -16,6 +19,10 @@ const ProductsBlock = (props) => {
         { value: 'popular', name: 'Популярное' },
         { value: 'promotional', name: 'Акционные' },
     ]
+
+    const [page, setPage] = useState(1);
+	const limit = 9;
+	const totalPages= getPageCount(sortedAndFiltredProducts.length, limit);
 
     return (
         <section className='products-block'>
@@ -65,13 +72,14 @@ const ProductsBlock = (props) => {
                 {
                     sortedAndFiltredProducts.length
                         ?
-                        sortedAndFiltredProducts.map(product =>
+                        getProductsPage(sortedAndFiltredProducts, page, limit).map(product =>
                             <CatalogCard key={product.id} product={product} sort={props.sort} />
                         )
                         :
                         <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>
                 }
             </div>
+            <Pagination page={page} setPage={(page) => setPage(page)} totalPages={totalPages} />
         </section>
     )
 }
