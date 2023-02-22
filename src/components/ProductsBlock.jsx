@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useProducts } from '../hooks/useProducts';
@@ -12,6 +13,10 @@ const ProductsBlock = (props) => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort);
 
+    const [page, setPage] = useState(1);
+    const limit = 9;
+    const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
+
     const sortOptions = [
         { value: 'cheapToExpansive', name: 'От дешевых к дорогим' },
         { value: 'expansiveToCheap', name: 'От дорогих к дешевым' },
@@ -20,21 +25,20 @@ const ProductsBlock = (props) => {
         { value: 'promotional', name: 'Акционные' },
     ]
 
-    const [page, setPage] = useState(1);
-    const limit = 9;
-    const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
+    const changePage = (page) => {
+        setPage(page);
+        window.scrollTo({top: 0});
+    }
+
+    useEffect(() => {
+        setPage(1);
+    }, [props.filterPrice, props.filterManufacturer, props.sort])
 
     return (
         <section className='products-block'>
             <div className="header">
                 <div className="header-block">
-                    {
-                        page === 1
-                            ?
-                            <h1 className='title'>Магазин</h1>
-                            :
-                            <h1 className='title'>Магазин - страница {page}</h1>
-                    }
+                    <h1 className='title'>Магазин</h1>
                     <div className="sort-filter">
                         <span>Сортировка</span>
                         <MySelect
@@ -85,7 +89,7 @@ const ProductsBlock = (props) => {
                         <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>
                 }
             </div>
-            <Pagination page={page} setPage={(page) => setPage(page)} totalPages={totalPages} />
+            <Pagination page={page} changePage={(page) => changePage(page)} totalPages={totalPages} />
         </section>
     )
 }

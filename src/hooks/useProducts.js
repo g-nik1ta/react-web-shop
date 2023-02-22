@@ -6,17 +6,17 @@ export const useSortedProducts = (products, sort) => {
             case 'cheapToExpansive':
                 return [...products].sort((a, b) => {
                     if (a.productModifications_02 != 0 && b.productModifications_02 != 0) {
-                        return (a.productModifications_02.find(e => e.mdfCurrent)).mdfPrice - 
-                        (b.productModifications_02.find(e => e.mdfCurrent)).mdfPrice
-                    } 
+                        return (a.productModifications_02.find(e => e.mdfCurrent)).mdfPrice -
+                            (b.productModifications_02.find(e => e.mdfCurrent)).mdfPrice
+                    }
                     return a.price - b.price
                 })
             case 'expansiveToCheap':
                 return [...products].sort((a, b) => {
                     if (b.productModifications_02 != 0 && a.productModifications_02 != 0) {
-                        return (b.productModifications_02.find(e => e.mdfCurrent)).mdfPrice - 
-                        (a.productModifications_02.find(e => e.mdfCurrent)).mdfPrice
-                    } 
+                        return (b.productModifications_02.find(e => e.mdfCurrent)).mdfPrice -
+                            (a.productModifications_02.find(e => e.mdfCurrent)).mdfPrice
+                    }
                     return b.price - a.price
                 })
             case 'novelties':
