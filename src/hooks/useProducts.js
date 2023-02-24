@@ -46,13 +46,18 @@ export const useProducts = (products, filterPrice, filterManufacturer, sort) => 
                 hasPrice = product.productModifications_02.some(mdf =>
                     mdf.mdfPrice >= filterPrice.minValue && mdf.mdfPrice <= filterPrice.maxValue
                 );
-            } else hasPrice = true;
+            } else {
+                product.promotionalPrice
+                ?
+                hasPrice = (product.promotionalPrice >= filterPrice.minValue && product.promotionalPrice <= filterPrice.maxValue)
+                :
+                hasPrice = (product.price >= filterPrice.minValue && product.price <= filterPrice.maxValue)
+            }
 
             let hasManufacter;
             if (filterManufacturer.length) {
                 hasManufacter = filterManufacturer.includes(product.manufacturer.toLowerCase());
             } else hasManufacter = true;
-
             return hasPrice && hasManufacter;
         })
     }, [filterPrice, filterManufacturer, sortedProducts]);

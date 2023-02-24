@@ -1,11 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useProducts } from '../hooks/useProducts';
 import { getChangeFilter, resetAllFilter } from '../utils/filter';
 import { getPageCount, getProductsPage } from '../utils/pages';
 import CatalogCard from './catalog/CatalogCard';
+import Loader from './UI/loader/Loader';
 import Pagination from './UI/pagination/Pagination';
 import MySelect from './UI/select/MySelect';
 
@@ -13,7 +13,6 @@ const ProductsBlock = (props) => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort);
 
-    const [page, setPage] = useState(1);
     const limit = 9;
     const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
 
@@ -26,12 +25,12 @@ const ProductsBlock = (props) => {
     ]
 
     const changePage = (page) => {
-        setPage(page);
-        window.scrollTo({top: 0});
+        props.setPage(page);
+        window.scrollTo({ top: 0 });
     }
 
     useEffect(() => {
-        setPage(1);
+        changePage(1);
     }, [props.filterPrice, props.filterManufacturer, props.sort])
 
     return (
@@ -52,7 +51,10 @@ const ProductsBlock = (props) => {
                     !!(props.selectedPriceFilter || props.filterManufacturer.length) &&
                     <div className="selected-filter">
                         {props.selectedPriceFilter &&
-                            <span className='filter' onClick={() => props.setSelectedPriceFilter(false)}>
+                            <span className='filter' onClick={() => {
+                                props.setSelectedPriceFilter(false);
+                                props.setFilterPrice({ minValue: props.priceBorder.minPrice, maxValue: props.priceBorder.maxPrice });
+                            }}>
                                 {props.filterPrice.minValue.toLocaleString('ru')} ₴ - {props.filterPrice.maxValue.toLocaleString('ru')} ₴
                                 <i></i>
                             </span>
@@ -80,16 +82,24 @@ const ProductsBlock = (props) => {
             </div>
             <div className="products">
                 {
-                    sortedAndFiltredProducts.length
+                    props.catalogError &&
+                    <h1>Произошла ошибка!</h1>
+                }
+                {
+                    props.isCatalogLoading
                         ?
-                        getProductsPage(sortedAndFiltredProducts, page, limit).map(product =>
-                            <CatalogCard key={product.id} product={product} sort={props.sort} />
-                        )
+                        <Loader scale={0.75} />
                         :
-                        <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>
+                        sortedAndFiltredProducts.length
+                            ?
+                            getProductsPage(sortedAndFiltredProducts, props.page, limit).map(product =>
+                                <CatalogCard key={product.id} product={product} sort={props.sort} />
+                            )
+                            :
+                            <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>
                 }
             </div>
-            <Pagination page={page} changePage={(page) => changePage(page)} totalPages={totalPages} />
+            <Pagination page={props.page} changePage={(page) => changePage(page)} totalPages={totalPages} />
         </section>
     )
 }

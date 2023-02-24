@@ -6,7 +6,7 @@ const FilterPrice = (props) => {
     const visibleBlockRef = useRef();
     const [minValue, setMinValue] = useState(props.filterPrice.minValue);
     const [maxValue, setMaxValue] = useState(props.filterPrice.maxValue);
-
+     
     const changeFilterPrice = () => {
         props.setFilterPrice({ minValue, maxValue });
         props.setSelectedPriceFilter(true);

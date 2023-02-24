@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { getChangeFilter, getCountsManufacturerList } from '../../utils/filter';
 import { hiddenFields } from '../../utils/toggleClass';
 
 const FilterManufacturer = (props) => {
     const visibleBlockRef = useRef();
-    const countsManufacturerList = getCountsManufacturerList(props.manufacturerList)
+    const countsManufacturerList = getCountsManufacturerList(props.manufacturerList);
 
     useEffect(() => {
         const height = visibleBlockRef.current.getBoundingClientRect().height;

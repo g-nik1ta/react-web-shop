@@ -7,6 +7,10 @@ export const getPriceBorder = (catalog) => {
         })
     ]
     const newPrices = prices.filter(element => element !== null);
+    if (!newPrices.length) {
+        newPrices.push(0);
+        newPrices.push(9999999);
+    }
     return { minPrice: Math.min(...newPrices), maxPrice: Math.max(...newPrices) };
 }
 
