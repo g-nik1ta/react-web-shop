@@ -494,7 +494,6 @@
 }
 .shop_container .sidebar .filter-block .filter-section:last-of-type > .filter-title.down {
   border: none;
-  padding-bottom: 5px;
 }
 .shop_container .sidebar .filter-block .filter-section .filter-modification-fields {
   padding: 10px 0;
@@ -505,6 +504,15 @@
 .shop_container .sidebar .filter-block .filter-section .filter-modification-fields.hidden {
   padding: 0;
   height: 0 !important;
+}
+.shop_container .sidebar .filter-block .filter-section .filter-modification-fields.child-none .item-container .item {
+  cursor: default;
+  color: #c4c4c4;
+}
+.shop_container .sidebar .filter-block .filter-section .filter-modification-fields.child-none .item-container .item .title-box .checkbox {
+  cursor: default;
+  border: 1px solid rgba(204, 204, 204, 0.6392156863);
+  background-color: #fff !important;
 }
 .shop_container .sidebar .filter-block .filter-section .filter-modification-fields .item-container {
   height: 20px;

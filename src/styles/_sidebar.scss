@@ -80,8 +80,7 @@
                     }
 
                     &>.filter-title.down {
-                        border: none;
-                        padding-bottom: 5px;
+                        border: none; 
                     }
                 }
 
@@ -94,6 +93,23 @@
                     &.hidden {
                         padding: 0;
                         height: 0 !important;
+                    }
+
+                    &.child-none {
+                        .item-container {
+                            .item {
+                                cursor: default;
+                                color: #c4c4c4;
+
+                                .title-box {
+                                    .checkbox {
+                                        cursor: default;
+                                        border: 1px solid #cccccca3;
+                                        background-color: #fff !important;
+                                    }
+                                }
+                            }
+                        }
                     }
 
 

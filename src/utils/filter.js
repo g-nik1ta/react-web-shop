@@ -33,19 +33,38 @@ export const resetAllFilter = (setSelectedPriceFilter, setFilterManufacturer, pr
     setFilterPrice({ minValue: priceBorder.minPrice, maxValue: priceBorder.maxPrice });
     setFilterManufacturer([]);
     const inputs = document.querySelectorAll('input[data-manufacturer]');
-        inputs.forEach(input => {
-            input.checked = false
-        });
+    inputs.forEach(input => {
+        input.checked = false
+    });
 }
 
-export const getCountsManufacturerList = (manufacturerList) => {
-    const countsManufacturer = manufacturerList.reduce((count, manufacturer) => {
-        count[manufacturer.toLowerCase()] = (count[manufacturer.toLowerCase()] || 0) + 1;
-        return count;
-    }, {})
+export const getCountsManufacturerList = (manufacturerList, fullManufacturerList) => {
+    function getReduce(arrayList) {
+        return arrayList.reduce((count, item) => {
+            count[item.toLowerCase()] = (count[item.toLowerCase()] || 0) + 1;
+            return count;
+        }, {})
+    }
+    function getObjectMap(arrayList) {
+        return Object.keys(arrayList).map((item) => ({
+            title: item,
+            count: arrayList[item],
+        }));
+    }
 
-    return Object.keys(countsManufacturer).map((manufacturer) => ({
-        title: manufacturer,
-        count: countsManufacturer[manufacturer],
-    }));
+    const countsManufacturer = getReduce(manufacturerList);
+    const newManufacturerList = getObjectMap(countsManufacturer);
+
+    const countsFullManufacturer = getReduce(fullManufacturerList);
+    const newFullManufacturerList = getObjectMap(countsFullManufacturer);
+
+    const result = newFullManufacturerList.map((item) => {
+        const foundItem = newManufacturerList.find((el) => el.title === item.title);
+        if (!foundItem) {
+            return { title: item.title, count: 0 };
+        }
+        return { title: item.title, count: foundItem.count };
+    });
+
+    return result;
 }

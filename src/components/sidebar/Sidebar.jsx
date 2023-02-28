@@ -10,7 +10,8 @@ const Sidebar = (props) => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort);
     const manufacturerList = sortedAndFiltredProducts.map(product => product.manufacturer);
-    
+    const fullManufacturerList = catalog.map(product => product.manufacturer);
+
     return (
         <aside className='sidebar'>
             <div className="category-block">
@@ -21,31 +22,19 @@ const Sidebar = (props) => {
             </div>
             <div className="filter-block">
                 <h3 className='title'>Фильтры</h3>
-                {
-                    props.catalogError &&
-                    <h1>Произошла ошибка!</h1>
-                }
-                {
-                    props.isCatalogLoading
-                        ?
-                        <Loader scale={0.5} />
-                        :
-                        <>
-                            <FilterPrice
-                                filterPrice={props.filterPrice}
-                                setFilterPrice={props.setFilterPrice}
-                                priceBorder={props.priceBorder}
+                <FilterPrice
+                    filterPrice={props.filterPrice}
+                    setFilterPrice={props.setFilterPrice}
+                    priceBorder={props.priceBorder}
 
-                                setSelectedPriceFilter={props.setSelectedPriceFilter}
-                            />
-                            <FilterManufacturer
-                                filterManufacturer={props.filterManufacturer}
-                                setFilterManufacturer={props.setFilterManufacturer}
-                                manufacturerList={manufacturerList}
-                            />
-                        </>
-                }
-
+                    setSelectedPriceFilter={props.setSelectedPriceFilter}
+                />
+                <FilterManufacturer
+                    filterManufacturer={props.filterManufacturer}
+                    setFilterManufacturer={props.setFilterManufacturer}
+                    manufacturerList={manufacturerList}
+                    fullManufacturerList={fullManufacturerList}
+                />
             </div>
         </aside>
     )
