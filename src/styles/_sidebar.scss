@@ -80,7 +80,7 @@
                     }
 
                     &>.filter-title.down {
-                        border: none; 
+                        border: none;
                     }
                 }
 
@@ -95,18 +95,17 @@
                         height: 0 !important;
                     }
 
-                    &.child-none {
-                        .item-container {
-                            .item {
-                                cursor: default;
-                                color: #c4c4c4;
+                    &.child-none,
+                    .count-none {
+                        .item {
+                            cursor: default !important;
+                            color: #c4c4c4;
 
-                                .title-box {
-                                    .checkbox {
-                                        cursor: default;
-                                        border: 1px solid #cccccca3;
-                                        background-color: #fff !important;
-                                    }
+                            .title-box {
+                                .checkbox {
+                                    cursor: default !important;
+                                    border: 1px solid #cccccca3 !important;
+                                    background-color: #fff !important;
                                 }
                             }
                         }

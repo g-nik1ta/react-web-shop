@@ -30,24 +30,25 @@ const FilterManufacturer = (props) => {
                 }
                 ref={visibleBlockRef}>
                 {countsManufacturerList.map(item =>
-                    <div className="item-container" key={item.title}>
+                    <div className={
+                        item.count === 0
+                            ?
+                            'item-container count-none'
+                            :
+                            "item-container"
+
+                    } key={item.title}>
                         <label className='item'>
                             <span className='title-box'>
                                 <input
                                     data-manufacturer={item.title.toLowerCase()}
-                                    onClick={(e) =>
-                                        !!props.manufacturerList.length
-                                            ?
-                                            props.setFilterManufacturer(getChangeFilter(e, props.filterManufacturer))
-                                            :
-                                            null
-                                    }
+                                    onClick={(e) => props.setFilterManufacturer(getChangeFilter(e, props.filterManufacturer))}
                                     disabled={
-                                        !!props.manufacturerList.length
+                                        !props.manufacturerList.length || item.count === 0
                                             ?
-                                            false
-                                            :
                                             true
+                                            :
+                                            false
                                     }
                                     className='checkbox'
                                     type="checkbox"

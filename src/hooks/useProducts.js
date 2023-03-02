@@ -36,7 +36,7 @@ export const useSortedProducts = (products, sort) => {
     return sortedProducts;
 }
 
-export const useProducts = (products, filterPrice, filterManufacturer, sort) => {
+export const useProducts = (products, filterPrice, filterManufacturer, sort, isManufacturerList = false) => {
     const sortedProducts = useSortedProducts(products, sort);
 
     const sortedAndFiltredProducts = useMemo(() => {
@@ -48,17 +48,21 @@ export const useProducts = (products, filterPrice, filterManufacturer, sort) => 
                 );
             } else {
                 product.promotionalPrice
-                ?
-                hasPrice = (product.promotionalPrice >= filterPrice.minValue && product.promotionalPrice <= filterPrice.maxValue)
-                :
-                hasPrice = (product.price >= filterPrice.minValue && product.price <= filterPrice.maxValue)
+                    ?
+                    hasPrice = (product.promotionalPrice >= filterPrice.minValue && product.promotionalPrice <= filterPrice.maxValue)
+                    :
+                    hasPrice = (product.price >= filterPrice.minValue && product.price <= filterPrice.maxValue)
             }
-
-            let hasManufacter;
-            if (filterManufacturer.length) {
-                hasManufacter = filterManufacturer.includes(product.manufacturer.toLowerCase());
-            } else hasManufacter = true;
-            return hasPrice && hasManufacter;
+            if (isManufacturerList) {
+                console.log('yes!')
+                return hasPrice
+            } else {
+                let hasManufacter;
+                if (filterManufacturer.length) {
+                    hasManufacter = filterManufacturer.includes(product.manufacturer.toLowerCase());
+                } else hasManufacter = true;
+                return hasPrice && hasManufacter;
+            }
         })
     }, [filterPrice, filterManufacturer, sortedProducts]);
 

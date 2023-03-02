@@ -2,14 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useProducts } from '../../hooks/useProducts';
-import Loader from '../UI/loader/Loader';
 import FilterManufacturer from './FilterManufacturer';
 import FilterPrice from './FilterPrice';
 
 const Sidebar = (props) => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
-    const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort);
-    const manufacturerList = sortedAndFiltredProducts.map(product => product.manufacturer);
+    const manufacturerList = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort, true).map(product => product.manufacturer);
     const fullManufacturerList = catalog.map(product => product.manufacturer);
 
     return (
