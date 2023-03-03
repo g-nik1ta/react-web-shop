@@ -439,6 +439,7 @@ const defaultState = {
     catalog: []
 }
 
+export const ADD_PRODUCTS_PAGE_IMAGE = 'ADD_PRODUCTS_PAGE_IMAGE';
 export const ADD_ALL_CATALOG = 'ADD_ALL_CATALOG';
 export const CHANGE_URL = 'CHANGE_URL';
 export const CHANGE_PRICE = 'CHANGE_PRICE';
@@ -452,6 +453,59 @@ export default function catalogReducer(state = defaultState, action) {
                 catalog: [
                     ...action.payload
                 ]
+            }
+        case ADD_PRODUCTS_PAGE_IMAGE:
+            return {
+                ...state,
+                catalog: state.catalog.map(
+                    product =>
+                        product.productName === action.payload.productName
+                            ?
+                            {
+                                ...product,
+                                productUrl_1:
+                                    action.payload.dataImg.productUrl_1
+                                        ?
+                                        action.payload.dataImg.productUrl_1
+                                        :
+                                        action.payload.dataImg.mdfUrl.length
+                                            ?
+                                            (action.payload.dataImg.mdfUrl.find(element => element.mdf === (product.productModifications_01.find(el => el.mdfCurrent).mdf))).url_1
+                                            :
+                                            null,
+                                productUrl_2:
+                                    action.payload.dataImg.productUrl_2
+                                        ?
+                                        action.payload.dataImg.productUrl_2
+                                        :
+                                        action.payload.dataImg.mdfUrl.length
+                                            ?
+                                            (action.payload.dataImg.mdfUrl.find(element => element.mdf === (product.productModifications_01.find(el => el.mdfCurrent).mdf))).url_2
+                                            :
+                                            null,
+                                productModifications_01: product.productModifications_01.map(
+                                    productMdf => {
+                                        const mdfUrl = action.payload.dataImg.mdfUrl.find(element => element.mdf === productMdf.mdf);
+                                        return mdfUrl
+                                            ?
+                                            {
+                                                ...productMdf,
+                                                mdfUrl: mdfUrl.url_mini,
+                                                url_1: mdfUrl.url_1,
+                                                url_2: mdfUrl.url_2,
+                                            }
+                                            :
+                                            {
+                                                ...productMdf
+                                            }
+                                    }
+                                )
+                            }
+                            :
+                            {
+                                ...product
+                            }
+                )
             }
         case CHANGE_URL:
             return {
@@ -520,6 +574,7 @@ export default function catalogReducer(state = defaultState, action) {
     }
 }
 
+export const addProductsPageImageCreator = (payload) => ({ type: ADD_PRODUCTS_PAGE_IMAGE, payload });
 export const addAllCatalogCreator = (payload) => ({ type: ADD_ALL_CATALOG, payload });
 export const changeUrlCreator = (payload) => ({ type: CHANGE_URL, payload });
 export const changePriceCreator = (payload) => ({ type: CHANGE_PRICE, payload });

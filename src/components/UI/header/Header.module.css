@@ -27,11 +27,13 @@
 
 .header__wrapepr .header__content .auth {
     color: #fff;
+    width: 100px;
     font-size: 14px;
     transition: 1s all ease-in-out;
     cursor: pointer;
     opacity: 1;
     position: relative;
+    text-align: center;
 }
 
 .header__wrapepr .header__content .auth::before {
@@ -44,7 +46,7 @@
     width: 17px;
     height: 17px;
     position: absolute;
-    left: -20px;
+    left: 4px;
 }
 
 .header__wrapepr .header__content .auth:hover {

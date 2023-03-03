@@ -27,7 +27,7 @@ const Blog = () => {
             <h1 className="title">Блог</h1>
             <div className="card__wrapper">
                 {blogInfo.map(element =>
-                    <div className="card" key={element.id}>
+                    <div className="card-blog" key={element.id}>
                         <img src={require(`../assets/blog/cards/${element.img}.jpg`)} alt="img" />
                         <h3 className='card-name'>
                             {element.name}

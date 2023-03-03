@@ -47,7 +47,7 @@ const HiddenBlock = ({ product, ...props }) => {
                             }
                         >
                             {productMdf.mdfUrl && <img
-                                src={require(`../../assets/catalog/${productMdf.mdfUrl}.jpg`)}
+                                src={productMdf.mdfUrl}
                                 alt={productMdf.mdf}
                                 className='product-mdf-img'
                             />}

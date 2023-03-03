@@ -5,9 +5,6 @@ import Sidebar from '../components/sidebar/Sidebar';
 import RoutePanel from '../components/UI/routePanel/RoutePanel';
 import { changeArrCreator } from '../store/routePanelReducer';
 import { getPriceBorder } from '../utils/filter';
-import PostService from '../API/PostService';
-import { addAllCatalogCreator } from '../store/catalogReducer';
-import { useFetching } from '../hooks/useFetching';
 
 const Shop = () => {
     const dispatch = useDispatch();
@@ -20,22 +17,16 @@ const Shop = () => {
     const [filterPrice, setFilterPrice] = useState({
         minValue: priceBorder.minPrice, maxValue: priceBorder.maxPrice
     });
-    const [filterManufacturer, setFilterManufacturer] = useState([])
 
+    const [filterManufacturer, setFilterManufacturer] = useState([])
     const [page, setPage] = useState(1);
 
-    const [fetchPosts, isCatalogLoading, catalogError] = useFetching(async () => {
-		const response = await PostService.getAll();
-        dispatch(addAllCatalogCreator(response))
-	})
-
     useEffect(() => {
-		fetchPosts();
         dispatch(changeArrCreator([
             { routeItem: 'Магазин', path: '/shop' }
         ]))
-    }, [])
-
+    }, []);
+    
     return (
         <>
             <RoutePanel />
@@ -50,9 +41,6 @@ const Shop = () => {
                     setFilterManufacturer={setFilterManufacturer}
 
                     setSelectedPriceFilter={setSelectedPriceFilter}
-
-                    isCatalogLoading={isCatalogLoading}
-                    catalogError={catalogError}
                 />
                 <ProductsBlock
                     filterPrice={filterPrice}
@@ -67,8 +55,6 @@ const Shop = () => {
                     setSelectedPriceFilter={setSelectedPriceFilter}
                     priceBorder={priceBorder}
 
-                    isCatalogLoading={isCatalogLoading}
-                    catalogError={catalogError}
                     page={page}
                     setPage={setPage}
                 />

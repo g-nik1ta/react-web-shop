@@ -54,7 +54,6 @@ export const useProducts = (products, filterPrice, filterManufacturer, sort, isM
                     hasPrice = (product.price >= filterPrice.minValue && product.price <= filterPrice.maxValue)
             }
             if (isManufacturerList) {
-                console.log('yes!')
                 return hasPrice
             } else {
                 let hasManufacter;

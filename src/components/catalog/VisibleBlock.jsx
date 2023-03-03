@@ -1,17 +1,24 @@
 import React from 'react';
+import Loader from '../UI/loader/Loader';
 
 const VisibleBlock = ({ product, ...props }) => {
     return (
         <div className="visible-block" {...props}>
             <div className="img__wrapper">
-                <img
-                    src={require(`../../assets/catalog/${product.productUrl_1}.jpg`)}
-                    alt='img'
-                    className={product.productUrl_2 ? 'card-img main-img' : 'card-img only'}
-                />
+                {
+                    !product.productUrl_1
+                    ?
+                    <Loader scale={.4}/>
+                    :
+                    <img
+                        src={product.productUrl_1}
+                        alt='img'
+                        className={product.productUrl_2 ? 'card-img main-img' : 'card-img only'}
+                    />
+                }
                 {
                     product.productUrl_2 && <img
-                        src={require(`../../assets/catalog/${product.productUrl_2}.jpg`)}
+                        src={product.productUrl_2}
                         alt='img'
                         className='card-img additional-img'
                     />

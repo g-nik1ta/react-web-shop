@@ -240,6 +240,7 @@
   opacity: 1 !important;
 }
 .card .visible-block {
+  width: 100%;
   height: 100%;
   background-color: #fff;
   display: flex !important;
@@ -378,7 +379,7 @@
 .blog .card__wrapper {
   display: flex;
 }
-.blog .card__wrapper .card {
+.blog .card__wrapper .card-blog {
   margin: 0 15px 30px;
   max-width: 31%;
   display: flex;
@@ -389,20 +390,20 @@
      -moz-user-select: none;
           user-select: none;
 }
-.blog .card__wrapper .card .card-name {
+.blog .card__wrapper .card-blog .card-name {
   padding: 0 25px;
   margin: 20px 0 10px;
   font-size: 18px;
   font-weight: normal;
   line-height: 150%;
 }
-.blog .card__wrapper .card .card-description {
+.blog .card__wrapper .card-blog .card-description {
   padding: 0 25px;
   font-size: 13px;
   color: #64727a;
   line-height: 150%;
 }
-.blog .card__wrapper .card .btn-block {
+.blog .card__wrapper .card-blog .btn-block {
   width: 60%;
   margin: 20px 0;
   padding: 0 25px;
@@ -412,18 +413,18 @@
   font-weight: 700;
   line-height: 150%;
 }
-.blog .card__wrapper .card .btn-block span {
+.blog .card__wrapper .card-blog .btn-block span {
   float: right;
   font-size: 23px;
   padding-right: 10px;
   margin-top: -3px;
   transition: 1s all ease;
 }
-.blog .card__wrapper .card:hover {
+.blog .card__wrapper .card-blog:hover {
   transform: translateY(-3px);
   cursor: pointer;
 }
-.blog .card__wrapper .card:hover .btn-block span {
+.blog .card__wrapper .card-blog:hover .btn-block span {
   padding-right: 0;
 }
 

@@ -8,6 +8,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { app } from '../../../firebase';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import Loader from '../loader/Loader';
 
 const Header = () => {
     const user = useSelector(state => state.authReducer.user);
@@ -23,7 +24,7 @@ const Header = () => {
         dispatch(signOutUserCreator());
     }
 
-    const [userData] = useAuthState(auth)
+    const [userData, loading, error] = useAuthState(auth)
     useEffect(() => {
         // console.log('Auth: ', !!userData);
         userData && dispatch(loginUserCreator({
@@ -44,17 +45,28 @@ const Header = () => {
                 </a>
                 <Search />
                 {
-                    userData
+                    error &&
+                    <h1>Произошла ошибка!</h1>
+                } 
+                {
+                    loading
                         ?
-                        <span
-                            className={cls.auth}
-                            onClick={signOutUser}
-                        >Выйти</span>
+                        <Loader
+                            scale={0.4}
+                            style={{ width: '100px', height: '40px' }}
+                        />
                         :
-                        <span
-                            className={cls.auth}
-                            onClick={loginUser}
-                        >Войти</span>
+                        userData
+                            ?
+                            <span
+                                className={cls.auth}
+                                onClick={signOutUser}
+                            >Выйти</span>
+                            :
+                            <span
+                                className={cls.auth}
+                                onClick={loginUser}
+                            >Войти</span>
                 }
             </div>
         </header>
