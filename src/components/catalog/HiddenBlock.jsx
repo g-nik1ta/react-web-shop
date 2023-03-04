@@ -38,7 +38,7 @@ const HiddenBlock = ({ product, ...props }) => {
                                     ? 'product-mdf-color__block product-mdf-item product-mdf-item-current'
                                     : 'product-mdf-color__block product-mdf-item'
                             }
-                            style={!productMdf.mdfUrl ? { backgroundColor: productMdf.mdf } : {}}
+                            style={!productMdf.mdfUrl ? { backgroundColor: productMdf.color } : {}}
                             onClick={e => productMdf.mdfUrl
                                 ?
                                 toggleProductMdf_01(e, productMdf.mdf, product.id)

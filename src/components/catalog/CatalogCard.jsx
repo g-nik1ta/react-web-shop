@@ -5,18 +5,18 @@ import { resetCatalogCard } from '../../utils/products';
 import HiddenBlock from './HiddenBlock';
 import VisibleBlock from './VisibleBlock';
 
-const CatalogCard = ({ style, product, ...props }) => {
+const CatalogCard = ({ style, sort, filterManufacturer, filterPrice, product, ...props }) => {
     const dispatch = useDispatch();
     useEffect(() => {
-        const [currentColor, currentPrice, resetUrl_1, resetUrl_2] = resetCatalogCard(product);
+        const [mdf_01Current, currentPrice, resetUrl_1, resetUrl_2] = resetCatalogCard(product);
 
-        if (currentColor && currentPrice) dispatch(resetDefault({
+        if (mdf_01Current || currentPrice) dispatch(resetDefault({
             id: product.id,
             resetUrl_1,
             resetUrl_2,
             resetPrice: currentPrice,
         }))
-    }, [props.sort])
+    }, [sort, filterManufacturer, filterPrice])
 
     return (
         <div className="card" {...props} style={{ ...style }}>

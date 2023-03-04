@@ -1,19 +1,14 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addProductsPageImageCreator } from '../store/catalogReducer';
-import PostService from '../API/PostService';
-import { useFetching } from '../hooks/useFetching';
+import { useSelector } from 'react-redux';
 import { useProducts } from '../hooks/useProducts';
 import { getChangeFilter, resetAllFilter } from '../utils/filter';
 import { getPageCount, getProductsPage } from '../utils/pages';
-import { setDataImgProduct } from '../utils/products';
 import CatalogCard from './catalog/CatalogCard';
 import Pagination from './UI/pagination/Pagination';
 import MySelect from './UI/select/MySelect';
 
 const ProductsBlock = (props) => {
-    const dispatch = useDispatch();
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort);
 
@@ -39,39 +34,9 @@ const ProductsBlock = (props) => {
         limitedProductsTitles.push(item.productName)
     })
 
-    const [fetchPostsImage, isImageLoading, imageError] = useFetching(async (limitedProductsTitles) => {
-        const response = await PostService.getAllImage(limitedProductsTitles);
-        response.forEach(item => {
-            const dataImg = setDataImgProduct(item);
-            dispatch(addProductsPageImageCreator({
-                productName: item.folderName,
-                dataImg
-            }));
-        })
-    })
-
-    useEffect(() => {
-        fetchPostsImage(limitedProductsTitles);
-    }, [props.page])
-
     useEffect(() => {
         changePage(1);
     }, [props.filterPrice, props.filterManufacturer, props.sort]);
-
-    if (imageError) {
-        console.log(imageError)
-
-        return (
-            <div style={{
-                height: '70vh',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-            }}>
-                <h1>Произошла ошибка!</h1>
-            </div>
-        )
-    } 
 
     return (
         <section className='products-block'>
@@ -125,7 +90,13 @@ const ProductsBlock = (props) => {
                     sortedAndFiltredProducts.length
                         ?
                         limitedProducts.map(product =>
-                            <CatalogCard key={product.id} product={product} sort={props.sort} />
+                            <CatalogCard
+                                key={product.id}
+                                product={product}
+                                sort={props.sort}
+                                filterPrice={props.filterPrice}
+                                filterManufacturer={props.filterManufacturer}
+                            />
                         )
                         :
                         <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>

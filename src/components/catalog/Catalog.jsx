@@ -16,7 +16,7 @@ const Catalog = () => {
         autoplaySpeed: 12000,
         pauseOnHover: true
     }
-    const catalog = useSelector(state => state.catalogReducer.catalog).slice(0, 5);
+    const catalog = useSelector(state => state.catalogReducer.catalog).slice(0, 6);
     
     return (
         <section className='catalog row'>

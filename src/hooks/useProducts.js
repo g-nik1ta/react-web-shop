@@ -43,8 +43,12 @@ export const useProducts = (products, filterPrice, filterManufacturer, sort, isM
         return sortedProducts.filter(product => {
             let hasPrice;
             if (product.productModifications_02.length) {
-                hasPrice = product.productModifications_02.some(mdf =>
-                    mdf.mdfPrice >= filterPrice.minValue && mdf.mdfPrice <= filterPrice.maxValue
+                hasPrice = product.productModifications_02.find(mdf =>
+                product.promotionalPrice
+                    ?
+                    (mdf.promotionalMdfPrice >= filterPrice.minValue && mdf.promotionalMdfPrice <= filterPrice.maxValue)
+                    :
+                    (mdf.mdfPrice >= filterPrice.minValue && mdf.mdfPrice <= filterPrice.maxValue)
                 );
             } else {
                 product.promotionalPrice
