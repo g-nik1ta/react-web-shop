@@ -11,7 +11,6 @@ const Shop = () => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
 
     const [sort, setSort] = useState('popular');
-    const [selectedPriceFilter, setSelectedPriceFilter] = useState(false)
 
     const priceBorder = getPriceBorder(catalog)
     const [filterPrice, setFilterPrice] = useState({
@@ -19,7 +18,6 @@ const Shop = () => {
     });
 
     const [filterManufacturer, setFilterManufacturer] = useState([])
-    const [page, setPage] = useState(1);
 
     useEffect(() => {
         dispatch(changeArrCreator([
@@ -32,31 +30,25 @@ const Shop = () => {
             <RoutePanel />
             <div className='shop_container row'>
                 <Sidebar
+                    priceBorder={priceBorder}
                     filterPrice={filterPrice}
                     setFilterPrice={setFilterPrice}
-                    priceBorder={priceBorder}
-                    sort={sort}
 
                     filterManufacturer={filterManufacturer}
                     setFilterManufacturer={setFilterManufacturer}
 
-                    setSelectedPriceFilter={setSelectedPriceFilter}
+                    sort={sort}
                 />
                 <ProductsBlock
+                    priceBorder={priceBorder}
                     filterPrice={filterPrice}
                     setFilterPrice={setFilterPrice}
+
                     filterManufacturer={filterManufacturer}
                     setFilterManufacturer={setFilterManufacturer}
 
                     sort={sort}
                     setSort={setSort}
-
-                    selectedPriceFilter={selectedPriceFilter}
-                    setSelectedPriceFilter={setSelectedPriceFilter}
-                    priceBorder={priceBorder}
-
-                    page={page}
-                    setPage={setPage}
                 />
             </div>
         </>

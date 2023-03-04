@@ -5,7 +5,9 @@
 /.pnp
 .pnp.js
 /plan on future.txt
+/catalog-store.txt
 svg_txt
+catalog
 
 # testing
 /coverage

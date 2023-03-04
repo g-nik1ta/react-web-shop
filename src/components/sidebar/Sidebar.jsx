@@ -24,8 +24,6 @@ const Sidebar = (props) => {
                     filterPrice={props.filterPrice}
                     setFilterPrice={props.setFilterPrice}
                     priceBorder={props.priceBorder}
-
-                    setSelectedPriceFilter={props.setSelectedPriceFilter}
                 />
                 <FilterManufacturer
                     filterManufacturer={props.filterManufacturer}

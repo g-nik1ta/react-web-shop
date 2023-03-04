@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useProducts } from '../hooks/useProducts';
-import { getChangeFilter, resetAllFilter } from '../utils/filter';
 import { getPageCount, getProductsPage } from '../utils/pages';
 import CatalogCard from './catalog/CatalogCard';
+import SelectedFilters from './SelectedFilters';
 import Pagination from './UI/pagination/Pagination';
 import MySelect from './UI/select/MySelect';
 
@@ -14,6 +14,7 @@ const ProductsBlock = (props) => {
 
     const limit = 9;
     const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
+    const [page, setPage] = useState(1);
 
     const sortOptions = [
         { value: 'cheapToExpansive', name: 'От дешевых к дорогим' },
@@ -23,16 +24,12 @@ const ProductsBlock = (props) => {
         { value: 'promotional', name: 'Акционные' },
     ]
 
-    const changePage = (page) => {
-        props.setPage(page);
+    const changePage = (pageCount) => {
+        setPage(pageCount);
         window.scrollTo({ top: 0 });
     }
 
-    const limitedProducts = getProductsPage(sortedAndFiltredProducts, props.page, limit);
-    const limitedProductsTitles = [];
-    limitedProducts.forEach(item => {
-        limitedProductsTitles.push(item.productName)
-    })
+    const limitedProducts = getProductsPage(sortedAndFiltredProducts, page, limit);
 
     useEffect(() => {
         changePage(1);
@@ -52,38 +49,14 @@ const ProductsBlock = (props) => {
                         />
                     </div>
                 </div>
-                {
-                    !!(props.selectedPriceFilter || props.filterManufacturer.length) &&
-                    <div className="selected-filter">
-                        {props.selectedPriceFilter &&
-                            <span className='filter' onClick={() => {
-                                props.setSelectedPriceFilter(false);
-                                props.setFilterPrice({ minValue: props.priceBorder.minPrice, maxValue: props.priceBorder.maxPrice });
-                            }}>
-                                {props.filterPrice.minValue.toLocaleString('ru')} ₴ - {props.filterPrice.maxValue.toLocaleString('ru')} ₴
-                                <i></i>
-                            </span>
-                        }
-                        {props.filterManufacturer.map(item =>
-                            <span
-                                data-manufacturer={item}
-                                key={item}
-                                className='filter'
-                                onClick={(e) => props.setFilterManufacturer(getChangeFilter(e, props.filterManufacturer, true))}
-                            >
-                                {item.charAt(0).toUpperCase() + item.slice(1)}
-                                <i></i>
-                            </span>
-                        )}
+                <SelectedFilters
+                    setFilterPrice={props.setFilterPrice}
+                    filterPrice={props.filterPrice}
 
-                        <span
-                            className='filter reset-filter'
-                            onClick={() => resetAllFilter(props.setSelectedPriceFilter, props.setFilterManufacturer, props.priceBorder, props.setFilterPrice)}
-                        >
-                            Очистить фильтр
-                        </span>
-                    </div>
-                }
+                    filterManufacturer={props.filterManufacturer}
+                    setFilterManufacturer={props.setFilterManufacturer}
+                    priceBorder={props.priceBorder}
+                />
             </div>
             <div className="products">
                 {
@@ -102,7 +75,7 @@ const ProductsBlock = (props) => {
                         <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>
                 }
             </div>
-            <Pagination page={props.page} changePage={(page) => changePage(page)} totalPages={totalPages} />
+            <Pagination page={page} changePage={(page) => changePage(page)} totalPages={totalPages} />
         </section>
     )
 }

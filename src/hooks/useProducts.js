@@ -5,7 +5,7 @@ export const useSortedProducts = (products, sort) => {
         switch (sort) {
             case 'cheapToExpansive':
                 return [...products].sort((a, b) => {
-                    if (a.productModifications_02 != 0 && b.productModifications_02 != 0) {
+                    if (a.productModifications_02.length !== 0 && b.productModifications_02.length !== 0) {
                         return (a.productModifications_02.find(e => e.mdfCurrent)).mdfPrice -
                             (b.productModifications_02.find(e => e.mdfCurrent)).mdfPrice
                     }
@@ -13,7 +13,7 @@ export const useSortedProducts = (products, sort) => {
                 })
             case 'expansiveToCheap':
                 return [...products].sort((a, b) => {
-                    if (b.productModifications_02 != 0 && a.productModifications_02 != 0) {
+                    if (b.productModifications_02.length !== 0 && a.productModifications_02.length !== 0) {
                         return (b.productModifications_02.find(e => e.mdfCurrent)).mdfPrice -
                             (a.productModifications_02.find(e => e.mdfCurrent)).mdfPrice
                     }
@@ -26,9 +26,11 @@ export const useSortedProducts = (products, sort) => {
                     return dateB - dateA;
                 })
             case 'popular':
-                return [...products].sort((a, b) => b.popular - a.popular)
+                return [...products].sort((a, b) => b.popular - a.popular);
             case 'promotional':
-                return [...products].filter(product => product.promotionalPrice !== null)
+                return [...products].filter(product => product.promotionalPrice !== null);
+            default:
+                console.log("Нет подходящей сортировки!")
         }
         return products;
     }, [sort, products])

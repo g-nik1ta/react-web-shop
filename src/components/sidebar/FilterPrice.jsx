@@ -6,11 +6,6 @@ const FilterPrice = (props) => {
     const visibleBlockRef = useRef();
     const [minValue, setMinValue] = useState(props.filterPrice.minValue);
     const [maxValue, setMaxValue] = useState(props.filterPrice.maxValue);
-     
-    const changeFilterPrice = () => {
-        props.setFilterPrice({ minValue, maxValue });
-        props.setSelectedPriceFilter(true);
-    }
 
     useEffect(() => {
         setMinValue(props.filterPrice.minValue);
@@ -22,10 +17,16 @@ const FilterPrice = (props) => {
         visibleBlockRef.current.style.height = height + 'px'
     }, [visibleBlockRef]);
 
-    const changeValue = (e, value, setFn, number, condition) => {
-        if (condition) {
-            setFn(value + number)
-        } else setFn(e.target.value)
+    const changeMinValue = (e) => {
+        if (e.target.value >= maxValue) {
+            setMinValue(maxValue - 5)
+        } else setMinValue(e.target.value)
+    }
+    
+    const changeMaxValue = (e) => {
+        if (e.target.value <= minValue) {
+            setMaxValue(minValue + 5)
+        } else setMaxValue(e.target.value)
     }
 
     return (
@@ -39,20 +40,20 @@ const FilterPrice = (props) => {
             </h4>
             <div className="filter-modification-fields" ref={visibleBlockRef}>
                 <input
-                    onChange={e => changeValue(e, maxValue, setMinValue, -5, e.target.value >= maxValue)}
+                    onChange={e => changeMinValue(e)}
                     type="number"
                     className='entry-field'
                     value={minValue}
                 />
                 <span>-</span>
                 <input
-                    onChange={e => changeValue(e, minValue, setMaxValue, 5, e.target.value <= minValue)}
+                    onChange={e => changeMaxValue(e)}
                     type="number"
                     className='entry-field'
                     value={maxValue}
                 />
                 <input
-                    onClick={changeFilterPrice}
+                    onClick={() => props.setFilterPrice({ minValue, maxValue })}
                     type="submit"
                     className='submit'
                     value="OK"
