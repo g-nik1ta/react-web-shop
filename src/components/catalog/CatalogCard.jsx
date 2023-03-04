@@ -27,6 +27,7 @@ const CatalogCard = ({ style, sort, filterManufacturer, filterPrice, product, ..
                     title: product.title,
                     price: product.price,
                     promotionalPrice: product.promotionalPrice,
+                    productName: product.productName
                 }
             } />
             <HiddenBlock product={

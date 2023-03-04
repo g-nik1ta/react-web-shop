@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Loader from '../UI/loader/Loader';
 
 const VisibleBlock = ({ product, ...props }) => {
     return (
-        <div className="visible-block" {...props}>
+        <Link to={`/shop/${product.productName}`} className="visible-block" {...props}>
             <div className="img__wrapper">
                 {
                     !product.productUrl_1
@@ -41,7 +42,7 @@ const VisibleBlock = ({ product, ...props }) => {
                         {(Number(product.promotionalPrice)).toLocaleString('ru')} ₴
                     </p>
             }
-        </div>
+        </Link>
     )
 }
 

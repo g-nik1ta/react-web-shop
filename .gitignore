@@ -7,7 +7,7 @@
 /plan on future.txt
 /catalog-store.txt
 svg_txt
-catalog
+src/assets/catalog
 
 # testing
 /coverage

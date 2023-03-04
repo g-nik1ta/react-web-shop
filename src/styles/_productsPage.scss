@@ -1,0 +1,17 @@
+.product_container {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    height: 400px;
+
+    .product_content {
+        align-items: center;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        
+        div {
+            font-size: 54px;
+        }
+    }
+}

@@ -39,7 +39,7 @@ const Category = () => {
             <h1 className='title'>Категории магазина</h1>
             <Slider {...settings}>
                 {categoryItems.map(item =>
-                    <div className='card' key={item.imgUrl}>
+                    <div className='category-card' key={item.imgUrl}>
                         <h2 className='card-title'>{item.title}</h2>
                         <img
                             alt={item.imgAlt}
