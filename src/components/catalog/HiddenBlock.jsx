@@ -18,9 +18,9 @@ const HiddenBlock = ({ product, ...props }) => {
         dispatch(changeUrlCreator({ id, mdf }));
     }
 
-    function toggleProductMdf_02(e, price, id, promotionalPrice = null, promotional = false) {
+    function toggleProductMdf_02(e, price, id, promotionalPrice = null) {
         toggleClass(e);
-        dispatch(changePriceCreator({ price, id, promotionalPrice, promotional }));
+        dispatch(changePriceCreator({ price, id, promotionalPrice }));
     }
 
     return (
@@ -39,9 +39,9 @@ const HiddenBlock = ({ product, ...props }) => {
                                     : 'product-mdf-color__block product-mdf-item'
                             }
                             style={!productMdf.mdfUrl ? { backgroundColor: productMdf.color } : {}}
-                            onClick={e => productMdf.mdfUrl
+                            onClick={e => productMdf.url_1
                                 ?
-                                toggleProductMdf_01(e, productMdf.mdf, product.id)
+                                toggleProductMdf_01(e, productMdf, product.id)
                                 :
                                 toggleClass(e)
                             }
@@ -64,18 +64,17 @@ const HiddenBlock = ({ product, ...props }) => {
                                     : 'product-mdf-txt product-mdf-item'
                                 }
                                 onClick={(e) => {
-                                    product.promotionalPrice === null
+                                    product.promotionalPrice
                                         ?
-                                        toggleProductMdf_02(e, productMdf.mdfPrice, product.id)
+                                        toggleProductMdf_02(e, productMdf.mdfPrice, product.id, productMdf.promotionalMdfPrice)
                                         :
-                                        toggleProductMdf_02(e, productMdf.mdfPrice, product.id, productMdf.promotionalMdfPrice, true)
+                                        toggleProductMdf_02(e, productMdf.mdfPrice, product.id)
                                 }}
                             >
                                 {productMdf.mdf}
                             </div>
                         )
                     }
-
                 </div>
             </div>
             <div className="product-buy-block">

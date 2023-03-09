@@ -8,13 +8,14 @@ import VisibleBlock from './VisibleBlock';
 const CatalogCard = ({ style, sort, filterManufacturer, filterPrice, product, ...props }) => {
     const dispatch = useDispatch();
     useEffect(() => {
-        const [mdf_01Current, currentPrice, resetUrl_1, resetUrl_2] = resetCatalogCard(product);
+        const [currentPrice, currentPromotionalPrice, resetUrl_1, resetUrl_2] = resetCatalogCard(product);
 
-        if (mdf_01Current || currentPrice) dispatch(resetDefault({
+        dispatch(resetDefault({
             id: product.id,
             resetUrl_1,
             resetUrl_2,
-            resetPrice: currentPrice,
+            currentPrice,
+            currentPromotionalPrice
         }))
     }, [sort, filterManufacturer, filterPrice])
 

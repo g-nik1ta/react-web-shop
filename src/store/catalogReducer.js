@@ -24,13 +24,14 @@ export default function catalogReducer(state = defaultState, action) {
                         product.productUrl_2 ?
                             {
                                 ...product,
-                                productUrl_1: product.productUrl_1.replace(/__(.*?)__/g, `__${action.payload.mdf}__`),
-                                productUrl_2: product.productUrl_2.replace(/__(.*?)__/g, `__${action.payload.mdf}__`),
+                                
+                                productUrl_1: action.payload.mdf.url_1,
+                                productUrl_2: action.payload.mdf.url_2,
                             }
                             :
                             {
                                 ...product,
-                                productUrl_1: product.productUrl_1.replace(/__(.*?)__/g, `__${action.payload.mdf}__`),
+                                productUrl_1: action.payload.mdf.url_1
                             }
                         :
                         {
@@ -43,7 +44,7 @@ export default function catalogReducer(state = defaultState, action) {
                 ...state,
                 catalog: state.catalog.map(
                     product => product.id === action.payload.id ?
-                        action.payload.promotional
+                        action.payload.promotionalPrice
                             ?
                             {
                                 ...product,
@@ -70,7 +71,8 @@ export default function catalogReducer(state = defaultState, action) {
                             ...product,
                             productUrl_1: action.payload.resetUrl_1,
                             productUrl_2: action.payload.resetUrl_2,
-                            price: action.payload.resetPrice,
+                            price: action.payload.currentPrice,
+                            promotionalPrice: action.payload.currentPromotionalPrice
                         }
                         :
                         {

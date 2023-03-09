@@ -11,9 +11,10 @@
     }
 
     .slick-slider {
+        overflow-x: clip;
+        
         .slick-list {
             overflow: initial;
-            overflow-x: clip;
             z-index: 1;
 
             .slick-slide {
