@@ -1,6 +1,6 @@
 import React from 'react';
 import { getChangeFilter, resetAllFilter } from '../utils/filter';
-import { getIsPriceFilter } from '../utils/pages';
+import { getCamelCase, getIsPriceFilter } from '../utils/products';
 
 const SelectedFilters = (props) => {
     return (
@@ -18,19 +18,16 @@ const SelectedFilters = (props) => {
                     className='filter'
                     onClick={(e) => props.setFilterManufacturer(getChangeFilter(e, props.filterManufacturer, true))}
                 >
-                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                    {getCamelCase(item)}
                     <i></i>
                 </span>
             )}
-            {
-                !!(getIsPriceFilter(props.filterPrice, props.priceBorder) || props.filterManufacturer.length) &&
-                <span
-                    className='filter reset-filter'
-                    onClick={() => resetAllFilter(props.setFilterManufacturer, props.priceBorder, props.setFilterPrice)}
-                >
-                    Очистить фильтр
-                </span>
-            }
+            <span
+                className='filter reset-filter'
+                onClick={() => resetAllFilter(props.setFilterManufacturer, props.priceBorder, props.setFilterPrice)}
+            >
+                Очистить фильтр
+            </span>
         </div>
     )
 }

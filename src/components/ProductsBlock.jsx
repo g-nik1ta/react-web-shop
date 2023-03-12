@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useProducts } from '../hooks/useProducts';
 import { getPageCount, getProductsPage } from '../utils/pages';
+import { getIsPriceFilter } from '../utils/products';
 import CatalogCard from './catalog/CatalogCard';
 import SelectedFilters from './SelectedFilters';
 import Pagination from './UI/pagination/Pagination';
@@ -49,14 +50,17 @@ const ProductsBlock = (props) => {
                         />
                     </div>
                 </div>
-                <SelectedFilters
-                    setFilterPrice={props.setFilterPrice}
-                    filterPrice={props.filterPrice}
+                {
+                    !!(getIsPriceFilter(props.filterPrice, props.priceBorder) || props.filterManufacturer.length) &&
+                    <SelectedFilters
+                        setFilterPrice={props.setFilterPrice}
+                        filterPrice={props.filterPrice}
 
-                    filterManufacturer={props.filterManufacturer}
-                    setFilterManufacturer={props.setFilterManufacturer}
-                    priceBorder={props.priceBorder}
-                />
+                        filterManufacturer={props.filterManufacturer}
+                        setFilterManufacturer={props.setFilterManufacturer}
+                        priceBorder={props.priceBorder}
+                    />
+                }
             </div>
             <div className="products">
                 {

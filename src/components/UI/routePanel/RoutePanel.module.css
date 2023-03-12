@@ -20,6 +20,8 @@
 .separator {
     padding: 0 7px;
     cursor: default;
+    color: #5f6d92;
+    font-size: 13px;
 }
 
 .route {

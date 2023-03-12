@@ -9,22 +9,43 @@ const RoutePanel = () => {
     return (
         <div className={cls.panel__wrapper}>
             <div className={`${cls.panel__content} row`}>
-                {routeItems.map((item, i) => 
-                    <Link
-                        to={item.path}
-                        key={item.id}
-                        className={
-                            i % 2 === 0 
-                            ?
+                {routeItems.map((item, i) =>
+                    (i + 1) === routeItems.length
+                        ?
+                        <a
+                            href={item.path}
+                            key={item.id}
+                            className={
                                 (i + 1) === routeItems.length
-                                ?
+                                    ?
                                     cls.route + ' current'
-                                :
-                                cls.route
+                                    :
+                                    cls.route
+                            }
+                        >
+                            {item.body}
+                        </a>
+                        :
+                        i % 2 === 0
+                            ?
+                            <Link
+                                to={item.path}
+                                key={item.id}
+                                className={
+                                    (i + 1) === routeItems.length
+                                        ?
+                                        cls.route + ' current'
+                                        :
+                                        cls.route
+                                }
+                            >{item.body}</Link>
                             :
-                                cls.separator
-                        }
-                    >{item.body}</Link>
+                            <span
+                                key={item.id}
+                                className={cls.separator}
+                            >
+                                {item.body}
+                            </span>
                 )}
             </div>
         </div>

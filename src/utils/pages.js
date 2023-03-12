@@ -15,7 +15,3 @@ export const getProductsPage = (sortedAndFiltredProducts, page, limit) => {
     const endIndex = page * limit;
     return sortedAndFiltredProducts.slice(startIndex, endIndex);
 }
-
-export const getIsPriceFilter = (filterPrice, priceBorder) => {
-    return (filterPrice.minValue !== priceBorder.minPrice || filterPrice.maxValue !== priceBorder.maxPrice)
-}

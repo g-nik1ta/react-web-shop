@@ -14,6 +14,8 @@
             display: flex;
             width: 100%;
             height: 520px;
+            // max-height: 520px;
+            // height: min-content;
 
             .product-images {
                 display: flex;
@@ -21,27 +23,67 @@
                 margin: 0 12px;
 
                 .gallery {
-                    overflow: overlay;
                     width: 20%;
                     height: 100%;
+                    max-height: 500px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
 
                     img {
-                        margin: 5px 0;
+                        max-height: 115px;
+                        max-width: 100%;
                         padding: 5px 0;
-                        max-height: 120px;
+                        margin: 5px 0;
                     }
                 }
 
-                .slick-slider {
+                .gallery-slider {
+                    width: 20%;
+                    padding: 15px 0;
+
+                    .slick-slide {
+                        div {
+                            img {
+                                padding: 10px;
+                            }
+                        }
+                    }
+
+                    .slick-arrow {
+                        width: 20px;
+                        height: 20px;
+                        z-index: 10;
+
+                        &::before {
+                            content: '';
+                            display: block;
+                            height: 100%;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                            background-image: url('../assets/arrow-up.svg');
+                        }
+                    }
+
+                    .slick-prev {
+                        top: -3px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                    .slick-next {
+                        bottom: -3px;
+                        top: auto;
+                        right: 50%;
+                        transform: rotate(180deg) translateX(-50%);
+                    }
+                }
+
+                .image-slider {
                     display: flex;
                     align-items: center;
-
-                    &.image-slider {
-                        width: 80%;
-                    }
+                    width: 80%;
 
                     .slick-list {
                         .slick-track {
@@ -55,7 +97,7 @@
                             justify-content: center;
 
                             div {
-                                min-height: 400px;
+                                // min-height: 400px;
 
                                 img {
                                     max-height: 540px;
@@ -114,7 +156,7 @@
                 }
 
                 .price {
-                    margin: 25px 0;
+                    margin: 20px 0;
                     font-size: 22px;
                     font-weight: bold;
 
@@ -130,13 +172,12 @@
                 .modifications-choose-block {
                     .sub {
                         display: block;
-                        margin-bottom: 10px;
+                        margin: 10px 0;
                     }
 
                     .modifications-choose-line {
                         display: flex;
                         flex-wrap: wrap;
-                        margin-bottom: 20px;
 
                         .product-mdf-color__block {
                             width: 40px;
@@ -148,10 +189,8 @@
                             height: 80px;
 
                             .product-mdf-img {
-                                height: 100%;
-                                background-size: contain;
-                                background-position: center;
-                                background-repeat: no-repeat;
+                                max-height: 100%;
+                                max-width: 100%;
                                 padding: 3px;
                             }
                         }
@@ -228,6 +267,42 @@
                     }
                 }
             }
+        }
+
+        .description {
+            width: 100%;
+            padding: 0 20px;
+
+            .characteristics-block {
+                margin: 25px 0;
+                width: 50%;
+
+                .subtitle {
+                    margin-bottom: 15px;
+                    font-size: 23px;
+                }
+
+                .characteristic {
+                    display: flex;
+                    align-items: center;
+                    padding: 5px 0;
+                    border-bottom: 1px solid #ebebeb;
+
+                    .title {
+                        width: 35%;
+                        padding: 5px 0;
+                        font-weight: bold;
+                        display: inline-block;
+                    }
+
+                    .body {
+                        width: 60%;
+                        margin-left: 10px;
+                        padding: 5px 0;
+                        display: inline-block;
+                    }
+                }
+            }       
         }
     }
 }

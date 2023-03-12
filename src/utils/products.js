@@ -37,3 +37,11 @@ export const resetCatalogCard = (product) => {
 
     return [currentPrice, currentPromotionalPrice, resetUrl_1, resetUrl_2];
 }
+
+export const getIsPriceFilter = (filterPrice, priceBorder) => {
+    return (filterPrice.minValue !== priceBorder.minPrice || filterPrice.maxValue !== priceBorder.maxPrice)
+}
+
+export const getCamelCase = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
