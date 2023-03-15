@@ -10,6 +10,8 @@ import MyButton from '../components/UI/button/MyButton';
 import ProductImages from '../components/product/ProductImages';
 import ProductModifications from '../components/product/ProductModifications';
 import Characteristics from '../components/product/Characteristics';
+import ShortDescription from '../components/product/ShortDescription';
+import AddInfoBlock from '../components/product/AddInfoBlock';
 
 const Product = () => {
     const params = useParams();
@@ -20,7 +22,7 @@ const Product = () => {
     const [productCharacteristics, setProductCharacteristics] = useState({
         color: null,
         mdf: null
-    })
+    });
 
     useEffect(() => {
         window.scrollTo({ top: 0 });
@@ -89,14 +91,24 @@ const Product = () => {
                             <div className="product-buy-block">
                                 <MyButton>Купить</MyButton>
                             </div>
-                        </div>
-                    </div>
 
-                    <div className="description">
-                        <Characteristics 
-                            product={product}
-                            productCharacteristics={productCharacteristics}
-                        />
+                            <Characteristics
+                                product={product}
+                                productCharacteristics={productCharacteristics}
+                            />
+
+                            <div className="description">
+                                {
+                                    !!product.description.length &&
+                                    <ShortDescription description={product.description} />
+                                }
+                                {
+                                    product.addInfo.map(item =>
+                                        <AddInfoBlock addInfo={item} key={item.header}/>
+                                    )
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

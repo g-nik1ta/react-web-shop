@@ -33,7 +33,7 @@ const AppRouter = () => {
     }
 
     if (isCatalogLoading) {
-        return <Loader scale={.85} style={{ height: '70vh' }}/>
+        return <Loader scale={.85} style={{ height: '70vh' }} />
     }
 
     return (
