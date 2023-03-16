@@ -1,0 +1,53 @@
+.about {
+    align-self: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    .title {
+        margin: 30px 0;
+        font-size: 35px;
+    }
+
+    .about_content {
+        .subtitle {
+            font-size: 21px;
+            margin: 15px 0;
+            display: inline-block;
+        }
+
+        p {
+            margin: 12px 0;
+            font-size: 16px;
+            line-height: 28px;
+        }
+
+        ul {
+            padding-left: 20px;
+
+            .item {
+                position: relative;
+                list-style-type: none;
+                padding-left: 33px;
+                line-height: 25px;
+                margin: 5px 0;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 22px;
+                    height: 22px;
+                    background-size: 11px;
+                    background-color: #5f6d92;
+                    background-image: url('../assets/check-marks.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    border: 1px solid #fff;
+                }
+            }
+        }
+    }
+}
