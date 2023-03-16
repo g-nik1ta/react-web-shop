@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Blog = () => {
+const Blog = (props) => {
     const [blogInfo, setBlogInfo] = useState([
         {
             id: 0,
@@ -24,7 +24,7 @@ const Blog = () => {
 
     return (
         <section className='blog row'>
-            <h1 className="title">Блог</h1>
+            <h1 className="title" style={props.titleStyle}>Блог</h1>
             <div className="card__wrapper">
                 {blogInfo.map(element =>
                     <div className="card-blog" key={element.id}>

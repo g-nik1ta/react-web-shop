@@ -7,14 +7,14 @@ const MySelectV2 = ({ options }) => {
         <div className={cls.select}>
             <Link
                 className={cls.selectTitle}
-                to={'/home/buyers'}
+                to={'/buyers'}
             >Покупателям</Link>
             <div className={cls.dropdownMenu}>
                 {options.map(option =>
                     <Link
                         className={cls.item}
                         key={option.value}
-                        to={'/home/buyers/' + option.value}
+                        to={'/buyers/' + option.value}
                     >
                         {option.name}
                     </Link>

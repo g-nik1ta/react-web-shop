@@ -9,8 +9,8 @@ const ShippingAndPayment = () => {
     useEffect(() => {
         window.scrollTo({ top: 0 });
         dispatch(changeArrCreator([
-            { routeItem: 'Покупателям', path: '/home/buyers' },
-            { routeItem: 'Доставка и оплата', path: '/home/buyers/shipping-and-payment' },
+            { routeItem: 'Покупателям', path: '/buyers' },
+            { routeItem: 'Доставка и оплата', path: '/buyers/shipping-and-payment' },
         ]))
     }, []);
 

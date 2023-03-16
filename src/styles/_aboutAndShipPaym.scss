@@ -1,4 +1,5 @@
-.about {
+.about,
+.shipping-and-payment {
     align-self: center;
     flex-direction: column;
     margin-bottom: 50px;
@@ -8,7 +9,8 @@
         font-size: 35px;
     }
 
-    .about_content {
+    .about_content,
+    .shipping-and-payment_content {
         .subtitle {
             font-size: 21px;
             margin: 15px 0;

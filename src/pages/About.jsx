@@ -9,8 +9,8 @@ const About = () => {
     useEffect(() => {
         window.scrollTo({ top: 0 });
         dispatch(changeArrCreator([
-            { routeItem: 'Покупателям', path: '/home/buyers' },
-            { routeItem: 'О нас', path: '/home/buyers/about' },
+            { routeItem: 'Покупателям', path: '/buyers' },
+            { routeItem: 'О нас', path: '/buyers/about' },
         ]))
     }, []);
 

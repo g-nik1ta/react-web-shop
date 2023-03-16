@@ -9,7 +9,7 @@ const Buyers = () => {
 
     useEffect(() => {
         dispatch(changeArrCreator([
-            { routeItem: 'Покупателям', path: `/home/buyers` },
+            { routeItem: 'Покупателям', path: `/buyers` },
         ]))
     }, []);
 
@@ -19,14 +19,14 @@ const Buyers = () => {
             <section className='buyers row'>
                 <h1 className="title">Покупателям</h1>
                 <div className="card__wrapper">
-                    <Link to="/home/buyers/about" className="card-buyers">
+                    <Link to="/buyers/about" className="card-buyers">
                         <img src={require('../assets/buyers/about.jpg')} alt="img" />
                         <div className='card-name'>
                             О нас
                             <span className='btn-arrow'>→</span>
                         </div>
                     </Link>
-                    <Link to="/home/buyers/shipping-and-payment" className="card-buyers">
+                    <Link to="/buyers/shipping-and-payment" className="card-buyers">
                         <img src={require('../assets/buyers/shipping-and-payment.jpg')} alt="img" />
                         <div className='card-name'>
                             Доставка и оплата
