@@ -1,0 +1,46 @@
+.buyers {
+    align-self: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    .title {
+        padding: 0 15px;
+        margin: 30px 0;
+        font-size: 35px;
+    }
+
+    .card__wrapper {
+        display: flex;
+
+        .card-buyers {
+            margin: 0 15px 30px;
+            max-width: 31%;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            transition: 1s all ease;
+            user-select: none;
+
+            .card-name {
+                padding: 20px 25px;
+                font-size: 17px;
+
+                .btn-arrow {
+                    font-size: 23px;
+                    margin-left: 15px;
+                    margin-top: -3px;
+                    transition: 1s all ease;
+                }
+            }
+
+            &:hover {
+                transform: translateY(-3px);
+                cursor: pointer;
+
+                & .card-name .btn-arrow {
+                    margin-left: 25px;
+                }
+            }
+        }
+    }
+}

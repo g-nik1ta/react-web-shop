@@ -1117,6 +1117,48 @@
   border: 1px solid #fff;
 }
 
+.buyers {
+  align-self: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.buyers .title {
+  padding: 0 15px;
+  margin: 30px 0;
+  font-size: 35px;
+}
+.buyers .card__wrapper {
+  display: flex;
+}
+.buyers .card__wrapper .card-buyers {
+  margin: 0 15px 30px;
+  max-width: 31%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  transition: 1s all ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.buyers .card__wrapper .card-buyers .card-name {
+  padding: 20px 25px;
+  font-size: 17px;
+}
+.buyers .card__wrapper .card-buyers .card-name .btn-arrow {
+  font-size: 23px;
+  margin-left: 15px;
+  margin-top: -3px;
+  transition: 1s all ease;
+}
+.buyers .card__wrapper .card-buyers:hover {
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+.buyers .card__wrapper .card-buyers:hover .card-name .btn-arrow {
+  margin-left: 25px;
+}
+
 * {
   margin: 0;
   padding: 0;
