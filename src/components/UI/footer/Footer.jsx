@@ -5,10 +5,10 @@ const Footer = () => {
     return (
         <footer className={cls.footer__wrapper}>
             <div className={`${cls.footer__content} row`}>
-                <div className={cls.logo}>
+                <a href='' className={cls.logo}>
                     <strong>Tech </strong>
                     world
-                </div>
+                </a>
                 <div className={cls.contacts}>
                     <a href='tel:+380667770202'>+380 66 777 0202</a>
                     <a href='mailto:mymail@gmail.com'>mymail@gmail.com</a>
