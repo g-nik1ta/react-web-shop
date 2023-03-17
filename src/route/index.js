@@ -7,6 +7,7 @@ import About from "../pages/About";
 import ShippingAndPayment from "../pages/ShippingAndPayment";
 import Buyers from "../pages/Buyers";
 import BlogPage from "../pages/BlogPage";
+import Contacts from "../pages/Contacts";
 
 export const routes = [
     {path: '*', element: <Navigate to="/home" />, exact: false},
@@ -17,4 +18,5 @@ export const routes = [
     {path: '/buyers/about', element: <About/>, exact: true},
     {path: '/buyers/shipping-and-payment', element: <ShippingAndPayment/>, exact: true},
     {path: '/blog', element: <BlogPage/>, exact: true},
+    {path: '/contacts', element: <Contacts/>, exact: false},
 ]

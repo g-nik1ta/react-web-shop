@@ -1224,6 +1224,86 @@
   border: 1px solid #fff;
 }
 
+.contacts {
+  align-self: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.contacts .title {
+  margin: 30px 0;
+  font-size: 35px;
+}
+.contacts .contacts-content {
+  display: flex;
+}
+.contacts .contacts-content .contact {
+  width: 35%;
+}
+.contacts .contacts-content .contact .subtitle {
+  font-size: 25px;
+}
+.contacts .contacts-content .contact .item {
+  margin: 12px 0;
+  line-height: 26px;
+  display: block;
+}
+.contacts .contacts-content .contact a {
+  color: #5f6d92;
+  text-decoration: none;
+  transition: 1s all ease-in-out;
+}
+.contacts .contacts-content .contact a:hover {
+  color: #333;
+}
+.contacts .contacts-content .feedback {
+  width: 65%;
+}
+.contacts .contacts-content .feedback .subtitle {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.contacts .contacts-content .feedback form .field {
+  margin: 10px 0;
+}
+.contacts .contacts-content .feedback form .field label {
+  margin-bottom: 5px;
+  font-size: 13px;
+  display: block;
+}
+.contacts .contacts-content .feedback form .field label.required {
+  color: red;
+}
+.contacts .contacts-content .feedback form .field input,
+.contacts .contacts-content .feedback form .field textarea {
+  width: 100%;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #dcdcdc;
+  transition: border-color 0.3s ease !important;
+}
+.contacts .contacts-content .feedback form .field input:focus,
+.contacts .contacts-content .feedback form .field textarea:focus {
+  border-color: rgb(133, 133, 133);
+}
+.contacts .contacts-content .feedback form .field textarea {
+  resize: none;
+}
+.contacts .contacts-content .feedback form .field .field-error {
+  margin-top: 5px;
+  font-size: 11px;
+  color: #5f6d92;
+}
+.contacts .contacts-content .feedback form .sendFormBtn button {
+  background-color: #5f6d92;
+  color: #fff;
+  float: right;
+}
+.contacts .contacts-content .feedback form .sendFormBtn button:hover {
+  background-color: #4b5673;
+}
+
 * {
   margin: 0;
   padding: 0;

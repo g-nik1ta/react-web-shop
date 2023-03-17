@@ -8,6 +8,7 @@ const BlogPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        window.scrollTo({ top: 0 });
         dispatch(changeArrCreator([
             { routeItem: 'Блог', path: `/blog` },
         ]))

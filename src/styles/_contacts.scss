@@ -1,0 +1,100 @@
+.contacts {
+    align-self: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    .title {
+        margin: 30px 0;
+        font-size: 35px;
+    }
+
+    .contacts-content {
+        display: flex;
+
+        .contact {
+            width: 35%;
+
+            .subtitle {
+                font-size: 25px;
+            }
+
+            .item {
+                margin: 12px 0;
+                line-height: 26px;
+                display: block;
+            }
+
+            a {
+                color: #5f6d92;
+                text-decoration: none;
+                transition: 1s all ease-in-out;
+
+                &:hover {
+                    color: #333;
+                }
+            }
+        }
+
+        .feedback {
+            width: 65%;
+
+            .subtitle {
+                font-size: 30px;
+                margin-bottom: 30px;
+            }
+
+            form {
+                .field {
+                    margin: 10px 0;
+
+                    label {
+                        margin-bottom: 5px;
+                        font-size: 13px;
+                        display: block;
+
+                        &.required {
+                            color: red;
+                        }
+                    }
+
+                    input,
+                    textarea {
+                        width: 100%;
+                        outline: none;
+                        padding: 10px;
+                        font-size: 16px;
+                        border-radius: 3px;
+                        border: 1px solid #dcdcdc;
+                        transition: border-color 0.3s ease !important;
+
+                        &:focus {
+                            border-color: rgb(133, 133, 133);
+                        }
+                    }
+
+                    textarea {
+                        resize: none;
+                    }
+
+                    .field-error {
+                        margin-top: 5px;
+                        font-size: 11px;
+                        color: #5f6d92;
+                    }
+                }
+
+                .sendFormBtn {
+                    button {
+                        background-color: #5f6d92;
+                        color: #fff;
+                        float: right;
+
+                        &:hover {
+                            background-color: #4b5673;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

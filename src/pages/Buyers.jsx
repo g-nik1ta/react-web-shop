@@ -8,6 +8,7 @@ const Buyers = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        window.scrollTo({ top: 0 });
         dispatch(changeArrCreator([
             { routeItem: 'Покупателям', path: `/buyers` },
         ]))
