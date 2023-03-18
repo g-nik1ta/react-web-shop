@@ -2,8 +2,11 @@ import React from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Category = () => {
+    const category = useSelector(state => state.categoryReducer.category);
     const settings = {
         dots: false,
         infinite: true,
@@ -11,42 +14,24 @@ const Category = () => {
         slidesToScroll: 3,
         speed: 700,
     }
-    const categoryItems = [
-        {
-            title: 'Новинки',
-            imgAlt: 'novelties',
-            imgUrl: 'slider-01',
-        },
-        {
-            title: 'iPhone',
-            imgAlt: 'iPhone',
-            imgUrl: 'slider-02',
-        },
-        {
-            title: 'iWatch',
-            imgAlt: 'iWatch',
-            imgUrl: 'slider-03',
-        },
-        {
-            title: 'Аксессуары',
-            imgAlt: 'Accessories',
-            imgUrl: 'slider-04',
-        },
-    ]
-
+    
     return (
         <section className='category row'>
             <h1 className='title'>Категории магазина</h1>
             <Slider {...settings}>
-                {categoryItems.map(item =>
-                    <div className='category-card' key={item.imgUrl}>
+                {category.map(item =>
+                    <Link
+                        className='category-card'
+                        key={item.id}
+                        to={`/shop/category/` + item.urlParam}
+                    >
                         <h2 className='card-title'>{item.title}</h2>
                         <img
-                            alt={item.imgAlt}
+                            alt={item.urlParam}
                             className='card-img'
-                            src={require(`../assets/category_slider/category-img/${item.imgUrl}.jpg`)}
+                            src={item.imgUrl}
                         />
-                    </div>
+                    </Link>
                 )}
             </Slider>
         </section>

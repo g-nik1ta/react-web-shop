@@ -7,16 +7,31 @@ import FilterPrice from './FilterPrice';
 
 const Sidebar = (props) => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
-    const manufacturerList = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort, true).map(product => product.manufacturer);
+    const category = useSelector(state => state.categoryReducer.category);
+    const manufacturerList = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort, props.currentCategory, true).map(product => product.manufacturer);
     const fullManufacturerList = catalog.map(product => product.manufacturer);
+
+    const isBold = (title) => {
+        if (props.currentCategory) {
+            if (props.currentCategory.title == title) {
+                return (<b>{title}</b>)
+            } else {
+                return title
+            }
+        }
+        return title
+    }
 
     return (
         <aside className='sidebar'>
             <div className="category-block">
-                <Link to="/new">Новинки</Link>
-                <Link to="/iphone">iPhone</Link>
-                <Link to="/iwatch">iWatch</Link>
-                <Link to="/accessories">Аксессуары</Link>
+                {
+                    category.map(item =>
+                        <Link to={`/shop/category/${item.urlParam}`} key={item.id}>
+                            {isBold(item.title)}
+                        </Link>
+                    )
+                }
             </div>
             <div className="filter-block">
                 <h3 className='title'>Фильтры</h3>

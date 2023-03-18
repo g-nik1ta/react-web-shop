@@ -6,20 +6,23 @@ import PostService from '../API/PostService';
 import { useFetching } from '../hooks/useFetching';
 import { routes } from '../route';
 import { addAllCatalogCreator } from '../store/catalogReducer';
+import { addAllCategoryCreator } from '../store/categoryReducer';
 import Loader from './UI/loader/Loader';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
-    const [fetchPosts, isCatalogLoading, catalogError] = useFetching(async () => {
-        const response = await PostService.getAll();
-        dispatch(addAllCatalogCreator(response))
+    const [fetchPostsAndCategory, isFetchLoading, fetchError] = useFetching(async () => {
+        const productsResponse = await PostService.getAllProducts();
+        dispatch(addAllCatalogCreator(productsResponse));
+        const categoryResponse = await PostService.getCategory();
+        dispatch(addAllCategoryCreator(categoryResponse));
     });
 
     useEffect(() => {
-        fetchPosts();
+        fetchPostsAndCategory();
     }, []);
 
-    if (catalogError) {
+    if (fetchError) {
         return (
             <div style={{
                 height: '70vh',
@@ -32,7 +35,7 @@ const AppRouter = () => {
         )
     }
 
-    if (isCatalogLoading) {
+    if (isFetchLoading) {
         return <Loader scale={.85} style={{ height: '70vh' }} />
     }
 

@@ -18,9 +18,16 @@
         border-radius: 5px;
     }
 
-    &.shortBefore:hover {
-        &::before {
-            height: 120%;
+    &.shortBefore {
+        .hidden-block {
+            top: auto;
+            bottom: -30%;
+        }
+
+        &:hover {
+            &::before {
+                height: 134%;
+            }
         }
     }
 
@@ -30,7 +37,7 @@
         &::before {
             display: block;
             width: 112%;
-            height: 144%;
+            height: 145%;
             top: -10px;
         }
 
@@ -80,7 +87,7 @@
             .card-img {
                 cursor: pointer;
                 width: 82%;
-                transition: .25s opacity ease-in; 
+                transition: .25s opacity ease-in;
 
                 &.main-img {
                     opacity: 1;

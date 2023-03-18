@@ -4,6 +4,7 @@ import { app } from '../firebase';
 const db = getFirestore(app);
 const catalogRef = collection(db, "catalog");
 const feedbackRef = collection(db, "feedback");
+const categoryRef = collection(db, "category");
 
 function wait() {
     return new Promise(resolve => {
@@ -12,7 +13,7 @@ function wait() {
 }
 
 export default class PostService {
-    static async getAll() {
+    static async getAllProducts() {
         let arr = [];
         const querySnapshot = await getDocs(catalogRef);
         querySnapshot.forEach((doc) => {
@@ -30,5 +31,14 @@ export default class PostService {
             message: formValues.message,
             isRead: false
         })
+    }
+
+    static async getCategory() {
+        let arr = [];
+        const querySnapshot = await getDocs(categoryRef);
+        querySnapshot.forEach((doc) => {
+            arr.push(doc.data())
+        });
+        return arr;
     }
 }

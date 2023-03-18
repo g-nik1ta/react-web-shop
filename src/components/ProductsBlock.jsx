@@ -11,7 +11,7 @@ import MySelect from './UI/select/MySelect';
 
 const ProductsBlock = (props) => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
-    const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort);
+    const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort, props.currentCategory);
 
     const limit = 9;
     const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
@@ -40,7 +40,15 @@ const ProductsBlock = (props) => {
         <section className='products-block'>
             <div className="header">
                 <div className="header-block">
-                    <h1 className='title'>Магазин</h1>
+                    <h1 className='title'>
+                        {
+                            props.currentCategory
+                                ?
+                                props.currentCategory.title
+                                :
+                                "Магазин"
+                        }
+                    </h1>
                     <div className="sort-filter">
                         <span>Сортировка</span>
                         <MySelect
@@ -79,7 +87,10 @@ const ProductsBlock = (props) => {
                         <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>
                 }
             </div>
-            <Pagination page={page} changePage={(page) => changePage(page)} totalPages={totalPages} />
+            {
+                (totalPages > 1) &&
+                <Pagination page={page} changePage={(page) => changePage(page)} totalPages={totalPages} />
+            }
         </section>
     )
 }

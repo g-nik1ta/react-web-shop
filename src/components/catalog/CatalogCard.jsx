@@ -17,10 +17,21 @@ const CatalogCard = ({ style, sort, filterManufacturer, filterPrice, product, ..
             currentPrice,
             currentPromotionalPrice
         }))
-    }, [sort, filterManufacturer, filterPrice])
+    }, [sort, filterManufacturer, filterPrice]);
+    console.log()
 
     return (
-        <div className="card" {...props} style={{ ...style }}>
+        <div
+            className={
+                !product.productModifications_02.length
+                    ?
+                    'card shortBefore'
+                    :
+                    'card'
+            }
+            {...props}
+            style={{ ...style }}
+        >
             <VisibleBlock product={
                 {
                     productUrl_1: product.productUrl_1,
@@ -30,7 +41,8 @@ const CatalogCard = ({ style, sort, filterManufacturer, filterPrice, product, ..
                     promotionalPrice: product.promotionalPrice,
                     productName: product.productName
                 }
-            } />
+            }
+            />
             <HiddenBlock product={
                 {
                     productName: product.productName,

@@ -100,6 +100,8 @@
   background-color: #fff;
   position: relative;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 .category .slick-slider .category-card .card-title {
   padding: 25px 55px;
@@ -217,8 +219,12 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
+.card.shortBefore .hidden-block {
+  top: auto;
+  bottom: -30%;
+}
 .card.shortBefore:hover::before {
-  height: 120%;
+  height: 134%;
 }
 .card:hover {
   z-index: 999;
@@ -226,7 +232,7 @@
 .card:hover::before {
   display: block;
   width: 112%;
-  height: 144%;
+  height: 145%;
   top: -10px;
 }
 .card:hover .visible-block .img__wrapper .card-img.only {

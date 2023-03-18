@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-export const useSortedProducts = (products, sort) => {
+export const useSortedProducts = (products, sort, currentCategory) => {
     const sortedProducts = useMemo(() => {
         switch (sort) {
             case 'cheapToExpansive':
@@ -33,24 +33,35 @@ export const useSortedProducts = (products, sort) => {
                 console.log("Нет подходящей сортировки!")
         }
         return products;
-    }, [sort, products])
-
+    }, [sort, products, currentCategory])
+    if (currentCategory) {
+        if (currentCategory.urlParam === 'novelties') {
+            const today = new Date();
+            const maxDate  = new Date(today.getTime() - (42 * 24 * 60 * 60 * 1000)); //сутки * часы * минуты * секунды * миллисекунды
+            const filteredArray = sortedProducts.filter(item => {
+                const itemDate = new Date(item.date.split('.').reverse().join('-'));
+                return itemDate >= maxDate && itemDate <= today;
+            });
+            return filteredArray;
+        }
+        return sortedProducts.filter(item => item.category === currentCategory.urlParam);
+    }
     return sortedProducts;
 }
 
-export const useProducts = (products, filterPrice, filterManufacturer, sort, isManufacturerList = false) => {
-    const sortedProducts = useSortedProducts(products, sort);
+export const useProducts = (products, filterPrice, filterManufacturer, sort, currentCategory = false, isManufacturerList = false) => {
+    const sortedProducts = useSortedProducts(products, sort, currentCategory);
 
     const sortedAndFiltredProducts = useMemo(() => {
         return sortedProducts.filter(product => {
             let hasPrice;
             if (product.productModifications_02.length) {
                 hasPrice = product.productModifications_02.find(mdf =>
-                product.promotionalPrice
-                    ?
-                    (mdf.promotionalMdfPrice >= filterPrice.minValue && mdf.promotionalMdfPrice <= filterPrice.maxValue)
-                    :
-                    (mdf.mdfPrice >= filterPrice.minValue && mdf.mdfPrice <= filterPrice.maxValue)
+                    product.promotionalPrice
+                        ?
+                        (mdf.promotionalMdfPrice >= filterPrice.minValue && mdf.promotionalMdfPrice <= filterPrice.maxValue)
+                        :
+                        (mdf.mdfPrice >= filterPrice.minValue && mdf.mdfPrice <= filterPrice.maxValue)
                 );
             } else {
                 product.promotionalPrice
