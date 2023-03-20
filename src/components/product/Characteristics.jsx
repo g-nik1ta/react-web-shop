@@ -20,7 +20,7 @@ const Characteristics = ({product, ...props}) => {
             {
                 product.characteristics &&
                 product.characteristics.map(item =>
-                    <div className="characteristic" key={item.body}>
+                    <div className="characteristic" key={item.title}>
                         <div className="title">{item.title}:</div>
                         <div className="body">{item.body}</div>
                     </div>

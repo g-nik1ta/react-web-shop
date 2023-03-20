@@ -55,7 +55,7 @@ const Product = () => {
                 ...productCharacteristics, color: getCamelCase(currentMdf1.mdf)
             })
         }
-    }, []);
+    }, [params]);
 
     if (!product) {
         return <Loader scale={.85} style={{ height: '70vh' }} />
