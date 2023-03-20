@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useProducts } from '../../hooks/useProducts';
 import FilterManufacturer from './FilterManufacturer';
 import FilterPrice from './FilterPrice';
 
 const Sidebar = (props) => {
+    const params = useParams();
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const category = useSelector(state => state.categoryReducer.category);
     const manufacturerList = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort, props.currentCategory, true).map(product => product.manufacturer);
@@ -25,6 +26,14 @@ const Sidebar = (props) => {
     return (
         <aside className='sidebar'>
             <div className="category-block">
+                {
+                    params.category &&
+                    <div className='all-category'>
+                        <Link to="/shop">
+                            <span>Все категории</span>
+                        </Link>
+                    </div>
+                }
                 {
                     category.map(item =>
                         <Link to={`/shop/category/${item.urlParam}`} key={item.id}>

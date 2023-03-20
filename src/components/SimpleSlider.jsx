@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MyButton from './UI/button/MyButton';
+import { Link } from 'react-router-dom';
 
 const SimpleSlider = () => {
     const settings = {
@@ -34,7 +35,7 @@ const SimpleSlider = () => {
             {sliderItems.map(item =>
                 <div key={item.imgUrl}>
                     <section
-                        style={{backgroundImage: 'url(slider/' + item.imgUrl + '.jpg)' }}
+                        style={{ backgroundImage: 'url(slider/' + item.imgUrl + '.jpg)' }}
                         className='slider-item'
                     >
                         <div className='slider-item__bcg'>
@@ -45,9 +46,11 @@ const SimpleSlider = () => {
                                 <p className='title'>
                                     {item.title}
                                 </p>
-                                <MyButton>
-                                    В каталог
-                                </MyButton>
+                                <Link to="/shop">
+                                    <MyButton>
+                                        В каталог
+                                    </MyButton>
+                                </Link>
                             </div>
                         </div>
                     </section>

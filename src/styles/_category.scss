@@ -57,6 +57,9 @@
             cursor: pointer;
             text-decoration: none;
             color: inherit;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
 
             .card-title {
                 padding: 25px 55px;
@@ -68,8 +71,7 @@
             }
 
             .card-img {
-                position: absolute;
-                width: 100%;
+                width: 90%;
                 background-size: 100%;
                 margin-top: 50px;
                 transition: all .85s ease;
@@ -81,7 +83,7 @@
                 }
 
                 & > .card-img {
-                    margin-top: -30px;
+                    margin-top: -20px;
                 }
             }
         }
