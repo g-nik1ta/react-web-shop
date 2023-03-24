@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import SearchMenu from '../../SearchMenu';
 import cls from './Search.module.css';
 
 const Search = () => {
@@ -29,41 +29,7 @@ const Search = () => {
             />
             {
                 !!filtredCatalog.length &&
-                <div className={cls.searchMenu}>
-                    {
-                        filtredCatalog.map(item =>
-                            <div key={item.id} className={cls.productCard}>
-                                <Link to={`/shop/${item.productName}`}>
-                                    <h4 className={cls.title}>{item.title}</h4>
-                                </Link>
-                                <div className={cls.description}>
-                                    <img
-                                        src={item.productUrl_1}
-                                        alt={item.productName}
-                                        className={cls.productUrl}
-                                    />
-                                    <div className={cls.priceBlock}>
-                                        {
-                                            item.promotionalPrice === null
-                                                ?
-                                                <p className={cls.price}>
-                                                    {(Number(item.price)).toLocaleString('ru')} ₴
-                                                </p>
-                                                :
-                                                <p className={cls.promotionalPrice}>
-                                                    <span>
-                                                        {(Number(item.price)).toLocaleString('ru')} ₴
-                                                    </span>
-                                                    {(Number(item.promotionalPrice)).toLocaleString('ru')} ₴
-                                                </p>
-                                        }
-                                        <span className={cls.available}>В наличии</span>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    }
-                </div>
+                <SearchMenu filtredCatalog={filtredCatalog} />
             }
         </div>
     )
