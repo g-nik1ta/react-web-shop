@@ -16,3 +16,11 @@ export const hiddenFields = (e, visibleBlockRef) => {
     e.target.classList.toggle("down");
     visibleBlockRef.current.classList.toggle("hidden");
 }
+
+export const openSidebar = (window) => {
+    document.querySelector(`.sidebar-window.${window}`).classList.add('open');
+}
+
+export const closeSidebar = (window) => {
+    document.querySelector(`.sidebar-window.${window}`).classList.remove('open');
+}
