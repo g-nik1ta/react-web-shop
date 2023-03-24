@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Form from '../components/Form';
+import FeedbackForm from '../components/FeedbackForm';
 import RoutePanel from '../components/UI/routePanel/RoutePanel';
 import { changeArrCreator } from '../store/routePanelReducer';
 
@@ -40,7 +40,7 @@ const Contacts = () => {
                         <h3 className='subtitle'>
                             Обратная связь
                         </h3>
-                        <Form />
+                        <FeedbackForm />
                     </div>
                 </div>
             </section>
