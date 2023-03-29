@@ -17,7 +17,7 @@ const SidebarLogin = () => {
                 className='close-window'
                 onClick={() => closeSidebar('login')}
             >&#10006;</span>
-            <div className="content">
+            <div className="content__wrapper">
                 {
                     user.id
                         ?

@@ -89,7 +89,7 @@ const Register = (props) => {
                     ?
                     <Loader scale={.5} />
                     :
-                    <div className="sign-in__wrapper">
+                    <div className="content">
                         <form>
                             <FormFields
                                 values={values}

@@ -1,0 +1,27 @@
+.basket {
+    cursor: pointer;
+    margin: 0 10px;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background-image: url("../../../assets/basket.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.itemsCount {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    color: #5F6D92;
+    background-color: #fff;
+    font-size: 10px;
+    top: -6px;
+    right: -10px;
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { getChangeFilter, getCountsManufacturerList } from '../../utils/filter';
+import { getCamelCase } from '../../utils/products';
 import { hiddenFields } from '../../utils/toggleClass';
 
 const FilterManufacturer = (props) => {
@@ -53,7 +54,7 @@ const FilterManufacturer = (props) => {
                                     className='checkbox'
                                     type="checkbox"
                                 />
-                                <span className='title'>{item.title.charAt(0).toUpperCase() + item.title.slice(1)}</span>
+                                <span className='title'>{getCamelCase(item.title)}</span>
                             </span>
                             <span className='products-count'>
                                 {item.count}

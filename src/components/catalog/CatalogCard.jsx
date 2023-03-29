@@ -1,24 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { resetDefault } from '../../store/catalogReducer';
+import { changeProductCreator } from '../../store/basketReducer';
+import { resetDefaultCreator } from '../../store/catalogReducer';
 import { resetCatalogCard } from '../../utils/products';
+import { openSidebar } from '../../utils/toggleClass';
 import HiddenBlock from './HiddenBlock';
 import VisibleBlock from './VisibleBlock';
 
 const CatalogCard = ({ style, sort, filterManufacturer, filterPrice, product, ...props }) => {
     const dispatch = useDispatch();
+    const [productCharacteristics, setProductCharacteristics] = useState({
+        color: null,
+        mdf: null
+    });
+
     useEffect(() => {
         const [currentPrice, currentPromotionalPrice, resetUrl_1, resetUrl_2] = resetCatalogCard(product);
 
-        dispatch(resetDefault({
+        dispatch(resetDefaultCreator({
             id: product.id,
             resetUrl_1,
             resetUrl_2,
             currentPrice,
             currentPromotionalPrice
-        }))
+        }));
+        const currentMdf1 = product.productModifications_01.find(element => element.mdfCurrent);
+        if (product.mdfSub) {
+            const currentMdf2 = product.productModifications_02.find(element => element.mdfCurrent)
+            setProductCharacteristics({
+                color: currentMdf1.mdf, mdf: currentMdf2.mdf
+            })
+        } else setProductCharacteristics({
+            ...productCharacteristics, color: currentMdf1.mdf
+        })
     }, [sort, filterManufacturer, filterPrice]);
-    console.log()
+
+    const addProductBasket = () => {
+        dispatch(changeProductCreator({ product, count: 1, productCharacteristics }));
+        openSidebar('basket');
+    }
 
     return (
         <div
@@ -43,16 +63,21 @@ const CatalogCard = ({ style, sort, filterManufacturer, filterPrice, product, ..
                 }
             }
             />
-            <HiddenBlock product={
-                {
-                    productName: product.productName,
-                    id: product.id,
-                    productModifications_01: [...product.productModifications_01],
-                    productModifications_02: [...product.productModifications_02],
-                    promotionalPrice: product.promotionalPrice,
-                    promotionalMdfPrice: product.promotionalMdfPrice
+            <HiddenBlock
+                product={
+                    {
+                        productName: product.productName,
+                        id: product.id,
+                        productModifications_01: [...product.productModifications_01],
+                        productModifications_02: [...product.productModifications_02],
+                        promotionalPrice: product.promotionalPrice,
+                        promotionalMdfPrice: product.promotionalMdfPrice,
+                    }
                 }
-            } />
+                addProductBasket={addProductBasket}
+                setProductCharacteristics={setProductCharacteristics}
+                productCharacteristics={productCharacteristics}
+            />
         </div>
     )
 }

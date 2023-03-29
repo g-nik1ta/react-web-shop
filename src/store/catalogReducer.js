@@ -88,4 +88,4 @@ export default function catalogReducer(state = defaultState, action) {
 export const addAllCatalogCreator = (payload) => ({ type: ADD_ALL_CATALOG, payload });
 export const changeUrlCreator = (payload) => ({ type: CHANGE_URL, payload });
 export const changePriceCreator = (payload) => ({ type: CHANGE_PRICE, payload });
-export const resetDefault = (payload) => ({ type: RESET_DEFAULT, payload });
+export const resetDefaultCreator = (payload) => ({ type: RESET_DEFAULT, payload });

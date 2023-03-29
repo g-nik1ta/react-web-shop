@@ -12,6 +12,11 @@ export const validations = (values) => {
                     keyFound.push('confirmPassword')
                 }
                 break;
+            case 'email':
+                const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!(emailRegexp.test(values[key].value))) {
+                    keyFound.push('email')
+                }
             default:
                 if (values[key].required && values[key].value.trim() === '') {
                     keyFound.push(key)
@@ -47,12 +52,17 @@ export const setValuesError = (values, setValues, keyFound) => {
 export const errorText = (values, field) => {
     switch (field) {
         case 'email':
+            const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return values.email.errorMessage
                 ?
                 values.email.errorMessage
                 :
-                values.email.value.trim().length === 0 &&
-                'Пожалуйста, введите адрес электронной почты'
+                values.email.value.trim().length === 0
+                    ?
+                    'Пожалуйста, введите адрес электронной почты'
+                    :
+                    !(emailRegexp.test(values.email.value)) &&
+                    'Пожалуйста, введите корректный адрес электронной почты'
         case 'password':
             return values.password.errorMessage
                 ?
@@ -70,6 +80,12 @@ export const errorText = (values, field) => {
         case 'name':
             return values.name.value.trim().length === 0 &&
                 'Пожалуйста, введите ваше имя'
+        case 'nameSurname':
+            return values.nameSurname.value.trim().length === 0 &&
+                'Пожалуйста, укажите ваше имя'
+        case 'telephone':
+            return values.telephone.value.trim().length === 0 &&
+                'Пожалуйста, укажите ваш телефон'
     }
 }
 

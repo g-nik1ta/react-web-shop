@@ -65,7 +65,7 @@ const ResetPassword = (props) => {
                                 ?
                                 <Loader scale={.5} />
                                 :
-                                <div className="sign-in__wrapper">
+                                <div className="content">
                                     <p className='description'>Пожалуйста, укажите адрес электронной почты и мы вышлим Вам инструкцию, как изменить пароль на новый.</p>
                                     <form>
                                         <FormFields

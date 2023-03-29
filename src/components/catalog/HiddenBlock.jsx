@@ -4,7 +4,7 @@ import { changePriceCreator, changeUrlCreator } from '../../store/catalogReducer
 import MyButton from '../UI/button/MyButton';
 import { toggleClass } from '../../utils/toggleClass';
 
-const HiddenBlock = ({ product, ...props }) => {
+const HiddenBlock = ({ product, addProductBasket, productCharacteristics, setProductCharacteristics, ...props }) => {
     const dispatch = useDispatch();
     const HiddenBlockRef = useRef();
     useEffect(() => {
@@ -15,11 +15,15 @@ const HiddenBlock = ({ product, ...props }) => {
 
     function toggleProductMdf_01(e, mdf, id) {
         toggleClass(e);
+        setProductCharacteristics({
+            ...productCharacteristics, color: mdf.mdf
+        });
         dispatch(changeUrlCreator({ id, mdf }));
     }
 
-    function toggleProductMdf_02(e, price, id, promotionalPrice = null) {
+    function toggleProductMdf_02(mdf, e, price, id, promotionalPrice = null) {
         toggleClass(e);
+        setProductCharacteristics({ ...productCharacteristics, mdf })
         dispatch(changePriceCreator({ price, id, promotionalPrice }));
     }
 
@@ -66,9 +70,9 @@ const HiddenBlock = ({ product, ...props }) => {
                                 onClick={(e) => {
                                     product.promotionalPrice
                                         ?
-                                        toggleProductMdf_02(e, productMdf.mdfPrice, product.id, productMdf.promotionalMdfPrice)
+                                        toggleProductMdf_02(productMdf.mdf, e, productMdf.mdfPrice, product.id, productMdf.promotionalMdfPrice)
                                         :
-                                        toggleProductMdf_02(e, productMdf.mdfPrice, product.id)
+                                        toggleProductMdf_02(productMdf.mdf, e, productMdf.mdfPrice, product.id)
                                 }}
                             >
                                 {productMdf.mdf}
@@ -78,7 +82,7 @@ const HiddenBlock = ({ product, ...props }) => {
                 </div>
             </div>
             <div className="product-buy-block">
-                <MyButton>Купить</MyButton>
+                <MyButton onClick={addProductBasket}>Купить</MyButton>
             </div>
         </div>
     )

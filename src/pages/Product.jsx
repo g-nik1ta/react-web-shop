@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Loader from '../components/UI/loader/Loader';
 import RoutePanel from '../components/UI/routePanel/RoutePanel';
 import { changeArrCreator } from '../store/routePanelReducer';
-import { resetDefault } from '../store/catalogReducer';
+import { resetDefaultCreator } from '../store/catalogReducer';
 import { getCamelCase, resetCatalogCard } from '../utils/products';
 import MyButton from '../components/UI/button/MyButton';
 import ProductImages from '../components/product/ProductImages';
@@ -12,6 +12,8 @@ import ProductModifications from '../components/product/ProductModifications';
 import Characteristics from '../components/product/Characteristics';
 import ShortDescription from '../components/product/ShortDescription';
 import AddInfoBlock from '../components/product/AddInfoBlock';
+import { changeProductCreator } from '../store/basketReducer';
+import { openSidebar } from '../utils/toggleClass';
 
 const Product = () => {
     const params = useParams();
@@ -34,7 +36,7 @@ const Product = () => {
         if (product) {
             const [currentPrice, currentPromotionalPrice, resetUrl_1, resetUrl_2] = resetCatalogCard(product);
 
-            dispatch(resetDefault({
+            dispatch(resetDefaultCreator({
                 id: product.id,
                 resetUrl_1,
                 resetUrl_2,
@@ -49,13 +51,18 @@ const Product = () => {
             if (product.mdfSub) {
                 const currentMdf2 = product.productModifications_02.find(element => element.mdfCurrent)
                 setProductCharacteristics({
-                    color: getCamelCase(currentMdf1.mdf), mdf: currentMdf2.mdf
+                    color: currentMdf1.mdf, mdf: currentMdf2.mdf
                 })
             } else setProductCharacteristics({
-                ...productCharacteristics, color: getCamelCase(currentMdf1.mdf)
+                ...productCharacteristics, color: currentMdf1.mdf
             })
         }
-    }, [params]);
+    }, [params]); 
+
+    const addProductBasket = () => {
+        dispatch(changeProductCreator({ product, count: 1, productCharacteristics }));
+        openSidebar('basket');
+    }
 
     if (!product) {
         return <Loader scale={.85} style={{ height: '70vh' }} />
@@ -75,12 +82,16 @@ const Product = () => {
                                 {getCamelCase(product.manufacturer)}
                             </strong>
                             </p>
-                            <p className='price'>
-                                {product.promotionalPrice && <span>
-                                    {(Number(product.promotionalPrice)).toLocaleString('ru')} ₴
+                            <p className='price-block'>
+                                <span className='price'>
+                                    {(Number(product.price)).toLocaleString('ru')} ₴ &nbsp;
                                 </span>
+                                {
+                                    product.promotionalPrice &&
+                                    <span className='promotionalPrice'>
+                                        {(Number(product.promotionalPrice)).toLocaleString('ru')} ₴
+                                    </span>
                                 }
-                                {(Number(product.price)).toLocaleString('ru')} ₴
                             </p>
                             <ProductModifications
                                 product={product}
@@ -89,7 +100,7 @@ const Product = () => {
                                 setProductCharacteristics={setProductCharacteristics}
                             />
                             <div className="product-buy-block">
-                                <MyButton>Купить</MyButton>
+                                <MyButton onClick={addProductBasket}>Купить</MyButton>
                             </div>
 
                             <Characteristics
@@ -104,7 +115,7 @@ const Product = () => {
                                 }
                                 {
                                     product.addInfo.map(item =>
-                                        <AddInfoBlock addInfo={item} key={item.header}/>
+                                        <AddInfoBlock addInfo={item} key={item.header} />
                                     )
                                 }
                             </div>

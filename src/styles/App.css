@@ -898,12 +898,12 @@
 .product_container .product_content .product-info .product-details .manufacturer {
   margin: 20px 0;
 }
-.product_container .product_content .product-info .product-details .price {
+.product_container .product_content .product-info .product-details .price-block {
   margin: 20px 0;
   font-size: 22px;
   font-weight: bold;
 }
-.product_container .product_content .product-info .product-details .price span {
+.product_container .product_content .product-info .product-details .price-block .promotionalPrice {
   color: #ACACAC;
   text-decoration: line-through;
   font-size: 20px;
@@ -1606,6 +1606,156 @@
 .sidebar-window.open {
   right: 0;
 }
+.sidebar-window.basket .content__wrapper .content {
+  position: relative;
+  height: 100%;
+}
+.sidebar-window.basket .content__wrapper .content .card-items {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: calc(100% - 230px);
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item {
+  padding: 15px 0;
+  display: flex;
+  border-bottom: 1px solid rgba(33, 33, 33, 0.102);
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .image {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .image img {
+  width: 100%;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block {
+  padding: 0 10px;
+  width: 70%;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .product-name {
+  transition: 0.5s all ease;
+  text-decoration: none;
+  color: inherit;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .product-name:hover {
+  opacity: 0.7;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count {
+  margin: 13px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .price-block {
+  font-size: 14px;
+  font-weight: bold;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .price-block .promotionalPrice {
+  color: #ACACAC;
+  text-decoration: line-through;
+  font-size: 12px;
+  margin-right: 8px;
+  font-weight: normal;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .count {
+  border: 1px solid rgba(34, 34, 34, 0.2);
+  display: flex;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .count .disabled {
+  opacity: 0.7;
+  cursor: default;
+  pointer-events: none;
+  color: #5f6d92;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .count .minus,
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .count .plus {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .count input {
+  width: 24px;
+  height: 24px;
+  font-weight: bold;
+  font-size: 12px;
+  border: none;
+  text-align: center;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .count input::-webkit-outer-spin-button, .sidebar-window.basket .content__wrapper .content .card-items .item .name-block .price-count .count input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.sidebar-window.basket .content__wrapper .content .card-items .item .name-block .remove {
+  cursor: pointer;
+  opacity: 0.5;
+  margin: 10px 0;
+  font-size: 15px;
+  text-decoration: underline;
+}
+.sidebar-window.basket .content__wrapper .content button {
+  font-size: 15px;
+  background-color: #000;
+  color: #fff;
+  padding: 13px 10px;
+  transition: 0.5s all ease;
+  border: 1px solid #000;
+  cursor: pointer;
+  width: 100%;
+}
+.sidebar-window.basket .content__wrapper .content button:hover {
+  background-color: #fff;
+  color: #000;
+}
+.sidebar-window.basket .content__wrapper .content .basket-btn-block {
+  position: absolute;
+  bottom: 80px;
+  padding-top: 10px;
+  background-color: #fff;
+  width: 100%;
+}
+.sidebar-window.basket .content__wrapper .content .basket-btn-block .total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: bold;
+}
+.sidebar-window.basket .content__wrapper .content .basket-btn-block .checkout-options {
+  margin: 15px 0 10px;
+}
+.sidebar-window.basket .content__wrapper .content .basket-btn-block .checkout-options .full-checkout {
+  width: 37%;
+}
+.sidebar-window.basket .content__wrapper .content .basket-btn-block .checkout-options .express-checkout {
+  width: 60%;
+  margin-left: 10px;
+}
+.sidebar-window.basket .content__wrapper .content .basket-btn-block .continue-shopping {
+  position: initial;
+}
+.sidebar-window.basket .content__wrapper .content .no-items {
+  text-align: center;
+}
+.sidebar-window.basket .content__wrapper .content .no-items p {
+  margin-top: 12px;
+}
+.sidebar-window.basket .content__wrapper .content .continue-shopping {
+  position: absolute;
+  bottom: 80px;
+  background-color: #fff;
+  color: #000;
+}
+.sidebar-window.basket .content__wrapper .content .continue-shopping:hover {
+  background-color: #000;
+  color: #fff;
+}
 .sidebar-window .close-window {
   position: absolute;
   display: block;
@@ -1614,30 +1764,30 @@
   font-size: 24px;
   cursor: pointer;
 }
-.sidebar-window .content {
+.sidebar-window .content__wrapper {
   padding: 0 15px 10px;
   height: 100%;
   width: 100%;
 }
-.sidebar-window .content .title {
+.sidebar-window .content__wrapper .title {
   font-weight: normal;
   padding: 20px 0;
   font-size: 27px;
   border-bottom: 1px solid rgba(34, 34, 34, 0.102);
 }
-.sidebar-window .content .userData {
+.sidebar-window .content__wrapper .userData {
   padding: 20px 0;
   border-bottom: 1px solid rgba(34, 34, 34, 0.102);
   display: flex;
   align-items: center;
 }
-.sidebar-window .content .userData .avatar {
+.sidebar-window .content__wrapper .userData .avatar {
   width: 45px;
   height: 45px;
   margin-right: 10px;
   border-radius: 50%;
 }
-.sidebar-window .content .userData .default-avatar {
+.sidebar-window .content__wrapper .userData .default-avatar {
   width: 45px;
   height: 45px;
   margin-right: 10px;
@@ -1648,41 +1798,41 @@
   background-image: url("../assets/profile.svg");
   background-color: #ebebeb;
 }
-.sidebar-window .content .userData .name {
+.sidebar-window .content__wrapper .userData .name {
   padding-left: 5px;
   font-size: 17px;
   max-width: 65%;
 }
-.sidebar-window .content .userData .name span {
+.sidebar-window .content__wrapper .userData .name span {
   display: block;
   opacity: 0.5;
   font-size: 14px;
 }
-.sidebar-window .content .profile-links .item {
+.sidebar-window .content__wrapper .profile-links .item {
   margin: 20px 0;
 }
-.sidebar-window .content .profile-links .item .profile::before {
+.sidebar-window .content__wrapper .profile-links .item .profile::before {
   background-image: url("../assets/profile.svg");
 }
-.sidebar-window .content .profile-links .item .favorites::before {
+.sidebar-window .content__wrapper .profile-links .item .favorites::before {
   background-image: url("../assets/favorites.svg");
 }
-.sidebar-window .content .profile-links .item .comparison::before {
+.sidebar-window .content__wrapper .profile-links .item .comparison::before {
   background-image: url("../assets/comparison.svg");
 }
-.sidebar-window .content .profile-links .item .orders::before {
+.sidebar-window .content__wrapper .profile-links .item .orders::before {
   background-image: url("../assets/orders.svg");
 }
-.sidebar-window .content .profile-links .item span {
+.sidebar-window .content__wrapper .profile-links .item span {
   display: flex;
   align-items: center;
   text-decoration: none;
   transition: 0.5s all ease;
 }
-.sidebar-window .content .profile-links .item span:hover {
+.sidebar-window .content__wrapper .profile-links .item span:hover {
   opacity: 0.7;
 }
-.sidebar-window .content .profile-links .item span::before {
+.sidebar-window .content__wrapper .profile-links .item span::before {
   content: "";
   display: block;
   padding: 0 7px;
@@ -1693,11 +1843,11 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.sidebar-window .content .sign-out {
+.sidebar-window .content__wrapper .sign-out {
   width: 100%;
   border-top: 1px solid rgba(34, 34, 34, 0.102);
 }
-.sidebar-window .content .sign-out .sign-out-btn {
+.sidebar-window .content__wrapper .sign-out .sign-out-btn {
   font-size: 16px;
   margin: 20px 0;
   border: none;
@@ -1708,10 +1858,10 @@
   align-items: center;
   background-color: transparent;
 }
-.sidebar-window .content .sign-out .sign-out-btn:hover {
+.sidebar-window .content__wrapper .sign-out .sign-out-btn:hover {
   opacity: 0.7;
 }
-.sidebar-window .content .sign-out .sign-out-btn::before {
+.sidebar-window .content__wrapper .sign-out .sign-out-btn::before {
   content: "";
   display: block;
   width: 20px;
@@ -1723,20 +1873,18 @@
   background-position: center;
   background-image: url("../assets/signout.svg");
 }
-.sidebar-window .content .sign-in__wrapper {
+.sidebar-window .content__wrapper .content {
   padding-top: 10px;
 }
-.sidebar-window .content .sign-in__wrapper .description {
+.sidebar-window .content__wrapper .content .description {
   font-size: 15px;
 }
-.sidebar-window .content .sign-in__wrapper .description ~ .sendFormBtn {
+.sidebar-window .content__wrapper .content .description ~ .sendFormBtn {
   margin-top: 10px;
 }
-.sidebar-window .content .sign-in__wrapper .sendFormBtn {
+.sidebar-window .content__wrapper .content .sendFormBtn {
   font-size: 15px;
-  display: block;
   background-color: #000;
-  text-align: center;
   color: #fff;
   padding: 13px 10px;
   transition: 0.5s all ease;
@@ -1744,22 +1892,22 @@
   cursor: pointer;
   width: 100%;
 }
-.sidebar-window .content .sign-in__wrapper .sendFormBtn:hover {
+.sidebar-window .content__wrapper .content .sendFormBtn:hover {
   background-color: #fff;
   color: #000;
 }
-.sidebar-window .content .sign-in__wrapper form {
+.sidebar-window .content__wrapper .content form {
   margin-top: 10px;
 }
-.sidebar-window .content .sign-in__wrapper form .field {
+.sidebar-window .content__wrapper .content form .field {
   padding: 7px 0;
 }
-.sidebar-window .content .sign-in__wrapper form .field label {
+.sidebar-window .content__wrapper .content form .field label {
   margin-bottom: 5px;
   font-size: 13px;
   display: block;
 }
-.sidebar-window .content .sign-in__wrapper form .field input {
+.sidebar-window .content__wrapper .content form .field input {
   width: 100%;
   outline: none;
   padding: 10px;
@@ -1768,58 +1916,58 @@
   border: 1px solid #dcdcdc;
   transition: border-color 0.3s ease !important;
 }
-.sidebar-window .content .sign-in__wrapper form .field input:focus {
+.sidebar-window .content__wrapper .content form .field input:focus {
   border-color: rgb(133, 133, 133);
 }
-.sidebar-window .content .sign-in__wrapper form .field .field-error {
+.sidebar-window .content__wrapper .content form .field .field-error {
   font-size: 14px;
   color: #d93025;
 }
-.sidebar-window .content .sign-in__wrapper form .add-fields {
+.sidebar-window .content__wrapper .content form .add-fields {
   display: flex;
   justify-content: space-between;
   margin: 5px 0 20px;
 }
-.sidebar-window .content .sign-in__wrapper form .add-fields .remember {
+.sidebar-window .content__wrapper .content form .add-fields .remember {
   display: flex;
   align-items: center;
 }
-.sidebar-window .content .sign-in__wrapper form .add-fields .remember input {
+.sidebar-window .content__wrapper .content form .add-fields .remember input {
   width: 15px;
   height: 15px;
   cursor: pointer;
 }
-.sidebar-window .content .sign-in__wrapper form .add-fields .remember label {
+.sidebar-window .content__wrapper .content form .add-fields .remember label {
   margin-left: 5px;
   opacity: 0.5;
   font-size: 15px;
   cursor: pointer;
   transition: 0.1s all ease;
 }
-.sidebar-window .content .sign-in__wrapper form .add-fields .remember label:hover {
+.sidebar-window .content__wrapper .content form .add-fields .remember label:hover {
   opacity: 1;
 }
-.sidebar-window .content .sign-in__wrapper form .add-fields .forgot-password {
+.sidebar-window .content__wrapper .content form .add-fields .forgot-password {
   cursor: pointer;
   display: block;
   opacity: 0.5;
   font-size: 15px;
   transition: 1s all ease;
 }
-.sidebar-window .content .sign-in__wrapper form .add-fields .forgot-password:hover {
+.sidebar-window .content__wrapper .content form .add-fields .forgot-password:hover {
   opacity: 1;
 }
-.sidebar-window .content .sign-in__wrapper form .login-with {
+.sidebar-window .content__wrapper .content form .login-with {
   text-align: center;
   position: relative;
 }
-.sidebar-window .content .sign-in__wrapper form .login-with span {
+.sidebar-window .content__wrapper .content form .login-with span {
   font-size: 15px;
   padding: 0 15px;
   color: rgba(34, 34, 34, 0.35);
   background-color: #fff;
 }
-.sidebar-window .content .sign-in__wrapper form .login-with span::before {
+.sidebar-window .content__wrapper .content form .login-with span::before {
   content: "";
   background: rgba(34, 34, 34, 0.1);
   height: 1px;
@@ -1829,18 +1977,18 @@
   top: 50%;
   z-index: -1;
 }
-.sidebar-window .content .sign-in__wrapper form .logins-methods {
+.sidebar-window .content__wrapper .content form .logins-methods {
   display: flex;
   justify-content: space-between;
   margin: 15px 0;
 }
-.sidebar-window .content .sign-in__wrapper form .logins-methods .facebook-btn::before {
+.sidebar-window .content__wrapper .content form .logins-methods .facebook-btn::before {
   background-image: url("../assets/facebook.svg");
 }
-.sidebar-window .content .sign-in__wrapper form .logins-methods .google-btn::before {
+.sidebar-window .content__wrapper .content form .logins-methods .google-btn::before {
   background-image: url("../assets/google.svg");
 }
-.sidebar-window .content .sign-in__wrapper form .logins-methods div {
+.sidebar-window .content__wrapper .content form .logins-methods div {
   width: 49%;
   font-size: 14px;
   padding: 12px 10px;
@@ -1851,10 +1999,10 @@
   transition: 0.5s all ease;
   cursor: pointer;
 }
-.sidebar-window .content .sign-in__wrapper form .logins-methods div:hover {
+.sidebar-window .content__wrapper .content form .logins-methods div:hover {
   background: #f4f4f4;
 }
-.sidebar-window .content .sign-in__wrapper form .logins-methods div::before {
+.sidebar-window .content__wrapper .content form .logins-methods div::before {
   width: 20px;
   height: 20px;
   content: "";
@@ -1863,16 +2011,16 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-.sidebar-window .content .sign-in__wrapper .sign-in-block {
+.sidebar-window .content__wrapper .content .sign-in-block {
   margin: 15px 0;
   text-align: center;
   font-size: 15px;
 }
-.sidebar-window .content .sign-in__wrapper .sign-in-block span {
+.sidebar-window .content__wrapper .content .sign-in-block span {
   transition: 0.5s all ease;
   cursor: pointer;
 }
-.sidebar-window .content .sign-in__wrapper .sign-in-block span:hover {
+.sidebar-window .content__wrapper .content .sign-in-block span:hover {
   opacity: 0.5;
 }
 

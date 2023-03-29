@@ -7,14 +7,19 @@ const feedbackRef = collection(db, "feedback");
 const authUsersRef = collection(db, "authUsers");
 const userRef = collection(db, "authUsers");
 const categoryRef = collection(db, "category");
+const ordersRef = collection(db, "orders");
 
 function wait() {
     return new Promise(resolve => {
-        setTimeout(resolve, 10000);
+        setTimeout(resolve, 1200);
     });
 }
 
 export default class PostService {
+    static async getAsyncFetch() {
+        await wait();
+    }
+
     static async getAllProducts() {
         let arr = [];
         const querySnapshot = await getDocs(catalogRef);
@@ -62,5 +67,21 @@ export default class PostService {
             arr.push(doc.data())
         });
         return arr;
+    }
+
+    static async sendOrderForm(formValues) {
+        const { id, nameSurname, telephone, email, wishes, payment, date, status, sum, products } = formValues;
+        await setDoc(doc(ordersRef, String(formValues.id)), {
+            id,
+            nameSurname,
+            telephone,
+            email,
+            wishes,
+            payment,
+            date,
+            status,
+            sum,
+            products
+        })
     }
 }

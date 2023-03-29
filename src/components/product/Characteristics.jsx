@@ -1,7 +1,7 @@
 import React from 'react';
 import { getCamelCase } from '../../utils/products';
 
-const Characteristics = ({product, ...props}) => {
+const Characteristics = ({product, productCharacteristics, ...props}) => {
     return (
         <div className="characteristics-block">
             <div className="subtitle">
@@ -9,12 +9,12 @@ const Characteristics = ({product, ...props}) => {
             </div>
             <div className="characteristic">
                 <div className="title">Цвет:</div>
-                <div className="body">{props.productCharacteristics.color}</div>
+                <div className="body">{getCamelCase(productCharacteristics.color)}</div>
             </div>
             {
                 product.mdfSub && <div className="characteristic">
                     <div className="title">{product.mdfSub}:</div>
-                    <div className="body">{props.productCharacteristics.mdf}</div>
+                    <div className="body">{getCamelCase(productCharacteristics.mdf)}</div>
                 </div>
             }
             {

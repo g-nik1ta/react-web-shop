@@ -29,17 +29,17 @@ const VisibleBlock = ({ product, ...props }) => {
                 {product.title}
             </h3>
             {
-                product.promotionalPrice === null
+                product.promotionalPrice
                     ?
-                    <p className='card-price'>
-                        {(Number(product.price)).toLocaleString('ru')} ₴
-                    </p>
-                    :
                     <p className='card-promotional-price'>
                         <span>
                             {(Number(product.price)).toLocaleString('ru')} ₴
                         </span>
                         {(Number(product.promotionalPrice)).toLocaleString('ru')} ₴
+                    </p>
+                    :
+                    <p className='card-price'>
+                        {(Number(product.price)).toLocaleString('ru')} ₴
                     </p>
             }
         </Link>

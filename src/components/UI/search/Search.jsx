@@ -28,7 +28,7 @@ const Search = () => {
                 className={cls.search}
             />
             {
-                !!filtredCatalog.length &&
+                searchValue.length > 0 &&
                 <SearchMenu filtredCatalog={filtredCatalog} />
             }
         </div>
