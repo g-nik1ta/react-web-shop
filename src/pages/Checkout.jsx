@@ -1,5 +1,5 @@
 import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BasketInfo from '../components/checkout/BasketInfo';
 import CheckoutForm from '../components/checkout/CheckoutForm';
@@ -15,10 +15,6 @@ const Checkout = () => {
     const user = useSelector(state => state.authReducer.user);
     const basket = useSelector(state => state.basketReducer.basket);
     const dispatch = useDispatch();
-    const [isPromocode, setIsPromocode] = useState({
-        isUsed: false,
-        discount: 0
-    });
 
     const facebookLoginUser = async () => {
         const provider = new FacebookAuthProvider();
@@ -90,15 +86,10 @@ const Checkout = () => {
                                     }
                                     <CheckoutForm
                                         basket={basket}
-                                        isPromocode={isPromocode}
                                         user={user}
                                     />
                                 </div>
-                                <BasketInfo
-                                    basket={basket}
-                                    isPromocode={isPromocode}
-                                    setIsPromocode={setIsPromocode}
-                                />
+                                <BasketInfo basket={basket} />
                             </div>
                             :
                             <div className='no-orders'>

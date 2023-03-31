@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import PostService from '../../API/PostService';
 import { useFetching } from '../../hooks/useFetching';
 import { generateOrderHash, getFullDate, getStatus, getTotalDisctountPrice, getTotalPrice } from '../../utils/basket';
@@ -8,7 +9,8 @@ import MyButton from '../UI/button/MyButton';
 import Loader from '../UI/loader/Loader';
 import MySelect from '../UI/select/MySelect';
 
-const CheckoutForm = ({ basket, isPromocode, user }) => {
+const CheckoutForm = ({ basket, user }) => {
+    const isPromocode = useSelector(state => state.basketReducer.isPromocode);
     const [values, setValues] = useState({
         name: {
             value: user.id ? user.name : '',
@@ -103,7 +105,6 @@ const CheckoutForm = ({ basket, isPromocode, user }) => {
     }
 
     useEffect(() => {
-        console.log(user);
         if (!user.id) {
             setValues({
                 ...values,

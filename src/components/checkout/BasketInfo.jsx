@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { generateOrderHash, getTotalDisctountPrice, getTotalPrice } from '../../utils/basket';
 import ProductItem from './ProductItem';
 import PromocodeBlock from './PromocodeBlock';
 
-const BasketInfo = ({ basket, isPromocode, setIsPromocode }) => {
+const BasketInfo = ({ basket }) => {
+    const isPromocode = useSelector(state => state.basketReducer.isPromocode);
+
     return (
         <div className="basket-info">
             <div className="edit-block">
@@ -32,10 +35,7 @@ const BasketInfo = ({ basket, isPromocode, setIsPromocode }) => {
                         <span>Стоимость доставки:</span>
                         <b><span>-</span></b>
                     </div>
-                    <PromocodeBlock
-                        isPromocode={isPromocode}
-                        setIsPromocode={setIsPromocode} 
-                    />
+                    <PromocodeBlock />
                     <div className="total-all">
                         <span>Всего:</span>
                         {

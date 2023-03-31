@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PostService from '../../API/PostService';
 import { useFetching } from '../../hooks/useFetching';
+import { setPromocodeCreator } from '../../store/basketReducer';
 import Loader from '../UI/loader/Loader';
 
-const PromocodeBlock = ({isPromocode, setIsPromocode}) => {
+const PromocodeBlock = () => {
+    const dispatch = useDispatch();
+    const isPromocode = useSelector(state => state.basketReducer.isPromocode)
     const [values, setValues] = useState({
         promocode: {
             value: '',
@@ -34,10 +38,7 @@ const PromocodeBlock = ({isPromocode, setIsPromocode}) => {
                 },
             })
         } else {
-            setIsPromocode({
-                isUsed: true,
-                discount: response.discount
-            })
+            dispatch(setPromocodeCreator(response.discount));
             setValues({
                 promocode: {
                     value: '',

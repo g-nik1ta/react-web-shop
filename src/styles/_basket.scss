@@ -1,0 +1,208 @@
+.basket_container {
+    width: 100%;
+
+    .basket_content {
+        margin: 0 auto;
+        flex-direction: column;
+
+        .title {
+            margin: 30px 0;
+            font-size: 35px;
+        }
+
+        .no-items {
+            text-align: center;
+
+            p {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+        }
+
+        .basket-items {
+            margin: 0 12px;
+
+            .basket-header {
+                display: flex;
+                font-size: 14px;
+                margin-bottom: 15px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid rgba(34, 34, 34, 0.102);
+
+                .value,
+                .count,
+                .price {
+                    text-align: center;
+                }
+
+                .products {
+                    width: 65%;
+                }
+
+                .value {
+                    width: 15%;
+                }
+
+                .count,
+                .price {
+                    width: 10%;
+                }
+            }
+
+            .item {
+                display: flex;
+                margin-bottom: 25px;
+                padding-bottom: 25px;
+                border-bottom: 1px solid rgba(34, 34, 34, 0.102);
+
+                .image {
+                    width: 15%;
+                    padding: 0 12px;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    background-color: #fff;
+
+                    img {
+                        padding: 15px 0;
+                        max-width: 100%;
+                    }
+                }
+
+                .name-block {
+                    width: 50%;
+                    padding: 0 12px;
+
+                    .product-name {
+                        transition: .5s all ease;
+                        text-decoration: none;
+                        color: inherit;
+
+                        &:hover {
+                            opacity: .7;
+                        }
+                    }
+
+                    .details {
+                        opacity: .5;
+                        margin: 10px 0;
+                        font-size: 14px;
+                        line-height: 125%;
+                    }
+
+                    .remove {
+                        cursor: pointer;
+                        opacity: .75;
+                        margin: 10px 0;
+                        font-size: 15px;
+                        text-decoration: underline;
+                    }
+                }
+
+                .value {
+                    text-align: center;
+                    width: 15%;
+                    padding: 0 12px;
+
+                    .price-block {
+                        font-size: 14px;
+                        font-weight: bold;
+
+                        span {
+                            color: #ACACAC;
+                            text-decoration: line-through;
+                            font-size: 12px;
+                            margin-right: 8px;
+                            font-weight: normal;
+                        }
+                    }
+                }
+
+                .count-block {
+                    width: 10%;
+                    text-align: center;
+                    padding: 0 12px;
+
+                    .count {
+                        margin: 0 auto;
+                        width: fit-content;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        border: 1px solid rgba(34, 34, 34, 0.2);
+
+                        .disabled {
+                            opacity: .7;
+                            cursor: default;
+                            pointer-events: none;
+                            color: #5f6d92;
+                        }
+
+                        .minus,
+                        .plus {
+                            cursor: pointer;
+                            width: 24px;
+                            height: 24px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 22px;
+                            user-select: none;
+                        }
+
+                        input {
+                            width: 24px;
+                            height: 24px;
+                            font-weight: bold;
+                            font-size: 12px;
+                            border: none;
+                            text-align: center;
+
+                            &::-webkit-outer-spin-button,
+                            &::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+
+                .price {
+                    text-align: center;
+                    width: 10%;
+                    padding: 0 12px;
+                    font-size: 14px;
+                }
+            }
+
+            .total-all {
+                margin-left: 75%;
+                display: flex;
+                justify-content: space-between;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .full-checkout {
+                margin-left: 75%;
+
+                button {
+                    margin: 15px 0 10px;
+                    width: 25%;
+                    font-size: 15px;
+                    background-color: #000;
+                    color: #fff;
+                    padding: 13px 10px;
+                    transition: .5s all ease;
+                    border: 1px solid #000;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #fff;
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}
