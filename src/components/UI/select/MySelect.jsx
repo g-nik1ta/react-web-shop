@@ -1,7 +1,7 @@
 import React from 'react';
 import cls from './MySelect.module.css';
 
-const MySelect = ({ options, value, onChange }) => {
+const MySelect = ({ options, value, onChange, ruValue = false }) => {
     return (
         <div 
             className={cls.select}
@@ -12,7 +12,7 @@ const MySelect = ({ options, value, onChange }) => {
                 {options.map(option =>
                     <span 
                         key={option.value}
-                        onClick={() => onChange(option.value)}
+                        onClick={() => ruValue ? onChange(option.name) : onChange(option.value)}
                     >
                         {option.name}
                     </span>    

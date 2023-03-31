@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import PostService from '../../API/PostService';
 import { useFetching } from '../../hooks/useFetching';
-import { generateOrderHash, getFullDate, getStatus, getTotalDisctountPrice, getTotalPrice } from '../../utils/basket';
+import { removeBasketCreator, removePromocodeCreator, setOrderCreator } from '../../store/basketReducer';
+import { generateOrderHash, getFullDate, getStatus, getTotalDiscountPrice, getTotalPrice } from '../../utils/basket';
 import { setValuesError, validations } from '../../utils/formValidations';
 import FormFields from '../FormFields';
 import MyButton from '../UI/button/MyButton';
@@ -10,7 +12,9 @@ import Loader from '../UI/loader/Loader';
 import MySelect from '../UI/select/MySelect';
 
 const CheckoutForm = ({ basket, user }) => {
+    const dispatch = useDispatch();
     const isPromocode = useSelector(state => state.basketReducer.isPromocode);
+    const navigate = useNavigate();
     const [values, setValues] = useState({
         name: {
             value: user.id ? user.name : '',
@@ -49,7 +53,7 @@ const CheckoutForm = ({ basket, user }) => {
             errorMessage: '',
         },
         payment: {
-            value: 'full-payment',
+            value: 'Полная оплата',
             required: true,
             error: false,
             errorMessage: '',
@@ -68,10 +72,11 @@ const CheckoutForm = ({ basket, user }) => {
     ]
 
     const [fetchForm, isFormLoading, formError] = useFetching(async (formValues) => {
-        // await PostService.getAsyncFetch();
-        console.log(formValues);
         await PostService.sendOrderForm(formValues);
-        // closeSidebar('basket');
+        dispatch(setOrderCreator(formValues));
+        dispatch(removeBasketCreator());
+        dispatch(removePromocodeCreator());
+        navigate(`/shop/complete/${formValues.orderNumber.slice(1)}`);
     })
 
     const sendForm = async (e) => {
@@ -81,7 +86,7 @@ const CheckoutForm = ({ basket, user }) => {
             setValuesError(values, setValues, keyFound);
         } else {
             const dateNow = getFullDate();
-            const sum = isPromocode.isUsed ? `${getTotalDisctountPrice(basket, isPromocode.discount)} ₴` : `${getTotalPrice(basket)} ₴`
+            const sum = isPromocode.isUsed ? `${getTotalDiscountPrice(basket, isPromocode.discount)} ₴` : `${getTotalPrice(basket)} ₴`
             const formValues = {
                 id: Date.now(),
                 nameSurname: `${values.name.value} ${values.surname.value}`,
@@ -96,8 +101,9 @@ const CheckoutForm = ({ basket, user }) => {
                 status: getStatus(dateNow.split(' ')[0]),
                 sum,
                 products: basket.map(item => {
-                    const { count, id, productCharacteristics, price, productUrl_1, promotionalPrice, title, vendorCode } = item;
-                    return { count, id, productCharacteristics, price, productUrl_1, promotionalPrice, title, vendorCode };
+                    const sub = item.mdfSub ? item.mdfSub : null;
+                    const { count, id, productCharacteristics, price, productUrl_1, promotionalPrice, title, productName, vendorCode } = item;
+                    return { count, id, productCharacteristics, sub, price, productUrl_1, promotionalPrice, title, productName, vendorCode };
                 })
             }
             await fetchForm(formValues);
@@ -197,13 +203,14 @@ const CheckoutForm = ({ basket, user }) => {
                                         <div className="payment-field">
                                             <span>Способ оплаты</span>
                                             <MySelect
-                                                value={(sortOptions.find(e => e.value === values.payment.value)).name}
+                                                value={(sortOptions.find(e => e.name === values.payment.value)).name}
                                                 onChange={selectedSort => setValues({
                                                     ...values, payment: {
                                                         ...values.payment, value: selectedSort
                                                     }
                                                 })}
                                                 options={sortOptions}
+                                                ruValue={true}
                                             />
                                         </div>
                                         <FormFields

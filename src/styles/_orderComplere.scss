@@ -1,0 +1,147 @@
+.complete_container {
+    width: 100%;
+
+    .complete_content {
+        margin: 0 auto;
+        flex-direction: column;
+
+        .title {
+            margin: 30px 0;
+            font-size: 35px;
+        }
+
+        .subtitle {
+            margin-bottom: 25px;
+        }
+
+        .order-details-block {
+            margin-bottom: 20px;
+            display: flex;
+
+            .order-details-info {
+                min-height: 400px;
+                padding: 15px 30px 25px 30px;
+                border: 1px solid #2222221a;
+                width: 65%;
+                margin: 0 12px;
+
+                .order-info {
+                    &>p {
+                        width: 100%;
+                        font-size: 15px;
+                        font-weight: bold;
+                        margin: 12px 0;
+                    }
+
+                    .info-block {
+                        display: inline-block;
+                        width: 50%;
+                        padding: 5px 30px 5px 0;
+
+                        p {
+                            margin: 6px 0;
+                            font-size: 15px;
+                        }
+
+                        .info-title {
+                            color: rgba(34, 34, 34, 0.502);
+                        }
+                    }
+                }
+            }
+
+            .order-products-list {
+                width: 35%;
+                margin: 0 12px;
+                padding: 20px;
+
+                .products-list-title {
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                    padding-bottom: 15px;
+                    border-bottom: 1px solid #e4e4e4;
+                }
+
+                .products-list {
+                    max-height: 300px;
+                    overflow-y: scroll;
+
+                    &::-webkit-scrollbar {
+                        width: 3px;
+                        height: 4px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-color: #a4a4a4;
+                        width: 10px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background-color: #e2e2e2;
+                        box-shadow: 0px 0px 3px #ffffff inset;
+                    }
+
+                    .item {
+                        margin-bottom: 20px;
+                        padding-bottom: 20px;
+                        border-bottom: 1px solid #dedede;
+                        width: 100%;
+                        display: flex;
+
+                        .image {
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: column;
+                            width: 30%;
+                            background-color: #fff;
+                            border: 1px solid #ebebeb;
+
+                            img {
+                                max-width: 100%;
+                            }
+                        }
+
+                        .name-block {
+                            line-height: 130%;
+                            width: 70%;
+                            padding: 8px 10px 10px 20px;
+
+                            .product-name {
+                                display: block;
+                                color: inherit;
+                                margin-bottom: 5px;
+                                text-decoration: none;
+                            }
+
+                            p, .value {
+                                color: rgba(34, 34, 34, 0.502);
+                                font-size: 15px;
+                            }
+
+                            .value {
+                                .value-block {
+                                    display: inline-block;
+                                    font-weight: bold;
+
+                                    span {
+                                        text-decoration: line-through;
+                                        font-size: 14px;
+                                        margin-right: 6px;
+                                        font-weight: normal;
+                                    }
+                                }
+                            }
+
+                            .price {
+                                color: inherit;
+                                margin-top: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -3,13 +3,16 @@ const defaultState = {
     isPromocode: {
         isUsed: false,
         discount: 0
-    }
+    },
+    order: {}
 }
 
 export const CHANGE_PRODUCT = 'CHANGE_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const REMOVE_BASKET = 'REMOVE_BASKET';
+export const REMOVE_PROMOCODE = 'REMOVE_PROMOCODE';
 export const SET_PROMOCODE = 'SET_PROMOCODE';
+export const SET_ORDER = 'SET_ORDER';
 
 export default function basketReducer(state = defaultState, action) {
     switch (action.type) {
@@ -20,6 +23,12 @@ export default function basketReducer(state = defaultState, action) {
                     isUsed: true,
                     discount: action.payload
                 }
+            }
+        case SET_ORDER:
+            const { id, nameSurname, city, telephone, email, wishes, payment, adress, orderNumber, date, status, sum, products } = action.payload;
+            return {
+                ...state,
+                order: { id, nameSurname, city, telephone, email, wishes, payment, adress, orderNumber, date, status, sum, products }
             }
         case CHANGE_PRODUCT:
             const findProduct = state.basket.find(product =>
@@ -77,6 +86,14 @@ export default function basketReducer(state = defaultState, action) {
                 ...state,
                 basket: []
             }
+        case REMOVE_PROMOCODE:
+            return {
+                ...state,
+                isPromocode: {
+                    isUsed: false,
+                    discount: 0
+                }
+            }
         default:
             return state
     }
@@ -85,4 +102,6 @@ export default function basketReducer(state = defaultState, action) {
 export const changeProductCreator = (payload) => ({ type: CHANGE_PRODUCT, payload });
 export const removeProductCreator = (payload) => ({ type: REMOVE_PRODUCT, payload });
 export const removeBasketCreator = (payload) => ({ type: REMOVE_BASKET, payload });
+export const removePromocodeCreator = (payload) => ({ type: REMOVE_PROMOCODE, payload });
 export const setPromocodeCreator = (payload) => ({ type: SET_PROMOCODE, payload });
+export const setOrderCreator = (payload) => ({ type: SET_ORDER, payload });

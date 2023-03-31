@@ -6,7 +6,6 @@ import NoItems from '../components/basket/NoItems';
 import RoutePanel from '../components/UI/routePanel/RoutePanel';
 import { changeArrCreator } from '../store/routePanelReducer';
 import { getTotalPrice } from '../utils/basket';
-import { closeSidebar } from '../utils/toggleClass';
 
 const Basket = () => {
     const dispatch = useDispatch();
@@ -46,7 +45,6 @@ const Basket = () => {
                                 </div>
                                 <Link
                                     to={`/shop/checkout`}
-                                    onClick={() => closeSidebar('basket')}
                                     className="full-checkout"
                                 >
                                     <button>

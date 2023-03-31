@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { generateOrderHash, getTotalDisctountPrice, getTotalPrice } from '../../utils/basket';
+import { generateOrderHash, getTotalDiscountPrice, getTotalPrice } from '../../utils/basket';
 import ProductItem from './ProductItem';
 import PromocodeBlock from './PromocodeBlock';
 
@@ -41,7 +41,7 @@ const BasketInfo = ({ basket }) => {
                         {
                             isPromocode.isUsed
                                 ?
-                                <span>{getTotalDisctountPrice(basket, isPromocode.discount)} ₴</span>
+                                <span>{getTotalDiscountPrice(basket, isPromocode.discount)} ₴</span>
                                 :
                                 <span>{getTotalPrice(basket)} ₴</span>
                         }

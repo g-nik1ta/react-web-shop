@@ -8,7 +8,16 @@ export const getTotalPrice = (basket) => {
     return (Number(totalPrice)).toLocaleString('ru')
 }
 
-export const getTotalDisctountPrice = (basket, discount) => {
+export const getFullProductPrice = (item) => {
+    if (item.promotionalPrice) {
+        const totalPrice = Number(item.promotionalPrice) * item.count;
+        return (Number(totalPrice)).toLocaleString('ru')
+    }
+    const totalPrice = Number(item.price) * item.count;
+    return (Number(totalPrice)).toLocaleString('ru')
+}
+
+export const getTotalDiscountPrice = (basket, discount) => {
     const totalPrice = getTotalPrice(basket);
     const totalPriceFormat = Number(totalPrice.replace(/\s/g, ''));
     const result = totalPriceFormat * ( 1 - (discount / 100));

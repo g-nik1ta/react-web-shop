@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import PostService from '../../API/PostService';
 import { useFetching } from '../../hooks/useFetching'; 
+import { removeBasketCreator, removePromocodeCreator, setOrderCreator } from '../../store/basketReducer';
 import { generateOrderHash, getFullDate, getStatus, getTotalPrice } from '../../utils/basket';
 import { setValuesError, validations } from '../../utils/formValidations';
 import { closeSidebar } from '../../utils/toggleClass';
@@ -9,6 +11,7 @@ import FormFields from '../FormFields';
 import Loader from '../UI/loader/Loader';
 
 const ExpressCheckout = (props) => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const basket = useSelector(state => state.basketReducer.basket);
 
@@ -41,6 +44,10 @@ const ExpressCheckout = (props) => {
 
     const [fetchForm, isFormLoading, formError] = useFetching(async (formValues) => {
         await PostService.sendOrderForm(formValues);
+        dispatch(setOrderCreator(formValues));
+        dispatch(removeBasketCreator());
+        dispatch(removePromocodeCreator());
+        navigate(`/shop/complete/${formValues.orderNumber.slice(1)}`);
         closeSidebar('basket');
     })
 
@@ -65,8 +72,9 @@ const ExpressCheckout = (props) => {
                 status: getStatus(dateNow.split(' ')[0]),
                 sum: `${getTotalPrice(basket)} ₴`,
                 products: basket.map(item => {
-                    const { count, id, productCharacteristics, price, productUrl_1, promotionalPrice, title, vendorCode } = item;
-                    return { count, id, productCharacteristics, price, productUrl_1, promotionalPrice, title, vendorCode };
+                    const sub = item.mdfSub ? item.mdfSub : null;
+                    const { count, id, productCharacteristics, price, productUrl_1, promotionalPrice, title, productName, vendorCode } = item;
+                    return { count, id, productCharacteristics, sub, price, productUrl_1, promotionalPrice, title, productName, vendorCode };
                 })
             }
             await fetchForm(formValues);
