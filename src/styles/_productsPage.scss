@@ -1,8 +1,6 @@
 .product_container {
     width: 100%;
     background-color: #fff;
-    display: flex;
-    min-height: 400px;
 
     .product_content {
         align-items: center;
@@ -161,7 +159,7 @@
                     font-size: 22px;
                     font-weight: bold;
 
-                    .promotionalPrice {
+                    span {
                         color: #ACACAC;
                         text-decoration: line-through;
                         font-size: 20px;

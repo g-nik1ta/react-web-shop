@@ -1,4 +1,4 @@
-export const getTotalPtice = (basket) => {
+export const getTotalPrice = (basket) => {
     let totalPrice = 0;
     basket.forEach(item => {
         if (item.promotionalPrice) {
@@ -6,6 +6,13 @@ export const getTotalPtice = (basket) => {
         } else totalPrice += Number(item.price) * item.count;
     });
     return (Number(totalPrice)).toLocaleString('ru')
+}
+
+export const getTotalDisctountPrice = (basket, discount) => {
+    const totalPrice = getTotalPrice(basket);
+    const totalPriceFormat = Number(totalPrice.replace(/\s/g, ''));
+    const result = totalPriceFormat * ( 1 - (discount / 100));
+    return (Number(result)).toLocaleString('ru')
 }
 
 export const getTotalLength = (basket) => {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { generateOrderHash, getTotalPtice } from '../../utils/basket';
+import { Link } from 'react-router-dom';
+import { generateOrderHash, getTotalPrice } from '../../utils/basket';
 import { closeSidebar } from '../../utils/toggleClass';
 import ProductItem from './ProductItem';
 
@@ -16,14 +17,17 @@ const BasketItems = ({ basket, setExpressCheckout }) => {
                 <div className="basket-btn-block">
                     <div className="total">
                         <p>Всего</p>
-                        <p>{getTotalPtice(basket)} ₴</p>
+                        <p>{getTotalPrice(basket)} ₴</p>
                     </div>
                     <div className="checkout-options">
-                        <button
-                            className="full-checkout"
+                        <Link
+                            to={`/shop/checkout`}
+                            onClick={() => closeSidebar('basket')}
                         >
-                            Оформить
-                        </button>
+                            <button className="full-checkout">
+                                Оформить
+                            </button>
+                        </Link>
                         <button
                             onClick={() => setExpressCheckout(true)}
                             className="express-checkout"

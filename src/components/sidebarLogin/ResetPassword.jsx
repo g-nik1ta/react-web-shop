@@ -57,41 +57,41 @@ const ResetPassword = (props) => {
                     <>
                         <h1 className="title">Вход</h1>
                         {
-                            formError &&
-                            <h4>Возникла ошибка! <br /> <i>{formError}</i></h4>
-                        }
-                        {
-                            isFormLoading
+                            formError
                                 ?
-                                <Loader scale={.5} />
+                                <h4>Возникла ошибка! <br /> <i>{formError.message}</i></h4>
                                 :
-                                <div className="content">
-                                    <p className='description'>Пожалуйста, укажите адрес электронной почты и мы вышлим Вам инструкцию, как изменить пароль на новый.</p>
-                                    <form>
-                                        <FormFields
-                                            values={values}
-                                            item={'email'}
-                                            title={'Email'}
-                                            setValues={setValues}
-                                        />
-                                        <button
-                                            onClick={sendForm}
-                                            className="sendFormBtn"
-                                        >
-                                            Отправить
-                                        </button>
-                                    </form>
-                                    <div className="sign-in-block">
-                                        <span onClick={() => props.setResetPassword(false)}>
-                                            Вход&nbsp;
-                                        </span>
-                                        |
-                                        <span onClick={() => {
-                                            props.setResetPassword(false)
-                                            props.setIsRegister(true)
-                                        }}> Зарегистрироваться</span>
+                                isFormLoading
+                                    ?
+                                    <Loader scale={.5} />
+                                    :
+                                    <div className="content">
+                                        <p className='description'>Пожалуйста, укажите адрес электронной почты и мы вышлим Вам инструкцию, как изменить пароль на новый.</p>
+                                        <form>
+                                            <FormFields
+                                                values={values}
+                                                item={'email'}
+                                                title={'Email'}
+                                                setValues={setValues}
+                                            />
+                                            <button
+                                                onClick={sendForm}
+                                                className="sendFormBtn"
+                                            >
+                                                Отправить
+                                            </button>
+                                        </form>
+                                        <div className="sign-in-block">
+                                            <span onClick={() => props.setResetPassword(false)}>
+                                                Вход&nbsp;
+                                            </span>
+                                            |
+                                            <span onClick={() => {
+                                                props.setResetPassword(false)
+                                                props.setIsRegister(true)
+                                            }}> Зарегистрироваться</span>
+                                        </div>
                                     </div>
-                                </div>
                         }
                     </>
             }

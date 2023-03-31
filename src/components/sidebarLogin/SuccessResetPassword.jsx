@@ -4,7 +4,7 @@ const SuccessResetPassword = (props) => {
     return (
         <>
             <h1 className="title">Проверьте почту</h1>
-            <div className="sign-in__wrapper">
+            <div className="content">
                 <p className='description'>Инструкция о том, как изменить пароль была выслана на указанный вами на адрес электронной почты.</p>
                 <button
                     onClick={() => props.setResetPassword(false)}

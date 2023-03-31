@@ -68,10 +68,10 @@ const Login = (props) => {
         <>
             <h1 className="title">Вход</h1>
             {
-                loginError &&
-                <h4>Возникла ошибка! <br /> <i>{loginError}</i></h4>
-            }
-            {
+                loginError
+                ?
+                <h4>Возникла ошибка! <br /> <i>{loginError.message}</i></h4>
+                :
                 isLoginLoading
                     ?
                     <Loader scale={.5} />

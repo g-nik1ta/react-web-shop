@@ -1,0 +1,362 @@
+.checkout_container {
+    width: 100%;
+
+    .checkout_content {
+        margin: 0 auto;
+        flex-direction: column;
+
+        .title {
+            margin: 30px 0;
+            font-size: 35px;
+        }
+
+        .no-orders {
+            height: 140px;
+            text-align: center;
+        }
+
+        .checkout-block {
+            display: flex;
+
+            .form-block {
+                margin: 0 10px;
+                padding-right: 50px;
+                width: 65%;
+
+                .new-existing-block {
+                    margin-bottom: 50px;
+                    display: flex;
+
+                    span {
+                        cursor: pointer;
+                        margin-right: 30px;
+                        padding: 5px 0;
+                        font-size: 13.5px;
+                        font-weight: bold;
+                        transition: .5s all ease-in-out;
+                        color: #5f6d92;
+                        opacity: .5;
+
+                        &.current {
+                            opacity: 1;
+                            border-bottom: 1px solid #000;
+                        }
+
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+
+                    .socials-btn-login {
+                        margin-left: auto;
+
+                        div {
+                            cursor: pointer;
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: 100%;
+                            margin-left: 20px;
+
+                            &.facebook {
+                                background-image: url("../assets/facebook.svg");
+                            }
+
+                            &.google {
+                                background-image: url("../assets/google.svg");
+                            }
+                        }
+                    }
+                }
+
+                form {
+                    .field {
+                        padding: 7px;
+                        width: 50%;
+                        display: inline-grid;
+
+                        label {
+                            margin-bottom: 5px;
+                            font-size: 13px;
+                            display: block;
+                        }
+
+                        input {
+                            width: 100%;
+                            outline: none;
+                            padding: 10px;
+                            font-size: 16px;
+                            border-radius: 3px;
+                            border: 1px solid #dcdcdc;
+                            transition: border-color 0.3s ease !important;
+
+                            &.blocked {
+                                opacity: .5;
+                                cursor: not-allowed;
+                            }
+
+                            &::-webkit-outer-spin-button,
+                            &::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+
+                            &:focus {
+                                border-color: rgb(133, 133, 133);
+                            }
+                        }
+
+                        .field-error {
+                            margin-top: 5px;
+                            font-size: 10px;
+                            color: #d93025;
+                        }
+                    }
+
+                    .subtitle {
+                        margin: 25px 0;
+                        font-size: 21px;
+                        font-weight: normal;
+                    }
+
+                    .payment-field {
+                        padding: 7px;
+                        width: 50%;
+                        display: inline-grid;
+
+                        &>span {
+                            margin-bottom: 5px;
+                            font-size: 13px;
+                            display: block;
+                        }
+
+                        &>div {
+                            height: 40px;
+                            padding: 10px;
+                            font-size: 16px;
+                            border-radius: 3px;
+                            border: 1px solid #dcdcdc;
+                            transition: border-color 0.3s ease !important;
+                        }
+                    }
+
+                    .description-delivery {
+                        padding: 20px;
+                        background-color: #fff;
+                        border: 1px solid #ebebeb;
+                        width: 100%;
+                        text-align: center;
+                        font-size: 15px;
+                    }
+
+                    button {
+                        margin: 25px 0;
+                        background-color: #5f6d92;
+                        color: #fff;
+                        float: right;
+                        font-weight: bold;
+
+                        &:hover {
+                            background-color: #4b5673;
+                        }
+                    }
+                }
+            }
+
+            .basket-info {
+                width: 35%;
+                margin: 0 10px;
+                padding: 30px 0;
+
+                .edit-block {
+                    padding: 0 40px;
+                    display: flex;
+                    margin-bottom: 30px;
+
+                    .subtitle {
+                        display: inline-block;
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+
+                    .edit {
+                        display: inline-block;
+                        margin-left: auto;
+
+                        a {
+                            color: #5f6d92;
+                            font-size: 14px;
+                            border-bottom: 1px dashed #5f6d92;
+                            transition: 1s all ease;
+                            text-decoration: none;
+
+                            &:hover {
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+
+                .shopping-cart {
+                    .card-items {
+                        margin-bottom: 10px;
+                        max-height: 250px;
+                        overflow-y: scroll;
+                        padding: 0 40px;
+
+                        .item {
+                            margin-bottom: 20px;
+                            padding-bottom: 20px;
+                            border-bottom: 1px solid #dedede;
+                            width: 100%;
+                            display: flex;
+
+                            .image {
+                                display: flex;
+                                justify-content: center;
+                                flex-direction: column;
+                                width: 30%;
+                                background-color: #fff;
+                                border: 1px solid #ebebeb;
+
+                                img {
+                                    max-width: 100%;
+                                }
+                            }
+
+                            .name-block {
+                                line-height: 125%;
+                                width: 70%;
+                                padding: 8px 0 10px 20px;
+
+                                .product-name {
+                                    font-weight: bold;
+                                    margin: 5px 0;
+                                    text-decoration: none;
+                                    color: #5f6d92;
+                                    transition: 1s all ease-in-out;
+
+                                    &:hover {
+                                        color: #000;
+                                    }
+                                }
+
+                                .details {
+                                    margin: 10px 0;
+                                    font-size: 13px;
+                                }
+
+                                .price-count {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    padding: 5px 0;
+                                    font-size: 13px;
+
+                                    .price-block {
+                                        font-size: 13px;
+                                        font-weight: bold;
+
+                                        span {
+                                            color: #ACACAC;
+                                            text-decoration: line-through;
+                                            font-size: 12px;
+                                            margin-right: 6px;
+                                            font-weight: normal;
+                                        }
+                                    }
+
+                                    .count {
+                                        font-size: 13px;
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .total {
+
+                        .total-price,
+                        .total-delivery {
+                            padding: 10px 40px;
+                            font-size: 14px;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+
+                        .promocode-block {
+                            padding: 5px 40px 0;
+                            margin-top: 10px;
+                            border-top: 1px dashed #ddd;
+
+                            span {
+                                display: block;
+                                margin: 10px 0;
+                                font-size: 15px;
+                            }
+
+                            input {
+                                width: 80%;
+                                height: 38px;
+                                font-size: 16px;
+                                outline: none;
+                                padding: 10px;
+                                border-radius: 3px;
+                                background: #fff;
+                                transition: border-color 0.3s ease !important;
+                                border: 1px solid #dcdcdc;
+
+                                &::placeholder {
+                                    opacity: 0.3;
+                                    font-size: 15px;
+                                }
+
+                                &:focus {
+                                    border-color: rgb(133, 133, 133);
+                                }
+                            }
+
+                            button {
+                                cursor: pointer;
+                                width: 18%;
+                                height: 38px;
+                                background-color: #ccc;
+                                border: 1px solid #bbb;
+                                color: #5f6d92;
+                                font-size: 16px;
+                                text-align: center;
+                                float: right;
+                            }
+                        }
+
+                        .promocode-error {
+                            padding: 6px 40px;
+                            font-size: 14px;
+                            color: red;
+                            display: block;
+                        }
+
+                        .promocode-success {
+                            padding: 6px 40px;
+                            font-size: 15px;
+                            color: #5f6d92;
+                            display: block;
+                        }
+
+                        .total-all {
+                            padding: 25px 0 10px 40px;
+                            margin-top: 15px;
+                            border-top: 1px dashed #ddd;
+                            font-size: 19px;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -81,70 +81,70 @@ const Register = (props) => {
         <>
             <h1 className="title">Регистрация</h1>
             {
-                formError &&
-                <h4>Возникла ошибка! <br /> <i>{formError}</i></h4>
-            }
-            {
-                isFormLoading
+                formError
                     ?
-                    <Loader scale={.5} />
+                    <h4>Возникла ошибка! <br /> <i>{formError.message}</i></h4>
                     :
-                    <div className="content">
-                        <form>
-                            <FormFields
-                                values={values}
-                                item={'email'}
-                                title={'Email'}
-                                setValues={setValues}
-                            />
-                            <FormFields
-                                values={values}
-                                item={'password'}
-                                title={'Пароль'}
-                                setValues={setValues}
-                            />
-                            <FormFields
-                                values={values}
-                                item={'confirmPassword'}
-                                title={'Повторите пароль'}
-                                setValues={setValues}
-                            /> 
-                            <FormFields
-                                values={values}
-                                item={'name'}
-                                title={'Имя'}
-                                setValues={setValues}
-                            /> 
-                            <FormFields
-                                values={values}
-                                item={'surname'}
-                                title={'Фамилия'}
-                                setValues={setValues}
-                            /> 
-                            <FormFields
-                                values={values}
-                                item={'telephone'}
-                                title={'Номер телефона'}
-                                setValues={setValues}
-                            /> 
-                            <button
-                                onClick={sendForm}
-                                className="sendFormBtn"
-                            >
-                                Зарегистрироваться
-                            </button>
-                        </form>
-                        <div className="sign-in-block">
-                            <span onClick={() => props.setIsRegister(false)}>
-                                Вход&nbsp;
-                            </span>
-                            |
-                            <span onClick={() => {
-                                props.setIsRegister(false)
-                                props.setResetPassword(true)
-                            }}> Забыли пароль?</span>
+                    isFormLoading
+                        ?
+                        <Loader scale={.5} />
+                        :
+                        <div className="content">
+                            <form>
+                                <FormFields
+                                    values={values}
+                                    item={'email'}
+                                    title={'Email'}
+                                    setValues={setValues}
+                                />
+                                <FormFields
+                                    values={values}
+                                    item={'password'}
+                                    title={'Пароль'}
+                                    setValues={setValues}
+                                />
+                                <FormFields
+                                    values={values}
+                                    item={'confirmPassword'}
+                                    title={'Повторите пароль'}
+                                    setValues={setValues}
+                                />
+                                <FormFields
+                                    values={values}
+                                    item={'name'}
+                                    title={'Имя'}
+                                    setValues={setValues}
+                                />
+                                <FormFields
+                                    values={values}
+                                    item={'surname'}
+                                    title={'Фамилия'}
+                                    setValues={setValues}
+                                />
+                                <FormFields
+                                    values={values}
+                                    item={'telephone'}
+                                    title={'Номер телефона'}
+                                    setValues={setValues}
+                                />
+                                <button
+                                    onClick={sendForm}
+                                    className="sendFormBtn"
+                                >
+                                    Зарегистрироваться
+                                </button>
+                            </form>
+                            <div className="sign-in-block">
+                                <span onClick={() => props.setIsRegister(false)}>
+                                    Вход&nbsp;
+                                </span>
+                                |
+                                <span onClick={() => {
+                                    props.setIsRegister(false)
+                                    props.setResetPassword(true)
+                                }}> Забыли пароль?</span>
+                            </div>
                         </div>
-                    </div>
             }
         </>
     )

@@ -14,7 +14,7 @@ export const validations = (values) => {
                 break;
             case 'email':
                 const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!(emailRegexp.test(values[key].value))) {
+                if (!(emailRegexp.test(values[key].value.trim()))) {
                     keyFound.push('email')
                 }
             default:
@@ -61,7 +61,7 @@ export const errorText = (values, field) => {
                     ?
                     'Пожалуйста, введите адрес электронной почты'
                     :
-                    !(emailRegexp.test(values.email.value)) &&
+                    !(emailRegexp.test(values.email.value.trim())) &&
                     'Пожалуйста, введите корректный адрес электронной почты'
         case 'password':
             return values.password.errorMessage
@@ -86,6 +86,18 @@ export const errorText = (values, field) => {
         case 'telephone':
             return values.telephone.value.trim().length === 0 &&
                 'Пожалуйста, укажите ваш телефон'
+        case 'surname':
+            return values.surname.value.trim().length === 0 &&
+                'Пожалуйста, введите свою фамилию'
+        case 'city':
+            return values.city.value.trim().length === 0 &&
+                'Пожалуйста, введите свой или ближайщий к вам город'
+        case 'payment':
+            return values.payment.value.trim().length === 0 &&
+                'Пожалуйста, выберете способ оплаты'
+        case 'adress':
+            return values.adress.value.trim().length === 0 &&
+                'Пожалуйста, введите отделение новой почты в вашем городе'
     }
 }
 

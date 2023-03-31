@@ -57,7 +57,7 @@ const Product = () => {
                 ...productCharacteristics, color: currentMdf1.mdf
             })
         }
-    }, [params]); 
+    }, [params]);
 
     const addProductBasket = () => {
         dispatch(changeProductCreator({ product, count: 1, productCharacteristics }));
@@ -82,17 +82,20 @@ const Product = () => {
                                 {getCamelCase(product.manufacturer)}
                             </strong>
                             </p>
-                            <p className='price-block'>
-                                <span className='price'>
-                                    {(Number(product.price)).toLocaleString('ru')} ₴ &nbsp;
-                                </span>
-                                {
-                                    product.promotionalPrice &&
-                                    <span className='promotionalPrice'>
+                            {
+                                product.promotionalPrice
+                                    ?
+                                    <p className='price-block'>
+                                        <span>
+                                            {(Number(product.price)).toLocaleString('ru')} ₴
+                                        </span>
                                         {(Number(product.promotionalPrice)).toLocaleString('ru')} ₴
-                                    </span>
-                                }
-                            </p>
+                                    </p>
+                                    :
+                                    <p className='price-block'>
+                                        {(Number(product.price)).toLocaleString('ru')} ₴
+                                    </p>
+                            }
                             <ProductModifications
                                 product={product}
                                 setProductsGallery={setProductsGallery}

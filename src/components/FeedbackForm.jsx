@@ -130,19 +130,19 @@ const FeedbackForm = () => {
                 />
             </div>
             {
-                formError &&
-                <h4>Возникла ошибка! <br /> <i>{formError}</i></h4>
-            }
-            {
-                isFormLoading
+                formError
                     ?
-                    <Loader scale={.5} />
+                    <h4>Возникла ошибка! <br /> <i>{formError.message}</i></h4>
                     :
-                    <div className="sendFormBtn">
-                        <MyButton onClick={sendForm}>
-                            Отправить
-                        </MyButton>
-                    </div>
+                    isFormLoading
+                        ?
+                        <Loader scale={.5} />
+                        :
+                        <div className="sendFormBtn">
+                            <MyButton onClick={sendForm}>
+                                Отправить
+                            </MyButton>
+                        </div>
             }
         </form>
     )

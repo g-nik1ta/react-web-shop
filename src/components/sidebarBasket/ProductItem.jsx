@@ -46,18 +46,31 @@ const ProductItem = ({ item }) => {
                         {getCamelCase(item.manufacturer)}
                     </span>
                 </Link>
+                <p className='details'>
+                    Цвет: "{getCamelCase(item.productCharacteristics.color)}"
+                    {
+                        item.mdfSub
+                        ?
+                        `, ${item.mdfSub}: ${item.productCharacteristics.mdf}`
+                        :
+                        null
+                    }
+                </p>
                 <div className="price-count">
-                    <p className='price-block'>
-                        <span className='price'>
-                            {(Number(item.price)).toLocaleString('ru')} ₴ &nbsp;
-                        </span>
-                        {
-                            item.promotionalPrice &&
-                            <span className='promotionalPrice'>
+                    {
+                        item.promotionalPrice
+                            ?
+                            <p className='price-block'>
+                                <span>
+                                    {(Number(item.price)).toLocaleString('ru')} ₴
+                                </span>
                                 {(Number(item.promotionalPrice)).toLocaleString('ru')} ₴
-                            </span>
-                        }
-                    </p>
+                            </p>
+                            :
+                            <p className='price-block'>
+                                {(Number(item.price)).toLocaleString('ru')} ₴
+                            </p>
+                    }
                     <div className="count">
                         <span
                             ref={decrementRef}
@@ -78,7 +91,7 @@ const ProductItem = ({ item }) => {
                 </div>
                 <p
                     className="remove"
-                    onClick={() => dispatch(removeProductCreator({product: item, productCharacteristics: item.productCharacteristics}))}>
+                    onClick={() => dispatch(removeProductCreator({ product: item, productCharacteristics: item.productCharacteristics }))}>
                     Удалить
                 </p>
             </div>

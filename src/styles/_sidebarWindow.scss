@@ -36,7 +36,7 @@
                             justify-content: center;
 
                             img {
-                                width: 100%;
+                                max-width: 100%;
                             }
                         }
 
@@ -54,6 +54,12 @@
                                 }
                             }
 
+                            .details {
+                                opacity: .5;
+                                margin: 10px 0;
+                                font-size: 14px;
+                            }
+
                             .price-count {
                                 margin: 13px 0;
                                 display: flex;
@@ -63,8 +69,8 @@
                                 .price-block {
                                     font-size: 14px;
                                     font-weight: bold;
-                
-                                    .promotionalPrice {
+                                    
+                                    span {
                                         color: #ACACAC;
                                         text-decoration: line-through;
                                         font-size: 12px;
