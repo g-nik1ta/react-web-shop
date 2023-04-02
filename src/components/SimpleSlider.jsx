@@ -39,7 +39,7 @@ const SimpleSlider = () => {
                         className='slider-item'
                     >
                         <div className='slider-item__bcg'>
-                            <div className="slider-info">
+                            <div className="slider-info row">
                                 <h1 className='head-title'>
                                     {item.headTitle}
                                 </h1>
