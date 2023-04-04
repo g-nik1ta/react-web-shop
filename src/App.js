@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import SidebarLogin from './components/sidebarLogin/SidebarLogin';
 import SidebarBasket from './components/sidebarBasket/SidebarBasket';
 import SidebarNav from './components/SidebarNav';
+import Search from './components/UI/search/Search';
 
 function App() {
 	return (
@@ -15,6 +16,9 @@ function App() {
 			<div className='app'>
 				<Header />
 				<Navbar />
+				<div className='search-header'>
+					<Search />
+				</div>
 				<SidebarLogin />
 				<SidebarBasket />
 				<AppRouter />

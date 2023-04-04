@@ -19,7 +19,7 @@ const Search = () => {
     }, [searchValue])
 
     return (
-        <div className={cls.search__container}>
+        <div className={`${cls.search__container} search-container`}>
             <input
                 value={searchValue}
                 onChange={e => setSearchValue(e.target.value)}

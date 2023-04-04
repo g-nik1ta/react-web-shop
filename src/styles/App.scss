@@ -17,6 +17,8 @@
 @import 'checkout';
 @import 'basket';
 @import 'orderComplere';
+@import 'adaptive';
+@import 'sidebarNav';
 
 * {
     margin: 0;
@@ -39,6 +41,10 @@
     box-shadow: 0px 0px 3px #ffffff inset;
 }
 
+body.open {
+    overflow-x: hidden;
+}
+
 #root {
     background-color: #f5f5f5;
     font-family: Roboto, sans-serif;
@@ -48,9 +54,23 @@
 .app {
     display: flex;
     flex-direction: column;
+    transition: transform .25s ease-in-out;
+}
+
+.app.open {
+    transform: translateX(400px);
 }
 
 .row {
     width: 1200px;
     display: flex;
+}
+
+.search-header {
+    display: none;
+    background-color: #fff;
+
+    & > div {
+        border: 1px solid #eaeaea;
+    }
 }

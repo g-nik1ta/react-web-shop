@@ -62,7 +62,7 @@ const Auth = () => {
                     ?
                     <span
                         className="auth"
-                        onClick={() => openSidebar('login')}
+                        onClick={() => openSidebar('.sidebar-window.login')}
                     >
                         Здравствуйте, {
                             user.name

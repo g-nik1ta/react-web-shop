@@ -13,7 +13,7 @@ const SidebarBasket = () => {
         <div className='sidebar-window basket'>
             <span
                 className='close-window'
-                onClick={() => {closeSidebar('basket'); setExpressCheckout(false)}}
+                onClick={() => {closeSidebar('.sidebar-window.basket'); setExpressCheckout(false)}}
             >&#10006;</span>
             <div className="content__wrapper">
                 {

@@ -10,7 +10,7 @@ const Basket = () => {
     return (
         <div
             className={cls.basket}
-            onClick={() => openSidebar('basket')}
+            onClick={() => openSidebar('.sidebar-window.basket')}
         >
             <span className={cls.itemsCount}>
                 {getTotalLength(basket)}

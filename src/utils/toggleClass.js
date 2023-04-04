@@ -18,9 +18,13 @@ export const hiddenFields = (e, visibleBlockRef) => {
 }
 
 export const openSidebar = (window) => {
-    document.querySelector(`.sidebar-window.${window}`).classList.add('open');
+    document.querySelector(window).classList.add('open');
 }
 
 export const closeSidebar = (window) => {
-    document.querySelector(`.sidebar-window.${window}`).classList.remove('open');
+    document.querySelector(window).classList.remove('open');
+}
+
+export const toggleSidebar = (window) => {
+    document.querySelector(window).classList.toggle('open');
 }

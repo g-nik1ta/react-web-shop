@@ -48,7 +48,7 @@ const ExpressCheckout = (props) => {
         dispatch(removeBasketCreator());
         dispatch(removePromocodeCreator());
         navigate(`/shop/complete/${formValues.orderNumber.slice(1)}`);
-        closeSidebar('basket');
+        closeSidebar('.sidebar-window.basket');
     })
 
     const sendForm = async (e) => {

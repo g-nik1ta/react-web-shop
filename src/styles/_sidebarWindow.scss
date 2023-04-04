@@ -251,11 +251,17 @@
                 padding-left: 5px;
                 font-size: 17px;
                 max-width: 65%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
 
                 span {
                     display: block;
                     opacity: .5;
                     font-size: 14px;
+                    white-space: inherit;
+                    overflow: inherit;
+                    text-overflow: inherit;
                 }
             }
         }
@@ -431,6 +437,7 @@
                         display: block;
                         opacity: .5;
                         font-size: 15px;
+                        text-align: right;
                         transition: 1s all ease;
 
                         &:hover {

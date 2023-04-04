@@ -15,7 +15,7 @@ const SidebarLogin = () => {
         <div className='sidebar-window login'>
             <span
                 className='close-window'
-                onClick={() => closeSidebar('login')}
+                onClick={() => closeSidebar('.sidebar-window.login')}
             >&#10006;</span>
             <div className="content__wrapper">
                 {

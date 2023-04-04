@@ -61,7 +61,7 @@ const Product = () => {
 
     const addProductBasket = () => {
         dispatch(changeProductCreator({ product, count: 1, productCharacteristics }));
-        openSidebar('basket');
+        openSidebar('.sidebar-window.basket');
     }
 
     if (!product) {

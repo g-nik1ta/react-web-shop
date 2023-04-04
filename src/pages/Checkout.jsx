@@ -26,13 +26,12 @@ const Checkout = () => {
     }
 
     const newUser = () => {
-        closeSidebar('login');
+        closeSidebar('.sidebar-window.login');
         newUserRef.current.classList.add('current');
         regularUserRef.current.classList.remove('current');
-
     }
     const regularUser = () => {
-        openSidebar('login');
+        openSidebar('.sidebar-window.login');
         regularUserRef.current.classList.add('current');
         newUserRef.current.classList.remove('current');
     }

@@ -39,7 +39,7 @@ const ContinueShopping = () => {
                     <p>В вашей корзине нет товаров.</p>
                 </div>
                 <button
-                    onClick={() => closeSidebar('basket')}
+                    onClick={() => closeSidebar('.sidebar-window.basket')}
                     className="continue-shopping"
                 >
                     Продолжить покупки

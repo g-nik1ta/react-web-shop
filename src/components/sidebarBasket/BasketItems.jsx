@@ -22,7 +22,7 @@ const BasketItems = ({ basket, setExpressCheckout }) => {
                     <div className="checkout-options">
                         <Link
                             to={`/shop/checkout`}
-                            onClick={() => closeSidebar('basket')}
+                            onClick={() => closeSidebar('.sidebar-window.basket')}
                         >
                             <button className="full-checkout">
                                 Оформить
@@ -36,7 +36,7 @@ const BasketItems = ({ basket, setExpressCheckout }) => {
                         </button>
                     </div>
                     <button
-                        onClick={() => closeSidebar('basket')}
+                        onClick={() => closeSidebar('.sidebar-window.basket')}
                         className="continue-shopping"
                     >
                         Продолжить покупки

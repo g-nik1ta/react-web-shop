@@ -30,6 +30,9 @@
             cursor: pointer;
             opacity: 1;
             display: flex;
+            max-width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
 
             &::before {
                 content: '';

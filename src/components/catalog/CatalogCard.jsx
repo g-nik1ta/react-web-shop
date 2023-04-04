@@ -37,7 +37,7 @@ const CatalogCard = ({ style, sort, filterManufacturer, filterPrice, product, ..
 
     const addProductBasket = () => {
         dispatch(changeProductCreator({ product, count: 1, productCharacteristics }));
-        openSidebar('basket');
+        openSidebar('.sidebar-window.basket');
     }
 
     return (
