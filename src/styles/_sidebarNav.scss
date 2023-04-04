@@ -1,0 +1,110 @@
+.sidebar-nav {
+    max-width: 400px;
+    height: 100vh;
+    top: 0;
+    left: -400px;
+    z-index: 99999;
+    position: fixed;
+    background-color: #fff;
+    box-shadow: rgb(0, 0, 0, 10%) -5px 0 53px;
+    transition: left 0.25s ease-in-out;
+    overflow-x: hidden;
+
+    &.open {
+        left: 0;
+    }
+
+    .sidebar-wrapper {
+        width: 800px;
+        display: flex;
+        transition: .4s all ease-in-out;
+
+        &.submenu-open {
+            transform: translateX(-400px);
+        }
+
+        .sidebar-content {
+            height: 100%;
+            width: 400px;
+
+            ul {
+                list-style: none;
+
+                &>* {
+                    border-bottom: 1px solid #f5f5f5;
+                }
+
+                .buyers-nav-header {
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    background-color: #5f6d92;
+
+                    span {
+                        cursor: pointer;
+                        padding: 15px;
+
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 6px;
+                            height: 6px;
+                            transform: rotate(-45deg) translate(6px, 5px);
+                            border: 2px solid #fff;
+                            border-bottom: none;
+                            border-right: none;
+                            margin-right: 10px;
+                        }
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: #fff;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                }
+
+                .title {
+                    padding: 20px;
+                    font-size: 22px;
+                    color: #5f6d92;
+                    background-color: #f5f5f5;
+                }
+
+                .buyers-nav {
+                    display: flex;
+                    justify-content: space-between;
+
+                    span {
+                        border-left: 1px solid #f5f5f5;
+                        cursor: pointer;
+
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 8px;
+                            height: 8px;
+                            transform: rotate(-45deg) translateY(6px);
+                            border: 2px solid #5f6d92;
+                            border-top: none;
+                            border-left: none;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+
+                li>* {
+                    display: block;
+                    text-decoration: none;
+                    color: inherit;
+                    padding: 15px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}

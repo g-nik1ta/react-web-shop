@@ -6,17 +6,21 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import SidebarLogin from './components/sidebarLogin/SidebarLogin';
 import SidebarBasket from './components/sidebarBasket/SidebarBasket';
+import SidebarNav from './components/SidebarNav';
 
 function App() {
 	return (
-		<div className='app'>
-			<Header/>
-            <Navbar/>
-			<SidebarLogin/>
-			<SidebarBasket/>
-			<AppRouter/>
-			<Footer/>
-		</div>
+		<>
+			<SidebarNav />
+			<div className='app'>
+				<Header />
+				<Navbar />
+				<SidebarLogin />
+				<SidebarBasket />
+				<AppRouter />
+				<Footer />
+			</div>
+		</>
 	)
 }
 
