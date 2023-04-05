@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import MultiRangeSlider from 'multi-range-slider-react';
 import { hiddenFields } from '../../utils/toggleClass';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeFilterPriceCreator } from '../../store/sortFilterReducer';
 
 const FilterPrice = (props) => {
+    const priceBorder = useSelector(state => state.sortFilterReducer.priceBorder);
+    const dispatch = useDispatch();
     const visibleBlockRef = useRef();
     const [minValue, setMinValue] = useState(props.filterPrice.minValue);
     const [maxValue, setMaxValue] = useState(props.filterPrice.maxValue);
@@ -53,14 +57,14 @@ const FilterPrice = (props) => {
                     value={maxValue}
                 />
                 <input
-                    onClick={() => props.setFilterPrice({ minValue, maxValue })}
+                    onClick={() => dispatch(changeFilterPriceCreator({ minValue, maxValue }))}
                     type="submit"
                     className='submit'
                     value="OK"
                 />
                 <MultiRangeSlider
-                    min={props.priceBorder.minPrice}
-                    max={props.priceBorder.maxPrice}
+                    min={priceBorder.minPrice}
+                    max={priceBorder.maxPrice}
                     minValue={minValue}
                     maxValue={maxValue}
                     onInput={(e) => {

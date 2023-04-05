@@ -5,6 +5,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import authReducer from "./authReducer";
 import categoryReducer from './categoryReducer';
 import basketReducer from './basketReducer';
+import sortFilterReducer from './sortFilterReducer';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     authReducer,
     categoryReducer,
     basketReducer,
+    sortFilterReducer
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

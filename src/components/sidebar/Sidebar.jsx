@@ -6,10 +6,11 @@ import FilterManufacturer from './FilterManufacturer';
 import FilterPrice from './FilterPrice';
 
 const Sidebar = (props) => {
+    const { sort, filterManufacturer, filterPrice } = useSelector(state => state.sortFilterReducer);
     const params = useParams();
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const category = useSelector(state => state.categoryReducer.category);
-    const manufacturerList = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort, props.currentCategory, true).map(product => product.manufacturer);
+    const manufacturerList = useProducts(catalog, filterPrice, filterManufacturer, sort, props.currentCategory, true).map(product => product.manufacturer);
     const fullManufacturerList = catalog.map(product => product.manufacturer);
 
     const isBold = (title) => {
@@ -44,14 +45,9 @@ const Sidebar = (props) => {
             </div>
             <div className="filter-block">
                 <h3 className='title'>Фильтры</h3>
-                <FilterPrice
-                    filterPrice={props.filterPrice}
-                    setFilterPrice={props.setFilterPrice}
-                    priceBorder={props.priceBorder}
-                />
+                <FilterPrice filterPrice={filterPrice} />
                 <FilterManufacturer
-                    filterManufacturer={props.filterManufacturer}
-                    setFilterManufacturer={props.setFilterManufacturer}
+                    filterManufacturer={filterManufacturer}
                     manufacturerList={manufacturerList}
                     fullManufacturerList={fullManufacturerList}
                 />

@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeManufacturerFilterCreator } from '../../store/sortFilterReducer';
 import { getChangeFilter, getCountsManufacturerList } from '../../utils/filter';
 import { getCamelCase } from '../../utils/products';
 import { hiddenFields } from '../../utils/toggleClass';
 
 const FilterManufacturer = (props) => {
+    const dispatch = useDispatch();
     const visibleBlockRef = useRef();
     const countsManufacturerList = getCountsManufacturerList(props.manufacturerList, props.fullManufacturerList);
 
@@ -43,7 +46,7 @@ const FilterManufacturer = (props) => {
                             <span className='title-box'>
                                 <input
                                     data-manufacturer={item.title.toLowerCase()}
-                                    onClick={(e) => props.setFilterManufacturer(getChangeFilter(e, props.filterManufacturer))}
+                                    onClick={(e) => dispatch(changeManufacturerFilterCreator(getChangeFilter(e, props.filterManufacturer)))}
                                     disabled={
                                         !props.manufacturerList.length || item.count === 0
                                             ?

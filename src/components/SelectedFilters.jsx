@@ -1,12 +1,25 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { changeManufacturerFilterCreator, resetAllFitersCreator, resetPriceBorderCreator } from '../store/sortFilterReducer';
 import { getChangeFilter, resetAllFilter } from '../utils/filter';
 import { getCamelCase, getIsPriceFilter } from '../utils/products';
 
 const SelectedFilters = (props) => {
+    const dispatch = useDispatch();
+
+    const resetAllFilters = () => {
+        resetAllFilter()
+        dispatch(resetAllFitersCreator())
+    }
+
+    const changeManufacturerFilter = (e) => {
+        dispatch(changeManufacturerFilterCreator(getChangeFilter(e, props.filterManufacturer, true)));
+    }
+
     return (
         <div className="selected-filter">
             {getIsPriceFilter(props.filterPrice, props.priceBorder) &&
-                <span className='filter' onClick={() => props.setFilterPrice({ minValue: props.priceBorder.minPrice, maxValue: props.priceBorder.maxPrice })}>
+                <span className='filter' onClick={() => dispatch(resetPriceBorderCreator())}>
                     {props.filterPrice.minValue.toLocaleString('ru')} ₴ - {props.filterPrice.maxValue.toLocaleString('ru')} ₴
                     <i></i>
                 </span>
@@ -16,7 +29,7 @@ const SelectedFilters = (props) => {
                     data-manufacturer={item}
                     key={item}
                     className='filter'
-                    onClick={(e) => props.setFilterManufacturer(getChangeFilter(e, props.filterManufacturer, true))}
+                    onClick={(e) => changeManufacturerFilter(e)}
                 >
                     {getCamelCase(item)}
                     <i></i>
@@ -24,7 +37,7 @@ const SelectedFilters = (props) => {
             )}
             <span
                 className='filter reset-filter'
-                onClick={() => resetAllFilter(props.setFilterManufacturer, props.priceBorder, props.setFilterPrice)}
+                onClick={resetAllFilters}
             >
                 Очистить фильтр
             </span>

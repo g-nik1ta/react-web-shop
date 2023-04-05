@@ -28,9 +28,7 @@ export const getChangeFilter = (e, selectedValues, filter = false) => {
     }
 }
 
-export const resetAllFilter = (setFilterManufacturer, priceBorder, setFilterPrice) => {
-    setFilterPrice({ minValue: priceBorder.minPrice, maxValue: priceBorder.maxPrice });
-    setFilterManufacturer([]);
+export const resetAllFilter = () => {
     const inputs = document.querySelectorAll('input[data-manufacturer]');
     inputs.forEach(input => {
         input.checked = false

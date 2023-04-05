@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useProducts } from '../hooks/useProducts';
+import { changeSortCreator } from '../store/sortFilterReducer';
 import { getPageCount, getProductsPage } from '../utils/pages';
 import { getIsPriceFilter } from '../utils/products';
+import { openSidebar } from '../utils/toggleClass';
 import CatalogCard from './catalog/CatalogCard';
 import SelectedFilters from './SelectedFilters';
 import Pagination from './UI/pagination/Pagination';
 import MySelect from './UI/select/MySelect';
 
 const ProductsBlock = (props) => {
+    const { sort, filterManufacturer, filterPrice, priceBorder } = useSelector(state => state.sortFilterReducer);
+    const dispatch = useDispatch();
     const catalog = useSelector(state => state.catalogReducer.catalog);
-    const sortedAndFiltredProducts = useProducts(catalog, props.filterPrice, props.filterManufacturer, props.sort, props.currentCategory);
+    const sortedAndFiltredProducts = useProducts(catalog, filterPrice, filterManufacturer, sort, props.currentCategory);
 
     const limit = 9;
     const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
@@ -34,7 +38,7 @@ const ProductsBlock = (props) => {
 
     useEffect(() => {
         changePage(1);
-    }, [props.filterPrice, props.filterManufacturer, props.sort]);
+    }, [filterPrice, filterManufacturer, sort]);
 
     return (
         <section className='products-block'>
@@ -52,21 +56,22 @@ const ProductsBlock = (props) => {
                     <div className="sort-filter">
                         <span>Сортировка</span>
                         <MySelect
-                            value={(sortOptions.find(e => e.value === props.sort)).name}
-                            onChange={selectedSort => props.setSort(selectedSort)}
+                            value={(sortOptions.find(e => e.value === sort)).name}
+                            onChange={selectedSort => dispatch(changeSortCreator(selectedSort))}
                             options={sortOptions}
                         />
+                        <div
+                            className='filter-menu'
+                            onClick={() => openSidebar('.sidebar-window.filter')}
+                        ></div>
                     </div>
                 </div>
                 {
-                    !!(getIsPriceFilter(props.filterPrice, props.priceBorder) || props.filterManufacturer.length) &&
+                    !!(getIsPriceFilter(filterPrice, priceBorder) || filterManufacturer.length) &&
                     <SelectedFilters
-                        setFilterPrice={props.setFilterPrice}
-                        filterPrice={props.filterPrice}
-
-                        filterManufacturer={props.filterManufacturer}
-                        setFilterManufacturer={props.setFilterManufacturer}
-                        priceBorder={props.priceBorder}
+                        filterPrice={filterPrice}
+                        filterManufacturer={filterManufacturer}
+                        priceBorder={priceBorder}
                     />
                 }
             </div>
@@ -78,18 +83,24 @@ const ProductsBlock = (props) => {
                             <CatalogCard
                                 key={product.id}
                                 product={product}
-                                sort={props.sort}
-                                filterPrice={props.filterPrice}
+                                sort={sort}
+                                filterPrice={filterPrice}
                                 filterManufacturer={props.filterManufacturer}
                             />
                         )
                         :
-                        <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >По выбранным критериям продуктов не найдено.</h1>
+                        <h1 style={{ fontSize: '25px', paddingLeft: '10px' }} >
+                            По выбранным критериям продуктов не найдено.
+                        </h1>
                 }
             </div>
             {
                 (totalPages > 1) &&
-                <Pagination page={page} changePage={(page) => changePage(page)} totalPages={totalPages} />
+                <Pagination
+                    page={page}
+                    changePage={(page) => changePage(page)}
+                    totalPages={totalPages}
+                />
             }
         </section>
     )
