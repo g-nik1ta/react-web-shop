@@ -11,9 +11,11 @@ const FilterManufacturer = (props) => {
     const countsManufacturerList = getCountsManufacturerList(props.manufacturerList, props.fullManufacturerList);
 
     useEffect(() => {
-        const height = visibleBlockRef.current.getBoundingClientRect().height;
-        visibleBlockRef.current.style.height = height + 'px'
-    }, [visibleBlockRef]);
+        if (!!props.manufacturerList.length) {
+            const height = visibleBlockRef.current.getBoundingClientRect().height;
+            visibleBlockRef.current.style.height = height + 'px';
+        }
+    }, [visibleBlockRef, props.manufacturerList]);
 
     return (
         <div className="filter-section">

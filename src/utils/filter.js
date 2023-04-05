@@ -17,8 +17,10 @@ export const getPriceBorder = (catalog) => {
 export const getChangeFilter = (e, selectedValues, filter = false) => {
     let manufacturerName = e.currentTarget.dataset.manufacturer;
     if (filter) {
-        const input = document.querySelector(`input[data-manufacturer="${manufacturerName}"]`);
-        input.checked = false;
+        const inputs = document.querySelectorAll(`input[data-manufacturer="${manufacturerName}"]`);
+        inputs.forEach(input => {
+            input.checked = false;
+        })
     }
 
     if (selectedValues.includes(manufacturerName)) {

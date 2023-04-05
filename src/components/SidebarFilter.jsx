@@ -5,11 +5,13 @@ import Sidebar from './sidebar/Sidebar';
 const SidebarFilter = () => {
     return (
         <div className='sidebar-window filter'>
-            <span
-                className='close-window'
-                onClick={() => closeSidebar('.sidebar-window.filter')}
-            >&#10006;</span>
-            {/* <Sidebar /> */}
+            <div className='close-window_wrapper'>
+                <span
+                    className='close-window'
+                    onClick={() => closeSidebar('.sidebar-window.filter')}
+                >&#10006;</span>
+            </div>
+            <Sidebar />
         </div>
     )
 }

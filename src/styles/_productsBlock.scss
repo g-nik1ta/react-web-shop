@@ -1,4 +1,7 @@
 .shop_container {
+    align-self: center;
+    margin-bottom: 50px;
+    
     .products-block {
         width: 76%;
         margin: 0 12px;
@@ -24,6 +27,18 @@
                     &>span {
                         padding: 5px 10px;
                         font-size: 15px;
+                    }
+
+                    .filter-menu {
+                        display: none;
+                        width: 25px;
+                        height: 25px;
+                        cursor: pointer;
+                        margin-left: 20px;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-image: url("../assets/filter.svg");
                     }
                 }
             }
@@ -104,9 +119,11 @@
         .products {
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between;
 
             .card {
-                width: 31.03%;
+                // min-width: 33%;
+                width: 33%;
                 padding: 0 7px;
             }
         }

@@ -1,21 +1,22 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useProducts } from '../../hooks/useProducts';
 import FilterManufacturer from './FilterManufacturer';
 import FilterPrice from './FilterPrice';
 
-const Sidebar = (props) => {
+const Sidebar = () => {
+    const params = useSelector(state => state.categoryReducer.params);
     const { sort, filterManufacturer, filterPrice } = useSelector(state => state.sortFilterReducer);
-    const params = useParams();
+    const currentCategory = useSelector(state => state.categoryReducer.currentCategory);
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const category = useSelector(state => state.categoryReducer.category);
-    const manufacturerList = useProducts(catalog, filterPrice, filterManufacturer, sort, props.currentCategory, true).map(product => product.manufacturer);
+    const manufacturerList = useProducts(catalog, filterPrice, filterManufacturer, sort, currentCategory, true).map(product => product.manufacturer);
     const fullManufacturerList = catalog.map(product => product.manufacturer);
-
+    
     const isBold = (title) => {
-        if (props.currentCategory) {
-            if (props.currentCategory.title == title) {
+        if (currentCategory) {
+            if (currentCategory.title == title) {
                 return (<b>{title}</b>)
             } else {
                 return title
@@ -45,7 +46,7 @@ const Sidebar = (props) => {
             </div>
             <div className="filter-block">
                 <h3 className='title'>Фильтры</h3>
-                <FilterPrice filterPrice={filterPrice} />
+                <FilterPrice />
                 <FilterManufacturer
                     filterManufacturer={filterManufacturer}
                     manufacturerList={manufacturerList}

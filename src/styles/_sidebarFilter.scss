@@ -1,0 +1,24 @@
+.sidebar-window.filter {
+    display: none;
+
+    .close-window_wrapper {
+        width: 100%;
+        height: 40px;
+        position: relative;
+        border: 1px solid #ebebeb;
+
+        .close-window {
+            display: block;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 4px;
+        }
+    }
+ 
+    .sidebar {
+        width: 100%;
+        margin: 0;
+    }
+}

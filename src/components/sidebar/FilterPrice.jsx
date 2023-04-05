@@ -4,17 +4,18 @@ import { hiddenFields } from '../../utils/toggleClass';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilterPriceCreator } from '../../store/sortFilterReducer';
 
-const FilterPrice = (props) => {
+const FilterPrice = () => {
+    const filterPrice = useSelector(state => state.sortFilterReducer.filterPrice);
     const priceBorder = useSelector(state => state.sortFilterReducer.priceBorder);
     const dispatch = useDispatch();
     const visibleBlockRef = useRef();
-    const [minValue, setMinValue] = useState(props.filterPrice.minValue);
-    const [maxValue, setMaxValue] = useState(props.filterPrice.maxValue);
+    const [minValue, setMinValue] = useState(priceBorder.minPrice);
+    const [maxValue, setMaxValue] = useState(priceBorder.maxPrice);
 
     useEffect(() => {
-        setMinValue(props.filterPrice.minValue);
-        setMaxValue(props.filterPrice.maxValue);
-    }, [props.filterPrice]);
+        setMinValue(filterPrice.minValue);
+        setMaxValue(filterPrice.maxValue);
+    }, [filterPrice]);
 
     useEffect(() => {
         const height = visibleBlockRef.current.getBoundingClientRect().height;

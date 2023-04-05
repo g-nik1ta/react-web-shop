@@ -11,11 +11,12 @@ import SelectedFilters from './SelectedFilters';
 import Pagination from './UI/pagination/Pagination';
 import MySelect from './UI/select/MySelect';
 
-const ProductsBlock = (props) => {
+const ProductsBlock = () => {
     const { sort, filterManufacturer, filterPrice, priceBorder } = useSelector(state => state.sortFilterReducer);
+    const currentCategory = useSelector(state => state.categoryReducer.currentCategory);
     const dispatch = useDispatch();
     const catalog = useSelector(state => state.catalogReducer.catalog);
-    const sortedAndFiltredProducts = useProducts(catalog, filterPrice, filterManufacturer, sort, props.currentCategory);
+    const sortedAndFiltredProducts = useProducts(catalog, filterPrice, filterManufacturer, sort, currentCategory);
 
     const limit = 9;
     const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
@@ -46,9 +47,9 @@ const ProductsBlock = (props) => {
                 <div className="header-block">
                     <h1 className='title'>
                         {
-                            props.currentCategory
+                            currentCategory
                                 ?
-                                props.currentCategory.title
+                                currentCategory.title
                                 :
                                 "Магазин"
                         }
@@ -85,7 +86,7 @@ const ProductsBlock = (props) => {
                                 product={product}
                                 sort={sort}
                                 filterPrice={filterPrice}
-                                filterManufacturer={props.filterManufacturer}
+                                filterManufacturer={filterManufacturer}
                             />
                         )
                         :

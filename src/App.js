@@ -8,6 +8,7 @@ import SidebarLogin from './components/sidebarLogin/SidebarLogin';
 import SidebarBasket from './components/sidebarBasket/SidebarBasket';
 import SidebarNav from './components/SidebarNav';
 import Search from './components/UI/search/Search';
+import SidebarFilter from './components/SidebarFilter';
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 				</div>
 				<SidebarLogin />
 				<SidebarBasket />
+				<SidebarFilter />
 				<AppRouter />
 				<Footer />
 			</div>
