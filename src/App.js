@@ -9,6 +9,7 @@ import SidebarBasket from './components/sidebarBasket/SidebarBasket';
 import SidebarNav from './components/SidebarNav';
 import Search from './components/UI/search/Search';
 import SidebarFilter from './components/SidebarFilter';
+import SidebarPromocode from './components/SidebarPromocode';
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 				<SidebarLogin />
 				<SidebarBasket />
 				<SidebarFilter />
+				<SidebarPromocode />
 				<AppRouter />
 				<Footer />
 			</div>

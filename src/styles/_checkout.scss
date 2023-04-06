@@ -115,6 +115,21 @@
                         }
                     }
 
+                    .have-promocode {
+                        display: none;
+                        margin-top: 15px;
+                        cursor: pointer;
+                        color: #5f6d92;
+                        font-size: 14px;
+                        border-bottom: 1px dashed #5f6d92;
+                        transition: 1s all ease;
+                        text-decoration: none;
+
+                        &:hover {
+                            color: #000;
+                        }
+                    }
+
                     .subtitle {
                         margin: 25px 0;
                         font-size: 21px;
@@ -160,6 +175,46 @@
 
                         &:hover {
                             background-color: #4b5673;
+                        }
+                    }
+                }
+            }
+
+            .basket-info-panel {
+                display: none;
+                width: 100%;
+                height: 80px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                background-color: #f5f5f5;
+                box-shadow: 0 -10px 10px rgba(0,0,0,.15);
+                padding: 30px 0;
+
+                .info-content {
+                    padding: 0 40px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .subtitle {
+                        display: inline-block;
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+
+                    .edit {
+                        display: inline-block;
+
+                        a {
+                            color: #5f6d92;
+                            font-size: 14px;
+                            border-bottom: 1px dashed #5f6d92;
+                            transition: 1s all ease;
+                            text-decoration: none;
+
+                            &:hover {
+                                color: #000;
+                            }
                         }
                     }
                 }
@@ -360,3 +415,101 @@
         }
     }
 }
+
+.sidebar-window.promocode {
+    .close-window_wrapper {
+        width: 100%;
+        height: 44px;
+        position: relative;
+        border: 1px solid #ebebeb;
+
+        .close-window {
+            display: block;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 4px;
+        }
+    }
+ 
+    .total {
+        padding: 15px 0;
+
+        .total-price,
+        .total-delivery {
+            padding: 10px 40px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .promocode-block {
+            padding: 5px 40px 0;
+            margin-top: 10px;
+            border-top: 1px dashed #ddd;
+
+            span {
+                display: block;
+                margin: 10px 0;
+                font-size: 15px;
+            }
+
+            input {
+                width: 80%;
+                height: 38px;
+                font-size: 16px;
+                outline: none;
+                padding: 10px;
+                border-radius: 3px;
+                background: #fff;
+                transition: border-color 0.3s ease !important;
+                border: 1px solid #dcdcdc;
+
+                &::placeholder {
+                    opacity: 0.3;
+                    font-size: 15px;
+                }
+
+                &:focus {
+                    border-color: rgb(133, 133, 133);
+                }
+            }
+
+            button {
+                cursor: pointer;
+                width: 18%;
+                height: 38px;
+                background-color: #ccc;
+                border: 1px solid #bbb;
+                color: #5f6d92;
+                font-size: 16px;
+                text-align: center;
+                float: right;
+            }
+        }
+
+        .promocode-error {
+            padding: 6px 40px;
+            font-size: 14px;
+            color: red;
+            display: block;
+        }
+
+        .promocode-success {
+            padding: 6px 40px;
+            font-size: 15px;
+            color: #5f6d92;
+            display: block;
+        }
+
+        .total-all {
+            padding: 25px 40px 10px;
+            margin-top: 15px;
+            border-top: 1px dashed #ddd;
+            font-size: 19px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+} 

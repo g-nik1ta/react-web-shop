@@ -19,7 +19,7 @@ const OrderCompleteItem = ({ item }) => {
                         item.sub
                             ?
                             <>
-                                , <br /> {item.sub}: {item.productCharacteristics.mdf}
+                                , {item.sub}: {item.productCharacteristics.mdf}
                             </>
                             :
                             null

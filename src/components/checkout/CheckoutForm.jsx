@@ -6,6 +6,7 @@ import { useFetching } from '../../hooks/useFetching';
 import { removeBasketCreator, removePromocodeCreator, setOrderCreator } from '../../store/basketReducer';
 import { generateOrderHash, getFullDate, getStatus, getTotalDiscountPrice, getTotalPrice } from '../../utils/basket';
 import { setValuesError, validations } from '../../utils/formValidations';
+import { openSidebar } from '../../utils/toggleClass';
 import FormFields from '../FormFields';
 import MyButton from '../UI/button/MyButton';
 import Loader from '../UI/loader/Loader';
@@ -64,7 +65,7 @@ const CheckoutForm = ({ basket, user }) => {
             error: false,
             errorMessage: '',
         },
-    }); 
+    });
 
     const sortOptions = [
         { value: 'full-payment', name: 'Полная оплата' },
@@ -195,6 +196,12 @@ const CheckoutForm = ({ basket, user }) => {
                                 title={'Пожелания'}
                                 setValues={setValues}
                             />
+                            <div
+                                className="have-promocode"
+                                onClick={() => openSidebar('.sidebar-window.promocode')}
+                            >
+                                У меня есть промокод
+                            </div>
                             <h2 className='subtitle'>Доставка и способ оплаты</h2>
                             {
                                 values.city.value.trim().length

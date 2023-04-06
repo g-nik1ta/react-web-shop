@@ -2,6 +2,7 @@ import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup } fr
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BasketInfo from '../components/checkout/BasketInfo';
+import BasketInfoPanel from '../components/checkout/BasketInfoPanel';
 import CheckoutForm from '../components/checkout/CheckoutForm';
 import RoutePanel from '../components/UI/routePanel/RoutePanel';
 import { app } from '../firebase';
@@ -89,6 +90,7 @@ const Checkout = () => {
                                     />
                                 </div>
                                 <BasketInfo basket={basket} />
+                                <BasketInfoPanel />
                             </div>
                             :
                             <div className='no-orders'>

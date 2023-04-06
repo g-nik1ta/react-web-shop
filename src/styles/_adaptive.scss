@@ -3,6 +3,17 @@
         width: 960px !important;
     }
 
+    .checkout_container .checkout_content .checkout-block {
+        .form-block {
+            padding-right: 10px;
+            width: 60%;
+        }
+
+        .basket-info {
+            width: 40%;
+        }
+    }
+
     .shop_container .sidebar {
         width: 28%;
     }
@@ -116,6 +127,24 @@
 @media (max-width: 1080px) {
     .row {
         width: 900px !important;
+    }
+
+    .basket_container .basket_content .basket-items {
+        .price {
+            display: none;
+        }
+
+        .value {
+            width: 20% !important;
+        }
+
+        .count-block {
+            width: 15% !important;
+        }
+
+        .basket-header .count {
+            width: 15% !important;
+        }
     }
 
     .header-wrapepr .header-content .auth {
@@ -249,6 +278,52 @@
         width: 750px !important;
     }
 
+    .complete_container .complete_content .order-details-block {
+        flex-wrap: wrap;
+
+        .order-details-info,
+        .order-products-list {
+            width: 100%;
+        }
+
+        .order-products-list .products-list {
+            max-height: none;
+            overflow-y: initial;
+
+            .item .image img {
+                max-width: 60%;
+            }
+        }
+    }
+
+    .checkout_container .checkout_content .checkout-block {
+        flex-wrap: wrap;
+
+        .form-block form .have-promocode {
+            display: inline-block;
+        }
+
+        .form-block {
+            width: 100% !important;
+        }
+
+        .basket-info-panel {
+            display: block;
+        }
+
+        .basket-info {
+            display: none;
+        }
+    }
+
+    .buyers .card__wrapper {
+        flex-wrap: wrap;
+
+        .card-buyers {
+            max-width: 60%;
+        }
+    }
+
     .product_container .product_content .product-info {
         flex-wrap: wrap;
 
@@ -344,6 +419,73 @@
 @media (max-width: 800px) {
     .row {
         width: 480px !important;
+    }
+
+    .checkout_container .checkout_content .checkout-block .form-block form {
+
+        .payment-field,
+        .field,
+        button {
+            width: 100%;
+        }
+    }
+
+    .basket_container .basket_content .basket-items {
+        .basket-header {
+
+            .value,
+            .count {
+                display: none;
+            }
+        }
+
+        .item {
+            flex-wrap: wrap;
+
+            .image {
+                width: 35%;
+            }
+
+            .name-block {
+                width: 65%;
+            }
+
+            .value,
+            .count-block {
+                width: 100% !important;
+            }
+
+            .value {
+                margin: 10px 0;
+                text-align: right;
+            }
+
+            .count-block .count {
+                margin: 0;
+                margin-left: auto !important;
+            }
+        }
+
+        .total-all,
+        .full-checkout {
+            margin-left: 0;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+
+    .contacts .contacts-content {
+        flex-wrap: wrap;
+
+        &>div {
+            width: 95% !important;
+        }
+    }
+
+    .buyers .card__wrapper .card-buyers {
+        max-width: 90%;
     }
 
     .shop_container.row {
@@ -481,10 +623,19 @@
 
 
 @media (max-width: 500px) {
+
     .row,
     .product_content.row {
         width: 90% !important;
     }
+    .complete_container .complete_content .order-details-block {
+        .order-products-list .products-list .item .image img {
+            max-width: 80%;
+        }
+        .order-details-info .order-info .info-block {
+            width: 100%;
+        }
+    } 
 
     .product_container .product_content .product-info {
         .product-images {
@@ -492,7 +643,7 @@
 
             .image-slider .slick-list .slick-slide div img {
                 max-height: 450px;
-            } 
+            }
         }
 
         .product-details {
@@ -648,6 +799,10 @@
 
 
 @media (max-width: 400px) {
+    .checkout_container .checkout_content .checkout-block .basket-info-panel .info-content .subtitle {
+        display: none;
+    }
+
     .simple-slider .slider-item .slider-item__bcg .slider-info .title {
         font-size: 14px;
         max-width: 265px;
