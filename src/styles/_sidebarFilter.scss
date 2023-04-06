@@ -20,5 +20,9 @@
     .sidebar {
         width: 100%;
         margin: 0;
+
+        .filter-block .filter-section .filter-modification-fields .entry-field {
+            font-size: 100%;
+        }
     }
 }

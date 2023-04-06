@@ -18,7 +18,7 @@ const ProductsBlock = () => {
     const catalog = useSelector(state => state.catalogReducer.catalog);
     const sortedAndFiltredProducts = useProducts(catalog, filterPrice, filterManufacturer, sort, currentCategory);
 
-    const limit = 9;
+    const [limit, setLimit] = useState(9);
     const totalPages = getPageCount(sortedAndFiltredProducts.length, limit);
     const [page, setPage] = useState(1);
 
@@ -40,6 +40,16 @@ const ProductsBlock = () => {
     useEffect(() => {
         changePage(1);
     }, [filterPrice, filterManufacturer, sort]);
+    
+    useEffect(() => {
+        function handleResize() {
+            if (window.innerWidth <= 800) {
+                setLimit(8)
+            } else setLimit(9)
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <section className='products-block'>

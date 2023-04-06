@@ -87,7 +87,7 @@
             .card-img {
                 cursor: pointer;
                 max-width: 95%;
-                max-height: 85%;
+                max-height: 73%;
                 transition: .25s opacity ease-in;
 
                 &.main-img {
@@ -171,6 +171,7 @@
                 margin-bottom: 5px;
                 border: 1px solid #666;
                 border-radius: 3px;
+                text-align: center;
                 display: flex;
                 justify-content: center;
                 align-items: center;
