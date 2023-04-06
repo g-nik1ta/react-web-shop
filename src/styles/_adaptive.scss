@@ -249,6 +249,20 @@
         width: 750px !important;
     }
 
+    .product_container .product_content .product-info {
+        flex-wrap: wrap;
+
+        .product-images {
+            width: 90%;
+            position: initial;
+        }
+
+        .product-details {
+            width: 100%;
+            margin: 40px 12px 0;
+        }
+    }
+
     .shop_container .products-block {
         .header .header-block .sort-filter .filter-menu {
             display: block;
@@ -334,6 +348,24 @@
 
     .shop_container.row {
         width: 500px !important;
+    }
+
+    .product_content.row {
+        width: 540px !important;
+    }
+
+    .product_container .product_content .product-info .product-images {
+        width: 100%;
+        justify-content: center;
+
+        .image-slider {
+            width: 95%;
+        }
+
+        & .gallery,
+        & .gallery-slider {
+            display: none;
+        }
     }
 
     .shop_container .products-block .products .card {
@@ -436,9 +468,53 @@
 
 
 
+@media (max-width: 580px) {
+    .product_content.row {
+        width: 467px !important;
+    }
+
+    .product_container .product_content .product-info .product-details {
+        margin: 20px 12px 0;
+    }
+}
+
+
+
 @media (max-width: 500px) {
-    .row {
+    .row,
+    .product_content.row {
         width: 90% !important;
+    }
+
+    .product_container .product_content .product-info {
+        .product-images {
+            margin: auto;
+
+            .image-slider .slick-list .slick-slide div img {
+                max-height: 450px;
+            } 
+        }
+
+        .product-details {
+            .characteristics-block .characteristic {
+                flex-wrap: wrap;
+
+                &>div {
+                    width: 100% !important;
+                    font-size: 16px !important;
+                }
+
+                .body {
+                    margin-left: 0;
+                }
+            }
+
+            .product-buy-block {
+                button {
+                    width: 80%;
+                }
+            }
+        }
     }
 
     .shop_container.row {
@@ -577,6 +653,10 @@
         max-width: 265px;
     }
 
+    .product_container .product_content .product-info .product-details {
+        margin: 0 12px;
+    }
+
     .category .slick-slider {
         .slick-arrow {
             width: 50px;
@@ -678,7 +758,8 @@
 
 
 
-@media (max-width: 340px) { 
+@media (max-width: 340px) {
+
     .sidebar-nav,
     .sidebar-nav .sidebar-wrapper .sidebar-content {
         width: 240px !important;

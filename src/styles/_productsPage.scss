@@ -96,8 +96,13 @@
                             justify-content: center;
 
                             div {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
                                 img {
                                     max-height: 540px;
+                                    max-width: 90%;
                                     padding: 20px 0;
                                 }
                             }
