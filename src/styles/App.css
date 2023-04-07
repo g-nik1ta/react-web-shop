@@ -1,6 +1,12 @@
 .simple-slider button.slick-arrow {
   display: none !important;
 }
+.simple-slider .slide-1 {
+  background-image: url("../assets/slider/slider-01.jpg");
+}
+.simple-slider .slide-2 {
+  background-image: url("../assets/slider/slider-02.jpg");
+}
 .simple-slider .slider-item {
   background-repeat: no-repeat;
   background-position: center center;

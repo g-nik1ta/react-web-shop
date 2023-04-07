@@ -19,12 +19,10 @@ const SimpleSlider = () => {
     }
     const sliderItems = [
         {
-            imgUrl: 'slider-01',
             headTitle: 'iPhone 11 pro',
             title: 'Революционная система трёх камер — гораздо больше возможностей и неизменная простота в использовании.',
         },
         {
-            imgUrl: 'slider-02',
             headTitle: 'iPhone 11 pro',
             title: 'Революционная система трёх камер — гораздо больше возможностей и неизменная простота в использовании.',
         },
@@ -32,12 +30,9 @@ const SimpleSlider = () => {
 
     return (
         <Slider {...settings} className="simple-slider">
-            {sliderItems.map(item =>
-                <div key={item.imgUrl}>
-                    <section
-                        style={{ backgroundImage: 'url(slider/' + item.imgUrl + '.jpg)' }}
-                        className='slider-item'
-                    >
+            {sliderItems.map((item, i) =>
+                <div key={i}>
+                    <section className={`slider-item slide-${i+1}`}>
                         <div className='slider-item__bcg'>
                             <div className="slider-info row">
                                 <h1 className='head-title'>
