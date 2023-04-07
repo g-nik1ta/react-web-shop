@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/react-web-shop/static/css/main.9426ee05.css",
-    "main.js": "/react-web-shop/static/js/main.c7f83ba2.js",
+    "main.css": "/react-web-shop/static/css/main.4aa2ba0d.css",
+    "main.js": "/react-web-shop/static/js/main.e9fe0238.js",
     "static/media/about.jpg": "/react-web-shop/static/media/about.562240b3cb7f68e67dcc.jpg",
     "static/media/shipping-and-payment.jpg": "/react-web-shop/static/media/shipping-and-payment.0cd01ead3bbf9fb7a2a3.jpg",
+    "static/media/slider-01.jpg": "/react-web-shop/static/media/slider-01.79e095984d2b20e4566d.jpg",
+    "static/media/slider-02.jpg": "/react-web-shop/static/media/slider-02.be17e266bb8e2d3d69e2.jpg",
     "static/media/accessories.jpg": "/react-web-shop/static/media/accessories.ec692bea598c6b4532a0.jpg",
     "static/media/modern-camera.jpg": "/react-web-shop/static/media/modern-camera.1ad9c96e6acc0319cc84.jpg",
     "static/media/health-monitoring.jpg": "/react-web-shop/static/media/health-monitoring.4b6c4543a445064cd5e7.jpg",
@@ -37,11 +39,11 @@
     "static/media/telegram.svg": "/react-web-shop/static/media/telegram.0935cfa3f51c58774b6d.svg",
     "static/media/arrow-up.svg": "/react-web-shop/static/media/arrow-up.09c1cebef992fcbbb55e.svg",
     "index.html": "/react-web-shop/index.html",
-    "main.9426ee05.css.map": "/react-web-shop/static/css/main.9426ee05.css.map",
-    "main.c7f83ba2.js.map": "/react-web-shop/static/js/main.c7f83ba2.js.map"
+    "main.4aa2ba0d.css.map": "/react-web-shop/static/css/main.4aa2ba0d.css.map",
+    "main.e9fe0238.js.map": "/react-web-shop/static/js/main.e9fe0238.js.map"
   },
   "entrypoints": [
-    "static/css/main.9426ee05.css",
-    "static/js/main.c7f83ba2.js"
+    "static/css/main.4aa2ba0d.css",
+    "static/js/main.e9fe0238.js"
   ]
 }
