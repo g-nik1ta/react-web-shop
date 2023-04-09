@@ -46,6 +46,7 @@ const Catalog = () => {
                 slidesToScroll: 4
             })
         }
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
