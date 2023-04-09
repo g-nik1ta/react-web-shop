@@ -13,7 +13,7 @@ const RoutePanel = () => {
                     (i + 1) === routeItems.length
                         ?
                         <a
-                            href={item.path}
+                            href={process.env.PUBLIC_URL + '/' + item.path}
                             key={item.id}
                             className={
                                 (i + 1) === routeItems.length
