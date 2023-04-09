@@ -11,7 +11,8 @@
     margin: 0 auto;
 }
 
-.panel__content > a {
+.panel__content>a,
+.panel__content>div {
     text-decoration: none;
     font-size: 13px;
     transition: 1s all ease;

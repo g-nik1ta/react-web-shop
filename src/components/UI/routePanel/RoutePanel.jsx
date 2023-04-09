@@ -12,8 +12,8 @@ const RoutePanel = () => {
                 {routeItems.map((item, i) =>
                     (i + 1) === routeItems.length
                         ?
-                        <a
-                            href={process.env.PUBLIC_URL + '/' + item.path}
+                        <div
+                            onClick={() => window.location.reload()}                        
                             key={item.id}
                             className={
                                 (i + 1) === routeItems.length
@@ -24,7 +24,7 @@ const RoutePanel = () => {
                             }
                         >
                             {item.body}
-                        </a>
+                        </div>
                         :
                         i % 2 === 0
                             ?
