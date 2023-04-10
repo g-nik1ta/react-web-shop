@@ -35,7 +35,7 @@
     opacity: 0;
     transform: translateY(-20px) scale(.93);
     visibility: hidden;
-    top: 32px;
+    top: 28px;
     left: -10px;
     width: max-content;
     z-index: 1;
