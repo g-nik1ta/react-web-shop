@@ -278,6 +278,10 @@
         width: 750px !important;
     }
 
+    #root {
+        overflow: hidden;
+    }
+
     .complete_container .complete_content .order-details-block {
         flex-wrap: wrap;
 

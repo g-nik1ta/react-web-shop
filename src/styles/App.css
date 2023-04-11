@@ -2995,6 +2995,9 @@
   .row {
     width: 750px !important;
   }
+  #root {
+    overflow: hidden;
+  }
   .complete_container .complete_content .order-details-block {
     flex-wrap: wrap;
   }
@@ -3684,7 +3687,6 @@ body.open {
   font-family: Roboto, sans-serif;
   color: #333333;
   max-width: 100vw;
-  overflow: hidden;
 }
 
 .app {
