@@ -73,6 +73,6 @@ P.S. after reloading the page, the selected products will not be saved</p>
     <img src ="./.github/Feedback.jpg" width = "100%">
 </div>
 
-<div align="center">
+<h2 align="center">
     <a href="https://g-nik1ta.github.io/react-web-shop/">live demo</a>
-</div>
+</h2>
